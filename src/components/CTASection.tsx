@@ -3,13 +3,13 @@ import granuloLogo from "@/assets/granulo-logo.png";
 
 const CTASection = () => {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-primary to-blue-600">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-primary via-purple-500 to-secondary">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center text-white">
           <img 
             src={granuloLogo} 
             alt="Granulo" 
-            className="mb-8 h-24 w-24 animate-float drop-shadow-2xl"
+            className="mb-8 h-24 w-24 rounded-full animate-float drop-shadow-2xl"
           />
           
           <h2 className="mb-4 text-3xl font-bold md:text-5xl">
