@@ -1,13 +1,40 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import Features from "@/components/Features";
+import Screenshots from "@/components/Screenshots";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Granulo - Suivez votre consommation de granulés pour poêle à bois</title>
+        <meta 
+          name="description" 
+          content="Application mobile pour suivre votre stock de granulés, vos achats, brûlages et analyser vos habitudes de consommation. Simple, évolutive et pensée pour vous." 
+        />
+        <meta name="keywords" content="granulés, poêle à bois, chauffage, suivi consommation, stock granulés, application mobile" />
+        
+        <meta property="og:title" content="Granulo - Suivez votre consommation de granulés" />
+        <meta property="og:description" content="Une application pensée pour vous, évolutive et simple à vivre ! Gérez votre stock et analysez vos habitudes de chauffage." />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Granulo - Suivez votre consommation de granulés" />
+        <meta name="twitter:description" content="Application mobile pour suivre votre stock de granulés et optimiser votre chauffage." />
+        
+        <link rel="canonical" href="https://granulo.app" />
+      </Helmet>
+      
+      <main className="min-h-screen">
+        <Hero />
+        <Features />
+        <Screenshots />
+        <CTASection />
+        <Footer />
+      </main>
+    </>
   );
 };
 
