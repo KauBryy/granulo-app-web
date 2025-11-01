@@ -33,7 +33,7 @@ const Hero = () => {
               asChild
             >
               <a 
-                href="https://play.google.com/store" 
+                href="https://play.google.com/apps/testing/com.kaubry.granulo.granulo" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"

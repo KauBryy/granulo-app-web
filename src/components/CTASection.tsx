@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import granuloLogo from "@/assets/granulo-logo.png";
+import BetaAccessForm from "./BetaAccessForm";
 
 const CTASection = () => {
   return (
@@ -17,9 +18,11 @@ const CTASection = () => {
           </h2>
           
           <p className="mb-8 max-w-2xl text-lg text-white/90 md:text-xl">
-            Téléchargez Granulo gratuitement et commencez à suivre<br />
+            Rejoignez le programme de test et commencez à suivre<br />
             votre consommation dès aujourd'hui.
           </p>
+          
+          <BetaAccessForm />
           
           <Button 
             size="lg" 
@@ -27,7 +30,7 @@ const CTASection = () => {
             asChild
           >
             <a 
-              href="https://play.google.com/store" 
+              href="https://play.google.com/apps/testing/com.kaubry.granulo.granulo" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2"
@@ -35,7 +38,7 @@ const CTASection = () => {
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
                 <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
               </svg>
-              Télécharger maintenant
+              Accéder au test
             </a>
           </Button>
           
@@ -47,12 +50,6 @@ const CTASection = () => {
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>
                 <span>Gratuit</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <span>Sans publicité</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
