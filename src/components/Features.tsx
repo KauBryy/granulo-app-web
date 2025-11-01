@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { ShoppingCart, Flame, Calendar, BarChart3, Clock, Euro } from "lucide-react";
+import heroPresentation from "@/assets/hero-presentation.jpg";
 
 const features = [
   {
@@ -52,6 +53,14 @@ const Features = () => {
             Granulo vous accompagne au quotidien pour optimiser votre chauffage<br />
             et maîtriser votre budget.
           </p>
+          
+          <div className="mt-12 flex justify-center">
+            <img 
+              src={heroPresentation} 
+              alt="Application Granulo en contexte avec un poêle à granulés" 
+              className="rounded-3xl shadow-2xl max-w-full h-auto max-h-[500px] object-cover"
+            />
+          </div>
         </div>
         
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
