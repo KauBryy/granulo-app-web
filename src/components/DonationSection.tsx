@@ -34,7 +34,7 @@ const DonationSection = () => {
           env: 'production',
           hosted_button_id: '32YRTVCLJPNVJ',
           image: {
-            src: 'https://pics.paypal.com/00/s/NDcyNDU2NGUtYzc3OC00NGQxLWJlZGMtMTA2ZmNhM2Y2ZDM2/file.PNG',
+            src: 'https://pics.paypal.com/00/s/Yzc5NGI2MzQtMjU3YS00NjdlLWFlZTktNDUxNDZiMjI5Zjlk/file.PNG',
             alt: 'Bouton Faites un don avec PayPal',
             title: 'PayPal - The safer, easier way to pay online!',
           }
