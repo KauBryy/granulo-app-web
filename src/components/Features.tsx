@@ -43,7 +43,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-20 md:py-28 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-5xl text-foreground">
@@ -58,7 +58,7 @@ const Features = () => {
             <img 
               src={heroPresentation} 
               alt="Application Granulo en contexte avec un poêle à granulés" 
-              className="rounded-3xl shadow-2xl max-w-full h-auto max-h-[500px] object-cover"
+              className="rounded-3xl shadow-2xl max-w-full h-auto max-h-[500px] object-cover border border-border"
             />
           </div>
         </div>
@@ -67,17 +67,17 @@ const Features = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const bgColor = feature.color === "blue" ? "bg-blue-light" : "bg-orange-light";
-            const iconColor = feature.color === "blue" ? "text-primary" : "text-secondary";
+            const iconColor = feature.color === "blue" ? "text-blue-purchase" : "text-orange-burn";
             
             return (
               <Card 
                 key={index}
-                className="group p-6 transition-all duration-300 hover:shadow-medium hover:-translate-y-1 border-border/50 bg-card"
+                className="group p-8 transition-all duration-300 hover:shadow-medium hover:-translate-y-1 border-border bg-card rounded-3xl"
               >
-                <div className={`mb-4 inline-flex rounded-2xl ${bgColor} p-3 transition-transform duration-300 group-hover:scale-110`}>
-                  <Icon className={`h-6 w-6 ${iconColor}`} />
+                <div className={`mb-4 inline-flex rounded-2xl ${bgColor} p-4 transition-transform duration-300 group-hover:scale-110`}>
+                  <Icon className={`h-7 w-7 ${iconColor}`} />
                 </div>
-                <h3 className="mb-2 text-xl font-semibold text-card-foreground">{feature.title}</h3>
+                <h3 className="mb-2 text-xl font-semibold text-foreground">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </Card>
             );

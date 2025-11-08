@@ -4,9 +4,7 @@ import granuloLogo from "@/assets/granulo-logo.png";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary via-purple-500 to-secondary py-20 md:py-32">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
-      
+    <section className="relative overflow-hidden bg-background py-20 md:py-32">
       <div className="container relative mx-auto px-4">
         <div className="flex flex-col items-center text-center">
           <div className="mb-8 animate-float">
@@ -17,11 +15,11 @@ const Hero = () => {
             />
           </div>
           
-          <h1 className="mb-6 text-4xl font-bold text-white md:text-6xl lg:text-7xl animate-fade-in">
+          <h1 className="mb-6 text-4xl font-bold text-foreground md:text-6xl lg:text-7xl animate-fade-in">
             Suivez votre consommation<br />de granulés
           </h1>
           
-          <p className="mb-8 max-w-2xl text-lg text-white/90 md:text-xl animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <p className="mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl animate-fade-in" style={{ animationDelay: "0.1s" }}>
             Une application pensée pour vous, évolutive et simple à vivre !<br />
             Gérez votre stock, vos achats et analysez vos habitudes de chauffage.
           </p>
@@ -29,11 +27,11 @@ const Hero = () => {
           <div className="mb-12 flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <Button 
               size="lg" 
-              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 shadow-medium transition-transform hover:scale-105"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 shadow-medium transition-transform hover:scale-105 rounded-2xl"
               asChild
             >
               <a 
-                href="https://play.google.com/apps/testing/com.kaubry.granulo.granulo" 
+                href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -47,29 +45,29 @@ const Hero = () => {
           </div>
         
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8 animate-scale-in" style={{ animationDelay: "0.3s" }}>
-            <div className="flex flex-col items-center gap-2 text-white">
-              <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
-                <ShoppingCart className="h-8 w-8" />
+            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gradient-to-br from-blue-light to-blue-purchase/20 border border-border shadow-soft">
+              <div className="rounded-2xl bg-blue-purchase/20 p-4">
+                <ShoppingCart className="h-8 w-8 text-blue-purchase" />
               </div>
-              <span className="text-sm font-medium">Suivi des achats</span>
+              <span className="text-sm font-medium text-foreground">Suivi des achats</span>
             </div>
-            <div className="flex flex-col items-center gap-2 text-white">
-              <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
-                <Flame className="h-8 w-8" />
+            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gradient-to-br from-orange-light to-orange-burn/20 border border-border shadow-soft">
+              <div className="rounded-2xl bg-orange-burn/20 p-4">
+                <Flame className="h-8 w-8 text-orange-burn" />
               </div>
-              <span className="text-sm font-medium">Historique des brûlages</span>
+              <span className="text-sm font-medium text-foreground">Historique des brûlages</span>
             </div>
-            <div className="flex flex-col items-center gap-2 text-white">
-              <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
-                <TrendingUp className="h-8 w-8" />
+            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-card border border-border shadow-soft">
+              <div className="rounded-2xl bg-primary/20 p-4">
+                <TrendingUp className="h-8 w-8 text-primary" />
               </div>
-              <span className="text-sm font-medium">Estimation du stock</span>
+              <span className="text-sm font-medium text-foreground">Estimation du stock</span>
             </div>
-            <div className="flex flex-col items-center gap-2 text-white">
-              <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
-                <BarChart3 className="h-8 w-8" />
+            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-card border border-border shadow-soft">
+              <div className="rounded-2xl bg-primary/20 p-4">
+                <BarChart3 className="h-8 w-8 text-primary" />
               </div>
-              <span className="text-sm font-medium">Statistiques détaillées</span>
+              <span className="text-sm font-medium text-foreground">Statistiques détaillées</span>
             </div>
           </div>
         </div>
