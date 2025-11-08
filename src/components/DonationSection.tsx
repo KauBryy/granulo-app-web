@@ -1,8 +1,5 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useEffect, useRef } from "react";
 import { Heart } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 const donationOptions = [
   { amount: 1, description: "Aide à couvrir deux mois de boîte mail pro" },
@@ -10,21 +7,49 @@ const donationOptions = [
   { amount: 10, description: "Aide à payer le site web et le nom de domaine" },
 ];
 
-const DonationSection = () => {
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
-  const [customAmount, setCustomAmount] = useState("");
-  const { toast } = useToast();
+declare global {
+  interface Window {
+    PayPal?: {
+      Donation: {
+        Button: (config: any) => {
+          render: (selector: string) => void;
+        };
+      };
+    };
+  }
+}
 
-  const handleDonation = () => {
-    const amount = selectedAmount || parseFloat(customAmount);
-    if (amount && amount > 0) {
-      toast({
-        title: "Merci beaucoup pour votre soutien !",
-        description: "Chaque geste compte et aide Granulo à s'améliorer.",
-      });
-      // Ici, vous pourrez intégrer un système de paiement comme Stripe ou PayPal
-    }
-  };
+const DonationSection = () => {
+  const paypalContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.paypalobjects.com/donate/sdk/donate-sdk.js';
+    script.charset = 'UTF-8';
+    script.async = true;
+    
+    script.onload = () => {
+      if (window.PayPal && paypalContainerRef.current) {
+        window.PayPal.Donation.Button({
+          env: 'production',
+          hosted_button_id: '32YRTVCLJPNVJ',
+          image: {
+            src: 'https://pics.paypal.com/00/s/NDcyNDU2NGUtYzc3OC00NGQxLWJlZGMtMTA2ZmNhM2Y2ZDM2/file.PNG',
+            alt: 'Bouton Faites un don avec PayPal',
+            title: 'PayPal - The safer, easier way to pay online!',
+          }
+        }).render('#paypal-donate-button');
+      }
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-card to-accent">
@@ -45,57 +70,28 @@ const DonationSection = () => {
 
         <div className="grid gap-4 md:grid-cols-3 mb-8">
           {donationOptions.map((option) => (
-            <button
+            <div
               key={option.amount}
-              onClick={() => {
-                setSelectedAmount(option.amount);
-                setCustomAmount("");
-              }}
-              className={`rounded-2xl border-2 p-6 text-left transition-all hover:scale-105 ${
-                selectedAmount === option.amount
-                  ? "border-primary bg-primary/10"
-                  : "border-border bg-card hover:border-primary/50"
-              }`}
+              className="rounded-2xl border-2 border-border bg-card p-6 text-left"
             >
               <div className="text-3xl font-bold text-primary mb-2">{option.amount} €</div>
               <p className="text-sm text-muted-foreground">{option.description}</p>
-            </button>
+            </div>
           ))}
         </div>
 
         <div className="rounded-2xl border-2 border-border bg-card p-6 mb-8">
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <Input
-                type="number"
-                min="1"
-                step="0.01"
-                placeholder="Autre montant"
-                value={customAmount}
-                onChange={(e) => {
-                  setCustomAmount(e.target.value);
-                  setSelectedAmount(null);
-                }}
-                className="flex-1"
-              />
-              <span className="text-lg font-semibold text-foreground">€</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Merci à vous, chaque geste compte et aide Granulo à s'améliorer
-            </p>
-          </div>
+          <p className="text-sm text-muted-foreground mb-4 text-center">
+            Merci à vous, chaque geste compte et aide Granulo à s'améliorer
+          </p>
         </div>
 
         <div className="text-center">
-          <Button
-            size="lg"
-            onClick={handleDonation}
-            disabled={!selectedAmount && !customAmount}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-12 py-6"
-          >
-            <Heart className="mr-2 h-5 w-5" />
-            Faire un don
-          </Button>
+          <div 
+            ref={paypalContainerRef}
+            id="paypal-donate-button" 
+            className="flex justify-center mb-6"
+          />
           
           <p className="mt-6 text-sm text-muted-foreground italic">
             Merci beaucoup pour votre soutien, qui fait avancer Granulo !
