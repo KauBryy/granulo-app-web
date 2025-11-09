@@ -1,6 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { ShoppingCart, Flame, Calendar, BarChart3, Clock, Euro } from "lucide-react";
 import heroPresentation from "@/assets/hero-presentation.jpg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const features = [
   {
@@ -63,26 +70,39 @@ const Features = () => {
           </div>
         </div>
         
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            const bgColor = feature.color === "blue" ? "bg-blue-light" : "bg-orange-light";
-            const iconColor = feature.color === "blue" ? "text-blue-purchase" : "text-orange-burn";
-            
-            return (
-              <Card 
-                key={index}
-                className="group p-8 transition-all duration-300 hover:shadow-medium hover:-translate-y-1 border-border bg-card rounded-3xl"
-              >
-                <div className={`mb-4 inline-flex rounded-2xl ${bgColor} p-4 transition-transform duration-300 group-hover:scale-110`}>
-                  <Icon className={`h-7 w-7 ${iconColor}`} />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </Card>
-            );
-          })}
-        </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-5xl mx-auto"
+        >
+          <CarouselContent>
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              const bgColor = feature.color === "blue" ? "bg-blue-light" : "bg-orange-light";
+              const iconColor = feature.color === "blue" ? "text-blue-purchase" : "text-orange-burn";
+              
+              return (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <Card 
+                      className="group p-8 transition-all duration-300 hover:shadow-medium hover:-translate-y-1 border-border bg-card rounded-3xl h-full"
+                    >
+                      <div className={`mb-4 inline-flex rounded-2xl ${bgColor} p-4 transition-transform duration-300 group-hover:scale-110`}>
+                        <Icon className={`h-7 w-7 ${iconColor}`} />
+                      </div>
+                      <h3 className="mb-2 text-xl font-semibold text-foreground">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
       </div>
     </section>
   );
