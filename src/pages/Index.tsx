@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
 import Screenshots from "@/components/Screenshots";
 import CTASection from "@/components/CTASection";
 import DonationSection from "@/components/DonationSection";
@@ -32,7 +31,6 @@ const Index = () => {
       
       <main className="min-h-screen">
         <Hero />
-        <Features />
         <Screenshots />
         <CTASection />
         <DonationSection />
