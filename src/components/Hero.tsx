@@ -15,20 +15,31 @@ const features = [
   {
     icon: ShoppingCart,
     title: "Suivi des achats",
+    description: "Enregistrez tous vos achats de granulés avec le prix, la quantité et les notes.",
     gradient: "from-blue-light to-blue-purchase/20",
     iconBg: "bg-blue-purchase/20",
     iconColor: "text-blue-purchase",
   },
   {
     icon: Flame,
-    title: "Historique des brûlages",
+    title: "Gestion des brûlages",
+    description: "Notez chaque sac brûlé et suivez votre consommation quotidienne facilement.",
     gradient: "from-orange-light to-orange-burn/20",
     iconBg: "bg-orange-burn/20",
     iconColor: "text-orange-burn",
   },
   {
     icon: TrendingUp,
+    title: "Période de chauffe personnalisable",
+    description: "Définissez votre propre période de chauffage pour des statistiques adaptées.",
+    gradient: "from-card to-card",
+    iconBg: "bg-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    icon: TrendingUp,
     title: "Estimation du stock",
+    description: "Prévoyez quand vous allez manquer de granulés grâce à l'estimation automatique.",
     gradient: "from-card to-card",
     iconBg: "bg-primary/20",
     iconColor: "text-primary",
@@ -36,9 +47,18 @@ const features = [
   {
     icon: BarChart3,
     title: "Statistiques détaillées",
+    description: "Analysez vos habitudes de consommation et comparez d'une année à l'autre.",
     gradient: "from-card to-card",
     iconBg: "bg-primary/20",
     iconColor: "text-primary",
+  },
+  {
+    icon: ShoppingCart,
+    title: "Suivi des dépenses",
+    description: "Gardez un œil sur vos dépenses totales et le coût moyen de vos granulés.",
+    gradient: "from-blue-light to-blue-purchase/20",
+    iconBg: "bg-blue-purchase/20",
+    iconColor: "text-blue-purchase",
   },
 ];
 
@@ -50,7 +70,7 @@ const Hero = () => {
 
     const intervalId = setInterval(() => {
       api.scrollNext();
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(intervalId);
   }, [api]);
@@ -109,13 +129,14 @@ const Hero = () => {
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <CarouselItem key={index} className="basis-1/2 md:basis-1/4">
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <div className="p-2">
-                      <div className={`flex flex-col items-center gap-3 p-6 rounded-3xl bg-gradient-to-br ${feature.gradient} border border-border shadow-soft`}>
+                      <div className={`flex flex-col items-center gap-4 p-8 rounded-3xl bg-gradient-to-br ${feature.gradient} border border-border shadow-soft h-full`}>
                         <div className={`rounded-2xl ${feature.iconBg} p-4`}>
                           <Icon className={`h-8 w-8 ${feature.iconColor}`} />
                         </div>
-                        <span className="text-sm font-medium text-foreground text-center">{feature.title}</span>
+                        <h3 className="text-xl font-semibold text-foreground text-center">{feature.title}</h3>
+                        <p className="text-sm text-muted-foreground text-center">{feature.description}</p>
                       </div>
                     </div>
                   </CarouselItem>
