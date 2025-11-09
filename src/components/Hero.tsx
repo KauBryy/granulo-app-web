@@ -1,8 +1,60 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Flame, TrendingUp, BarChart3 } from "lucide-react";
 import granuloLogo from "@/assets/granulo-logo.png";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselApi,
+} from "@/components/ui/carousel";
+
+const features = [
+  {
+    icon: ShoppingCart,
+    title: "Suivi des achats",
+    gradient: "from-blue-light to-blue-purchase/20",
+    iconBg: "bg-blue-purchase/20",
+    iconColor: "text-blue-purchase",
+  },
+  {
+    icon: Flame,
+    title: "Historique des brûlages",
+    gradient: "from-orange-light to-orange-burn/20",
+    iconBg: "bg-orange-burn/20",
+    iconColor: "text-orange-burn",
+  },
+  {
+    icon: TrendingUp,
+    title: "Estimation du stock",
+    gradient: "from-card to-card",
+    iconBg: "bg-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    icon: BarChart3,
+    title: "Statistiques détaillées",
+    gradient: "from-card to-card",
+    iconBg: "bg-primary/20",
+    iconColor: "text-primary",
+  },
+];
 
 const Hero = () => {
+  const [api, setApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) return;
+
+    const intervalId = setInterval(() => {
+      api.scrollNext();
+    }, 4000);
+
+    return () => clearInterval(intervalId);
+  }, [api]);
+
   return (
     <section className="relative overflow-hidden bg-background py-20 md:py-32">
       <div className="container relative mx-auto px-4">
@@ -44,32 +96,35 @@ const Hero = () => {
             </Button>
           </div>
         
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8 animate-scale-in" style={{ animationDelay: "0.3s" }}>
-            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gradient-to-br from-blue-light to-blue-purchase/20 border border-border shadow-soft">
-              <div className="rounded-2xl bg-blue-purchase/20 p-4">
-                <ShoppingCart className="h-8 w-8 text-blue-purchase" />
-              </div>
-              <span className="text-sm font-medium text-foreground">Suivi des achats</span>
-            </div>
-            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gradient-to-br from-orange-light to-orange-burn/20 border border-border shadow-soft">
-              <div className="rounded-2xl bg-orange-burn/20 p-4">
-                <Flame className="h-8 w-8 text-orange-burn" />
-              </div>
-              <span className="text-sm font-medium text-foreground">Historique des brûlages</span>
-            </div>
-            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-card border border-border shadow-soft">
-              <div className="rounded-2xl bg-primary/20 p-4">
-                <TrendingUp className="h-8 w-8 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-foreground">Estimation du stock</span>
-            </div>
-            <div className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-card border border-border shadow-soft">
-              <div className="rounded-2xl bg-primary/20 p-4">
-                <BarChart3 className="h-8 w-8 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-foreground">Statistiques détaillées</span>
-            </div>
-          </div>
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-4xl mx-auto animate-scale-in"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <CarouselContent>
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <CarouselItem key={index} className="basis-1/2 md:basis-1/4">
+                    <div className="p-2">
+                      <div className={`flex flex-col items-center gap-3 p-6 rounded-3xl bg-gradient-to-br ${feature.gradient} border border-border shadow-soft`}>
+                        <div className={`rounded-2xl ${feature.iconBg} p-4`}>
+                          <Icon className={`h-8 w-8 ${feature.iconColor}`} />
+                        </div>
+                        <span className="text-sm font-medium text-foreground text-center">{feature.title}</span>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </div>
     </section>
