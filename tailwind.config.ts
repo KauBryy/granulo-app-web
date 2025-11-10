@@ -35,6 +35,10 @@ export default {
           burn: "hsl(var(--orange-burn))",
           light: "hsl(var(--orange-light))",
         },
+        green: {
+          support: "hsl(var(--green-support))",
+          light: "hsl(var(--green-support-light))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",

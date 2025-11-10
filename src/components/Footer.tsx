@@ -1,4 +1,5 @@
 import granuloLogo from "@/assets/granulo-logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,6 +14,32 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground max-w-md">
             Créée par un petit développeur, à l'écoute de vos retours pour faire évoluer l'appli
           </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm">
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Application Mobile</p>
+              <div className="flex flex-col gap-2">
+                <Link to="/privacy-app" className="text-muted-foreground hover:text-primary transition-colors">
+                  Politique de confidentialité
+                </Link>
+                <Link to="/terms-app" className="text-muted-foreground hover:text-primary transition-colors">
+                  Conditions d'utilisation
+                </Link>
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Site Web</p>
+              <div className="flex flex-col gap-2">
+                <Link to="/privacy-website" className="text-muted-foreground hover:text-primary transition-colors">
+                  Politique de confidentialité
+                </Link>
+                <Link to="/legal" className="text-muted-foreground hover:text-primary transition-colors">
+                  Mentions légales
+                </Link>
+              </div>
+            </div>
+          </div>
           
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Granulo. Tous droits réservés.

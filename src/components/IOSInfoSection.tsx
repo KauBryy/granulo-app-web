@@ -17,10 +17,10 @@ const iOSInfoSection = () => {
           <Button
             size="lg"
             disabled
-            className="mb-6 bg-muted text-muted-foreground cursor-not-allowed hover:bg-muted"
+            className="mb-6 bg-muted text-muted-foreground cursor-not-allowed hover:bg-muted text-sm sm:text-base"
           >
-            <Apple className="mr-2 h-5 w-5" />
-            Disponible bientôt sur l'App Store
+            <Apple className="mr-2 h-5 w-5 flex-shrink-0" />
+            <span className="whitespace-normal">Disponible bientôt sur l'App Store</span>
           </Button>
           
           <div className="flex items-start gap-3 text-left bg-accent/50 rounded-xl p-4">

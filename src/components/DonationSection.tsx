@@ -34,7 +34,7 @@ const DonationSection = () => {
           env: 'production',
           hosted_button_id: '32YRTVCLJPNVJ',
           image: {
-            src: 'https://pics.paypal.com/00/s/Yzc5NGI2MzQtMjU3YS00NjdlLWFlZTktNDUxNDZiMjI5Zjlk/file.PNG',
+            src: 'https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif',
             alt: 'Bouton Faites un don avec PayPal',
             title: 'PayPal - The safer, easier way to pay online!',
           }
@@ -52,15 +52,15 @@ const DonationSection = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-card to-accent">
+    <section id="donation-section" className="py-16 md:py-24 bg-gradient-to-br from-green-light/20 to-green-support/10">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-6">
-            <Heart className="h-8 w-8 text-primary" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-support/20 mb-6">
+            <Heart className="h-8 w-8 text-green-support" />
           </div>
           
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Soutenez Granulo
+            Soutenez Granulo 💚
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -72,15 +72,15 @@ const DonationSection = () => {
           {donationOptions.map((option) => (
             <div
               key={option.amount}
-              className="rounded-2xl border-2 border-border bg-card p-6 text-left"
+              className="rounded-2xl border-2 border-green-support/30 bg-card/80 backdrop-blur-sm p-6 text-left hover:border-green-support/50 transition-all"
             >
-              <div className="text-3xl font-bold text-primary mb-2">{option.amount} €</div>
+              <div className="text-3xl font-bold text-green-support mb-2">{option.amount} €</div>
               <p className="text-sm text-muted-foreground">{option.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="rounded-2xl border-2 border-border bg-card p-6 mb-8">
+        <div className="rounded-2xl border-2 border-green-support/30 bg-card/80 backdrop-blur-sm p-6 mb-8">
           <p className="text-sm text-muted-foreground mb-4 text-center">
             Merci à vous, chaque geste compte et aide Granulo à s'améliorer
           </p>
@@ -94,7 +94,7 @@ const DonationSection = () => {
           />
           
           <p className="mt-6 text-sm text-muted-foreground italic">
-            Merci beaucoup pour votre soutien, qui fait avancer Granulo !
+            Merci beaucoup pour votre soutien, qui fait avancer Granulo ! 🙏
           </p>
         </div>
       </div>

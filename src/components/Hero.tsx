@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Flame, TrendingUp, BarChart3 } from "lucide-react";
+import { ShoppingCart, Flame, TrendingUp, BarChart3, Heart } from "lucide-react";
 import granuloLogo from "@/assets/granulo-logo.png";
 import {
   Carousel,
@@ -19,6 +19,7 @@ const features = [
     gradient: "from-blue-light to-blue-purchase/20",
     iconBg: "bg-blue-purchase/20",
     iconColor: "text-blue-purchase",
+    textColor: "text-foreground",
   },
   {
     icon: Flame,
@@ -27,38 +28,43 @@ const features = [
     gradient: "from-orange-light to-orange-burn/20",
     iconBg: "bg-orange-burn/20",
     iconColor: "text-orange-burn",
+    textColor: "text-foreground",
   },
   {
     icon: TrendingUp,
     title: "Période de chauffe personnalisable",
     description: "Définissez votre propre période de chauffage pour des statistiques adaptées.",
-    gradient: "from-card to-card",
-    iconBg: "bg-primary/20",
-    iconColor: "text-primary",
+    gradient: "from-blue-light to-blue-purchase/20",
+    iconBg: "bg-blue-purchase/20",
+    iconColor: "text-blue-purchase",
+    textColor: "text-foreground",
   },
   {
     icon: TrendingUp,
     title: "Estimation du stock",
     description: "Prévoyez quand vous allez manquer de granulés grâce à l'estimation automatique.",
-    gradient: "from-card to-card",
-    iconBg: "bg-primary/20",
-    iconColor: "text-primary",
+    gradient: "from-orange-light to-orange-burn/20",
+    iconBg: "bg-orange-burn/20",
+    iconColor: "text-orange-burn",
+    textColor: "text-foreground",
   },
   {
     icon: BarChart3,
     title: "Statistiques détaillées",
     description: "Analysez vos habitudes de consommation et comparez d'une année à l'autre.",
-    gradient: "from-card to-card",
-    iconBg: "bg-primary/20",
-    iconColor: "text-primary",
+    gradient: "from-blue-light to-blue-purchase/20",
+    iconBg: "bg-blue-purchase/20",
+    iconColor: "text-blue-purchase",
+    textColor: "text-foreground",
   },
   {
     icon: ShoppingCart,
     title: "Suivi des dépenses",
     description: "Gardez un œil sur vos dépenses totales et le coût moyen de vos granulés.",
-    gradient: "from-blue-light to-blue-purchase/20",
-    iconBg: "bg-blue-purchase/20",
-    iconColor: "text-blue-purchase",
+    gradient: "from-orange-light to-orange-burn/20",
+    iconBg: "bg-orange-burn/20",
+    iconColor: "text-orange-burn",
+    textColor: "text-foreground",
   },
 ];
 
@@ -70,7 +76,7 @@ const Hero = () => {
 
     const intervalId = setInterval(() => {
       api.scrollNext();
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(intervalId);
   }, [api]);
@@ -114,6 +120,19 @@ const Hero = () => {
                 Télécharger sur le Play Store
               </a>
             </Button>
+            <Button 
+              size="lg" 
+              className="bg-green-support text-white hover:bg-green-support/90 text-lg px-8 py-6 shadow-medium transition-transform hover:scale-105 rounded-2xl"
+              asChild
+            >
+              <a 
+                href="#donation-section"
+                className="flex items-center gap-2"
+              >
+                <Heart className="h-6 w-6" />
+                Soutenir Granulo 💚
+              </a>
+            </Button>
           </div>
         
           <Carousel
@@ -135,8 +154,8 @@ const Hero = () => {
                         <div className={`rounded-2xl ${feature.iconBg} p-4`}>
                           <Icon className={`h-8 w-8 ${feature.iconColor}`} />
                         </div>
-                        <h3 className="text-xl font-semibold text-foreground text-center">{feature.title}</h3>
-                        <p className="text-sm text-muted-foreground text-center">{feature.description}</p>
+                        <h3 className={`text-xl font-semibold ${feature.textColor} text-center`}>{feature.title}</h3>
+                        <p className={`text-sm ${feature.textColor} text-center`}>{feature.description}</p>
                       </div>
                     </div>
                   </CarouselItem>
