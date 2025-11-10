@@ -19,7 +19,8 @@ const screenshots = [
 
 const Screenshots = () => {
   return (
-    <section className="py-20 md:py-28 bg-muted/30">
+    <section className="py-20 md:py-28 bg-muted/30 relative">
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-card to-transparent pointer-events-none" />
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-5xl text-foreground">

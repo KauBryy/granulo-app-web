@@ -51,8 +51,53 @@ const DonationSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Style the PayPal button to match the green theme
+    const stylePayPalButton = () => {
+      const paypalButton = document.querySelector('#paypal-donate-button img') as HTMLImageElement;
+      if (paypalButton) {
+        paypalButton.style.display = 'none';
+        
+        const buttonContainer = document.querySelector('#paypal-donate-button') as HTMLDivElement;
+        if (buttonContainer) {
+          const link = buttonContainer.querySelector('a');
+          if (link) {
+            link.style.cssText = `
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+              padding: 0.75rem 2rem;
+              font-size: 1.125rem;
+              font-weight: 600;
+              color: hsl(var(--green-support-foreground));
+              background: hsl(var(--green-support));
+              border-radius: 1rem;
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+              box-shadow: 0 10px 40px -5px hsl(0 0% 0% / 0.4);
+              text-decoration: none;
+            `;
+            link.innerHTML = '💚 Faire un don avec PayPal';
+            link.addEventListener('mouseenter', () => {
+              link.style.transform = 'scale(1.05)';
+              link.style.background = 'hsl(var(--green-support) / 0.9)';
+            });
+            link.addEventListener('mouseleave', () => {
+              link.style.transform = 'scale(1)';
+              link.style.background = 'hsl(var(--green-support))';
+            });
+          }
+        }
+      }
+    };
+
+    const timer = setTimeout(stylePayPalButton, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section id="donation-section" className="py-16 md:py-24 bg-gradient-to-br from-green-light/20 to-green-support/10">
+    <section id="donation-section" className="py-16 md:py-24 bg-gradient-to-br from-green-light/20 to-green-support/10 relative">
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/50 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-support/20 mb-6">

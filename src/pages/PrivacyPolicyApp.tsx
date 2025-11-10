@@ -1,7 +1,12 @@
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 const PrivacyPolicyApp = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+  
   return (
     <>
       <Helmet>

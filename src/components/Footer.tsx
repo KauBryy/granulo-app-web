@@ -19,10 +19,18 @@ const Footer = () => {
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Application Mobile</p>
               <div className="flex flex-col gap-2">
-                <Link to="/privacy-app" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link 
+                  to="/privacy-app" 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   Politique de confidentialité
                 </Link>
-                <Link to="/terms-app" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link 
+                  to="/terms-app" 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   Conditions d'utilisation
                 </Link>
               </div>
@@ -31,10 +39,18 @@ const Footer = () => {
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Site Web</p>
               <div className="flex flex-col gap-2">
-                <Link to="/privacy-website" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link 
+                  to="/privacy-website" 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   Politique de confidentialité
                 </Link>
-                <Link to="/legal" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link 
+                  to="/legal-notice" 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   Mentions légales
                 </Link>
               </div>

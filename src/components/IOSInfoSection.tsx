@@ -3,7 +3,8 @@ import { Apple, Info } from "lucide-react";
 
 const iOSInfoSection = () => {
   return (
-    <section className="py-16 bg-muted/50">
+    <section className="py-16 bg-muted/50 relative">
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-green-light/20 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="rounded-3xl bg-card/50 backdrop-blur-sm p-8 md:p-12 border border-border text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-6">
