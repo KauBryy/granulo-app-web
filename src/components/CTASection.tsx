@@ -3,7 +3,7 @@ import granuloLogo from "@/assets/granulo-logo.png";
 
 const CTASection = () => {
   return (
-    <section className="py-20 md:py-28 bg-card relative">
+    <section className="py-20 md:py-28 bg-card relative animate-fade-in">
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/50 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center">

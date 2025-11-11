@@ -117,3 +117,12 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  #paypal-donate-button img {
+    @apply hidden;
+  }
+  #paypal-donate-button a {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold rounded-2xl bg-green-support text-foreground hover:bg-green-support/90 shadow-medium transition-transform hover:scale-105 no-underline;
+  }
+}

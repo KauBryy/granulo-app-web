@@ -21,15 +21,16 @@ declare global {
 
 const DonationSection = () => {
   const paypalContainerRef = useRef<HTMLDivElement>(null);
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://www.paypalobjects.com/donate/sdk/donate-sdk.js';
-    script.charset = 'UTF-8';
-    script.async = true;
-    
-    script.onload = () => {
-      if (window.PayPal && paypalContainerRef.current) {
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+
+    const renderButton = () => {
+      if (window.PayPal?.Donation && paypalContainerRef.current) {
+        // Avoid duplicates
+        paypalContainerRef.current.innerHTML = "";
         window.PayPal.Donation.Button({
           env: 'production',
           hosted_button_id: '32YRTVCLJPNVJ',
@@ -39,64 +40,52 @@ const DonationSection = () => {
             title: 'PayPal - The safer, easier way to pay online!',
           }
         }).render('#paypal-donate-button');
-      }
-    };
 
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Style the PayPal button to match the green theme
-    const stylePayPalButton = () => {
-      const paypalButton = document.querySelector('#paypal-donate-button img') as HTMLImageElement;
-      if (paypalButton) {
-        paypalButton.style.display = 'none';
-        
-        const buttonContainer = document.querySelector('#paypal-donate-button') as HTMLDivElement;
-        if (buttonContainer) {
-          const link = buttonContainer.querySelector('a');
+        // After render, replace image with text and set accessibility labels
+        requestAnimationFrame(() => {
+          const link = paypalContainerRef.current?.querySelector('a') as HTMLAnchorElement | null;
           if (link) {
-            link.style.cssText = `
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              gap: 0.5rem;
-              padding: 0.75rem 2rem;
-              font-size: 1.125rem;
-              font-weight: 600;
-              color: hsl(var(--green-support-foreground));
-              background: hsl(var(--green-support));
-              border-radius: 1rem;
-              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-              box-shadow: 0 10px 40px -5px hsl(0 0% 0% / 0.4);
-              text-decoration: none;
-            `;
-            link.innerHTML = '💚 Faire un don avec PayPal';
-            link.addEventListener('mouseenter', () => {
-              link.style.transform = 'scale(1.05)';
-              link.style.background = 'hsl(var(--green-support) / 0.9)';
-            });
-            link.addEventListener('mouseleave', () => {
-              link.style.transform = 'scale(1)';
-              link.style.background = 'hsl(var(--green-support))';
-            });
+            link.textContent = 'Faire un don';
+            link.setAttribute('aria-label', 'Faire un don avec PayPal');
+            link.setAttribute('title', 'Faire un don avec PayPal');
           }
-        }
+        });
+        return true;
       }
+      return false;
     };
 
-    const timer = setTimeout(stylePayPalButton, 100);
-    return () => clearTimeout(timer);
+    const ensureRender = () => {
+      let attempts = 0;
+      const maxAttempts = 20;
+      const interval = setInterval(() => {
+        if (renderButton() || attempts >= maxAttempts) {
+          clearInterval(interval);
+        }
+        attempts++;
+      }, 200);
+    };
+
+    // If SDK already present, try render immediately
+    if (document.getElementById('paypal-donate-sdk')) {
+      if (!renderButton()) ensureRender();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'paypal-donate-sdk';
+    script.src = 'https://www.paypalobjects.com/donate/sdk/donate-sdk.js';
+    script.charset = 'UTF-8';
+    script.async = true;
+    script.onload = () => {
+      renderButton() || ensureRender();
+    };
+    document.body.appendChild(script);
   }, []);
+
 
   return (
-    <section id="donation-section" className="py-16 md:py-24 bg-gradient-to-br from-green-light/20 to-green-support/10 relative">
+    <section id="donation-section" className="py-16 md:py-24 bg-gradient-to-br from-green-light/20 to-green-support/10 relative animate-fade-in">
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/50 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
