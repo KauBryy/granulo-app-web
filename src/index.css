@@ -9,47 +9,48 @@ All colors MUST be HSL.
 @layer base {
 :root {
     --background: 0 0% 100%;
-    --foreground: 222 25% 14%;
+    --foreground: 220 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 25% 14%;
+    --card-foreground: 220 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 25% 14%;
+    --popover-foreground: 220 20% 15%;
 
-    --primary: 212 95% 45%;
+    --primary: 212 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 27 95% 55%;
+    --secondary: 27 100% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 40%;
+    --muted: 220 15% 97%;
+    --muted-foreground: 220 12% 45%;
 
-    --accent: 220 14% 96%;
-    --accent-foreground: 222 25% 14%;
+    --accent: 220 15% 95%;
+    --accent-foreground: 220 20% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 212 95% 45%;
+    --border: 220 15% 90%;
+    --input: 220 15% 93%;
+    --ring: 212 100% 50%;
 
     --radius: 1.25rem;
     
-    --blue-purchase: 212 95% 45%;
-    --blue-light: 212 100% 90%;
-    --orange-burn: 27 95% 55%;
-    --orange-light: 27 100% 90%;
-    --green-support: 142 72% 35%;
-    --green-support-light: 142 45% 90%;
+    --blue-purchase: 212 100% 50%;
+    --blue-light: 212 100% 95%;
+    --orange-burn: 27 100% 60%;
+    --orange-light: 27 100% 95%;
+    --green-support: 142 76% 38%;
+    --green-support-light: 142 60% 95%;
     --green-support-foreground: 0 0% 100%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    --shadow-soft: 0 4px 16px -2px hsl(220 20% 20% / 0.08);
-    --shadow-medium: 0 10px 30px -10px hsl(220 20% 20% / 0.12);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
+    --shadow-soft: 0 4px 20px -4px hsl(220 25% 20% / 0.1);
+    --shadow-medium: 0 12px 40px -10px hsl(220 25% 20% / 0.15);
+    --shadow-strong: 0 20px 60px -15px hsl(220 25% 20% / 0.2);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 100%;
@@ -123,8 +124,11 @@ All colors MUST be HSL.
     @apply hidden;
   }
   #paypal-donate-button a {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold rounded-xl bg-green-support hover:bg-green-support/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background no-underline;
+    @apply inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl bg-green-support hover:bg-green-support/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-support/30 no-underline transition-all duration-300 transform hover:scale-105;
     color: hsl(var(--green-support-foreground));
-    box-shadow: none;
+    box-shadow: 0 8px 30px -8px hsl(var(--green-support) / 0.4);
+  }
+  #paypal-donate-button a:hover {
+    box-shadow: 0 12px 40px -8px hsl(var(--green-support) / 0.5);
   }
 }

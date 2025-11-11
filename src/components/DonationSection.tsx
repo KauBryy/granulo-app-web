@@ -135,12 +135,8 @@ const DonationSection = () => {
           <div 
             ref={paypalContainerRef}
             id="paypal-donate-button" 
-            className="flex justify-center mb-6"
+            className="flex justify-center"
           />
-          
-          <p className="mt-6 text-sm text-muted-foreground italic">
-            Merci beaucoup pour votre soutien, qui fait avancer Granulo ! 🙏
-          </p>
         </div>
       </div>
     </section>
