@@ -27,10 +27,21 @@ const DonationSection = () => {
     if (initializedRef.current) return;
     initializedRef.current = true;
 
+    const styleAnchor = () => {
+      const link = paypalContainerRef.current?.querySelector('a') as HTMLAnchorElement | null;
+      if (link) {
+        link.classList.add('paypal-btn');
+        if (!link.textContent || link.textContent.trim() === '') {
+          link.textContent = 'Faire un don';
+        }
+        return true;
+      }
+      return false;
+    };
+
     const renderButton = () => {
       if (window.PayPal?.Donation && paypalContainerRef.current) {
-        // Avoid duplicates
-        paypalContainerRef.current.innerHTML = "";
+        paypalContainerRef.current.innerHTML = '';
         window.PayPal.Donation.Button({
           env: 'production',
           hosted_button_id: '32YRTVCLJPNVJ',
@@ -40,16 +51,8 @@ const DonationSection = () => {
             title: 'PayPal - The safer, easier way to pay online!',
           }
         }).render('#paypal-donate-button');
-
-        // After render, replace image with text and set accessibility labels
-        requestAnimationFrame(() => {
-          const link = paypalContainerRef.current?.querySelector('a') as HTMLAnchorElement | null;
-          if (link) {
-            link.textContent = 'Faire un don';
-            link.setAttribute('aria-label', 'Faire un don avec PayPal');
-            link.setAttribute('title', 'Faire un don avec PayPal');
-          }
-        });
+        // Style right after render
+        setTimeout(styleAnchor, 0);
         return true;
       }
       return false;
@@ -66,26 +69,34 @@ const DonationSection = () => {
       }, 200);
     };
 
-    // If SDK already present, try render immediately
-    if (document.getElementById('paypal-donate-sdk')) {
-      if (!renderButton()) ensureRender();
-      return;
+    // Observe DOM changes to re-style if PayPal re-renders internally
+    const observer = new MutationObserver(() => {
+      styleAnchor();
+    });
+    if (paypalContainerRef.current) {
+      observer.observe(paypalContainerRef.current, { childList: true, subtree: true });
     }
 
-    const script = document.createElement('script');
-    script.id = 'paypal-donate-sdk';
-    script.src = 'https://www.paypalobjects.com/donate/sdk/donate-sdk.js';
-    script.charset = 'UTF-8';
-    script.async = true;
-    script.onload = () => {
-      renderButton() || ensureRender();
-    };
-    document.body.appendChild(script);
+    if (document.getElementById('paypal-donate-sdk')) {
+      if (!renderButton()) ensureRender();
+    } else {
+      const script = document.createElement('script');
+      script.id = 'paypal-donate-sdk';
+      script.src = 'https://www.paypalobjects.com/donate/sdk/donate-sdk.js';
+      script.charset = 'UTF-8';
+      script.async = true;
+      script.onload = () => {
+        renderButton() || ensureRender();
+      };
+      document.body.appendChild(script);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
 
   return (
-    <section id="donation-section" className="py-16 md:py-24 bg-gradient-to-br from-green-light/20 to-green-support/10 relative animate-fade-in">
+    <section id="donation-section" className="py-16 md:py-24 bg-muted relative animate-fade-in">
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/50 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
