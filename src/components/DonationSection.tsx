@@ -27,18 +27,6 @@ const DonationSection = () => {
     if (initializedRef.current) return;
     initializedRef.current = true;
 
-    const styleAnchor = () => {
-      const link = paypalContainerRef.current?.querySelector('a') as HTMLAnchorElement | null;
-      if (link) {
-        link.classList.add('paypal-btn');
-        if (!link.textContent || link.textContent.trim() === '') {
-          link.textContent = 'Faire un don';
-        }
-        return true;
-      }
-      return false;
-    };
-
     const renderButton = () => {
       if (window.PayPal?.Donation && paypalContainerRef.current) {
         paypalContainerRef.current.innerHTML = '';
@@ -51,8 +39,6 @@ const DonationSection = () => {
             title: 'PayPal - The safer, easier way to pay online!',
           }
         }).render('#paypal-donate-button');
-        // Style right after render
-        setTimeout(styleAnchor, 0);
         return true;
       }
       return false;
@@ -69,14 +55,6 @@ const DonationSection = () => {
       }, 200);
     };
 
-    // Observe DOM changes to re-style if PayPal re-renders internally
-    const observer = new MutationObserver(() => {
-      styleAnchor();
-    });
-    if (paypalContainerRef.current) {
-      observer.observe(paypalContainerRef.current, { childList: true, subtree: true });
-    }
-
     if (document.getElementById('paypal-donate-sdk')) {
       if (!renderButton()) ensureRender();
     } else {
@@ -90,8 +68,6 @@ const DonationSection = () => {
       };
       document.body.appendChild(script);
     }
-
-    return () => observer.disconnect();
   }, []);
 
 

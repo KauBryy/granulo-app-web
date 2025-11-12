@@ -120,15 +120,17 @@ All colors MUST be HSL.
 }
 
 @layer components {
+  #paypal-donate-button {
+    @apply flex justify-center;
+  }
+  
   #paypal-donate-button img {
-    @apply hidden;
+    @apply rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer;
+    min-width: 200px;
+    height: auto;
   }
+  
   #paypal-donate-button a {
-    @apply inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl bg-green-support hover:bg-green-support/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-support/30 no-underline transition-all duration-300 transform hover:scale-105;
-    color: hsl(var(--green-support-foreground));
-    box-shadow: 0 8px 30px -8px hsl(var(--green-support) / 0.4);
-  }
-  #paypal-donate-button a:hover {
-    box-shadow: 0 12px 40px -8px hsl(var(--green-support) / 0.5);
+    @apply inline-block no-underline transition-all duration-300 transform hover:scale-105;
   }
 }
