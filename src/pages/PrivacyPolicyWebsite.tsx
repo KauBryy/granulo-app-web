@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const PrivacyPolicyWebsite = () => {
   useEffect(() => {
@@ -19,6 +21,14 @@ const PrivacyPolicyWebsite = () => {
       
       <main className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-6 font-medium"
+          >
+            <ArrowLeft className="h-5 w-5" />
+            Retour au site
+          </Link>
+          
           <h1 className="text-4xl font-bold text-foreground mb-8">
             Politique de confidentialité - Site web Granulo
           </h1>

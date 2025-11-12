@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const LegalNotice = () => {
   useEffect(() => {
@@ -19,6 +21,14 @@ const LegalNotice = () => {
       
       <main className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-6 font-medium"
+          >
+            <ArrowLeft className="h-5 w-5" />
+            Retour au site
+          </Link>
+          
           <h1 className="text-4xl font-bold text-foreground mb-8">
             Mentions légales
           </h1>
@@ -35,7 +45,7 @@ const LegalNotice = () => {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">Hébergement</h2>
               <p className="text-muted-foreground">
-                Ce site est hébergé par Lovable (lovable.dev)<br />
+                Ce site est hébergé sur GitHub Pages<br />
                 Les données de l'application mobile sont hébergées sur Firebase (Google Cloud Platform)
               </p>
             </section>
