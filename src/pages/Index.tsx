@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import Screenshots from "@/components/Screenshots";
 import CTASection from "@/components/CTASection";
 import DonationSection from "@/components/DonationSection";
-import IOSInfoSection from "@/components/IOSInfoSection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -34,7 +33,6 @@ const Index = () => {
         <Screenshots />
         <CTASection />
         <DonationSection />
-        <IOSInfoSection />
         <ContactForm />
         <Footer />
       </main>
