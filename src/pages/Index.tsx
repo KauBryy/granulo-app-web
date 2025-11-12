@@ -31,8 +31,8 @@ const Index = () => {
       <main className="min-h-screen">
         <Hero />
         <Screenshots />
-        <CTASection />
         <DonationSection />
+        <CTASection />
         <ContactForm />
         <Footer />
       </main>

@@ -6,7 +6,11 @@ const Footer = () => {
     <footer className="border-t border-border bg-card py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center gap-6 text-center">
-          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Link 
+            to="/" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+          >
             <img src={granuloLogo} alt="Granulo" className="h-16 w-16 rounded-full" />
             <span className="text-2xl font-bold text-foreground">Granulo</span>
           </Link>
