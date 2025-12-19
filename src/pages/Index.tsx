@@ -69,7 +69,9 @@ const Index = () => {
               <a href="#features" className="hover:text-brand dark:hover:text-brand transition-colors">Fonctionnalités</a>
               <a href="#demo" className="hover:text-brand dark:hover:text-brand transition-colors">Démonstration</a>
               <a href="#donate" className="hover:text-brand dark:hover:text-brand transition-colors">Soutenir</a>
+            </div>
 
+            <div className="flex items-center gap-3">
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300"
@@ -77,10 +79,10 @@ const Index = () => {
               >
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
+              <a href="#" className="bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
+                Installer sur Android
+              </a>
             </div>
-            <a href="#" className="bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
-              Installer sur Android
-            </a>
           </div>
         </nav>
 
