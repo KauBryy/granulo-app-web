@@ -60,6 +60,11 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
+    .dark .glass-nav {
+        background: rgba(26, 26, 26, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
     /* Animation au scroll pour les sections suivantes */
     .reveal {
         opacity: 0;
