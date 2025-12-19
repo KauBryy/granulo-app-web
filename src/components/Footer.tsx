@@ -6,32 +6,32 @@ const Footer = () => {
     <footer className="border-t border-border bg-card py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center gap-6 text-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <img src={granuloLogo} alt="Granulo" className="h-16 w-16 rounded-full" />
             <span className="text-2xl font-bold text-foreground">Granulo</span>
           </Link>
-          
+
           <p className="text-sm text-muted-foreground max-w-md">
             Créée par un petit développeur, à l'écoute de vos retours pour faire évoluer l'appli
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm">
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Application Mobile</p>
               <div className="flex flex-col gap-2">
-                <Link 
-                  to="/privacy-app" 
+                <Link
+                  to="/privacy-app"
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Politique de confidentialité
                 </Link>
-                <Link 
-                  to="/terms-app" 
+                <Link
+                  to="/terms-app"
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
@@ -39,19 +39,19 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Site Web</p>
               <div className="flex flex-col gap-2">
-                <Link 
-                  to="/privacy-website" 
+                <Link
+                  to="/privacy-website"
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Politique de confidentialité
                 </Link>
-                <Link 
-                  to="/legal-notice" 
+                <Link
+                  to="/legal-notice"
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
@@ -60,13 +60,16 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Granulo. Tous droits réservés.
           </p>
+          <p className="text-xs text-muted-foreground/80">
+            Propulsé par <a href="https://kaubry.fr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">KauBry App's</a>
+          </p>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 
