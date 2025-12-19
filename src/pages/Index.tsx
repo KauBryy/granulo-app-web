@@ -63,7 +63,7 @@ const Index = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
                 </span>
-                <span>EXCLUSIVITÉ ANDROID</span>
+                <span>APPLICATION GRATUITE</span>
               </div>
               <h1 className="text-6xl md:text-7xl font-extrabold leading-[1.1] mb-6">
                 Maîtrisez votre{" "}
