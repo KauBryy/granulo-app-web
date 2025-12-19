@@ -78,7 +78,7 @@ const Index = () => {
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
             </div>
-            <a href="#" className="bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
+            <a href="#" className="hidden md:inline-flex bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
               Installer sur Android
             </a>
           </div>
