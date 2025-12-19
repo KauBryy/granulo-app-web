@@ -120,28 +120,43 @@ const Index = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="feature-card bg-white p-10 rounded-[2.5rem] reveal">
-                <div className="w-14 h-14 bg-blue-50 text-brand rounded-2xl flex items-center justify-center mb-8 text-2xl shadow-sm">
+              {/* Feature 1 */}
+              <div className="feature-card group relative bg-white p-10 rounded-[2.5rem] border border-transparent hover:border-brand/20 transition-all duration-500 hover:shadow-2xl hover:shadow-brand/5 reveal overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-50/50 to-transparent rounded-bl-full -mr-8 -mt-8 transition-all duration-500 group-hover:scale-150"></div>
+
+                <div className="relative w-16 h-16 bg-gradient-to-br from-blue-50 to-white border border-blue-100 text-brand rounded-2xl flex items-center justify-center mb-8 text-2xl shadow-sm group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
                   <i className="fas fa-boxes-stacked"></i>
                 </div>
-                <h3 className="text-xl font-bold mb-4">Gestion de Stock</h3>
-                <p className="text-gray-500 leading-relaxed">Saisissez vos achats et vos sacs brûlés. L'app calcule automatiquement votre autonomie restante.</p>
+                <h3 className="relative text-2xl font-bold mb-4 text-gray-900 group-hover:text-brand transition-colors duration-300">Gestion de Stock</h3>
+                <p className="relative text-gray-500 leading-relaxed group-hover:text-gray-600">
+                  Saisissez vos achats et vos sacs brûlés. L'app calcule automatiquement votre <span className="font-semibold text-brand/80">autonomie restante</span>.
+                </p>
               </div>
 
-              <div className="feature-card bg-white p-10 rounded-[2.5rem] reveal delay-200">
-                <div className="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-8 text-2xl shadow-sm">
+              {/* Feature 2 */}
+              <div className="feature-card group relative bg-white p-10 rounded-[2.5rem] border border-transparent hover:border-purple-200 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/5 reveal delay-200 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-50/50 to-transparent rounded-bl-full -mr-8 -mt-8 transition-all duration-500 group-hover:scale-150"></div>
+
+                <div className="relative w-16 h-16 bg-gradient-to-br from-purple-50 to-white border border-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-8 text-2xl shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
                   <i className="fas fa-chart-line"></i>
                 </div>
-                <h3 className="text-xl font-bold mb-4">Statistiques Avancées</h3>
-                <p className="text-gray-500 leading-relaxed">Comparez vos saisons, analysez l'évolution des prix et optimisez votre budget de chauffage.</p>
+                <h3 className="relative text-2xl font-bold mb-4 text-gray-900 group-hover:text-purple-600 transition-colors duration-300">Statistiques Avancées</h3>
+                <p className="relative text-gray-500 leading-relaxed group-hover:text-gray-600">
+                  Comparez vos saisons, analysez l'évolution des prix et <span className="font-semibold text-purple-600/80">optimisez votre budget</span> de chauffage.
+                </p>
               </div>
 
-              <div className="feature-card bg-white p-10 rounded-[2.5rem] reveal delay-400">
-                <div className="w-14 h-14 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center mb-8 text-2xl shadow-sm">
+              {/* Feature 3 */}
+              <div className="feature-card group relative bg-white p-10 rounded-[2.5rem] border border-transparent hover:border-orange-200 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/5 reveal delay-400 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-50/50 to-transparent rounded-bl-full -mr-8 -mt-8 transition-all duration-500 group-hover:scale-150"></div>
+
+                <div className="relative w-16 h-16 bg-gradient-to-br from-orange-50 to-white border border-orange-100 text-orange-500 rounded-2xl flex items-center justify-center mb-8 text-2xl shadow-sm group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
                   <i className="fas fa-tools"></i>
                 </div>
-                <h3 className="text-xl font-bold mb-4">Rappels d'Entretien</h3>
-                <p className="text-gray-500 leading-relaxed">Ne loupez plus un ramonage ou un nettoyage de vitre grâce aux notifications intelligentes.</p>
+                <h3 className="relative text-2xl font-bold mb-4 text-gray-900 group-hover:text-orange-500 transition-colors duration-300">Rappels d'Entretien</h3>
+                <p className="relative text-gray-500 leading-relaxed group-hover:text-gray-600">
+                  Ne loupez plus un ramonage ou un nettoyage de vitre grâce aux <span className="font-semibold text-orange-500/80">notifications intelligentes</span>.
+                </p>
               </div>
             </div>
           </div>
