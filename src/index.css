@@ -2,12 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
-:root {
+  :root {
     --background: 0 0% 100%;
     --foreground: 220 20% 15%;
 
@@ -35,77 +31,7 @@ All colors MUST be HSL.
     --border: 220 15% 90%;
     --input: 220 15% 93%;
     --ring: 212 100% 50%;
-
-    --radius: 1.25rem;
-    
-    --blue-purchase: 212 100% 50%;
-    --blue-light: 212 100% 95%;
-    --orange-burn: 27 100% 60%;
-    --orange-light: 27 100% 95%;
-    --green-support: 142 76% 38%;
-    --green-support-light: 142 60% 95%;
-    --green-support-foreground: 0 0% 100%;
-    
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
-    --shadow-soft: 0 4px 20px -4px hsl(220 25% 20% / 0.1);
-    --shadow-medium: 0 12px 40px -10px hsl(220 25% 20% / 0.15);
-    --shadow-strong: 0 20px 60px -15px hsl(220 25% 20% / 0.2);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --sidebar-background: 0 0% 100%;
-    
-    --sidebar-foreground: 222 25% 14%;
-    
-    --sidebar-primary: 212 95% 45%;
-    
-    --sidebar-primary-foreground: 0 0% 100%;
-    
-    --sidebar-accent: 220 14% 96%;
-    
-    --sidebar-accent-foreground: 222 25% 14%;
-    
-    --sidebar-border: 220 13% 91%;
-    
-    --sidebar-ring: 212 95% 45%;
-  }
-
-  .dark {
-    --background: 222 25% 14%;
-    --foreground: 0 0% 98%;
-
-    --card: 222 22% 18%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 222 22% 18%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 212 95% 58%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 27 95% 70%;
-    --secondary-foreground: 222 25% 14%;
-
-    --muted: 222 20% 25%;
-    --muted-foreground: 220 10% 60%;
-
-    --accent: 222 20% 22%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 222 18% 25%;
-    --input: 222 18% 22%;
-    --ring: 212 95% 58%;
-    --sidebar-background: 222 25% 14%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 212 95% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 20% 22%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 222 18% 25%;
-    --sidebar-ring: 212 95% 58%;
+    --radius: 0.5rem;
   }
 }
 
@@ -113,24 +39,87 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
+  html {
+     scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1A1A1A;
+    overflow-x: hidden;
   }
 }
 
 @layer components {
-  #paypal-donate-button {
-    @apply flex justify-center;
-  }
-  
-  #paypal-donate-button img {
-    @apply rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer;
-    min-width: 200px;
-    height: auto;
-  }
-  
-  #paypal-donate-button a {
-    @apply inline-block no-underline transition-all duration-300 transform hover:scale-105;
-  }
+    .glass-nav {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Animation au scroll pour les sections suivantes */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hero-reveal {
+        opacity: 0;
+        animation: fadeInUpHero 0.8s ease-out forwards;
+    }
+
+    .hero-reveal-delayed {
+        opacity: 0;
+        animation: fadeInUpHero 0.8s ease-out 0.3s forwards;
+    }
+
+    .feature-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(11, 95, 255, 0.1);
+    }
+
+    /* Android Mockup Style */
+    .phone-mockup {
+        box-shadow: 0 50px 100px -20px rgba(0,0,0,0.4);
+        border: 10px solid #1a1a1a;
+        border-radius: 2.5rem;
+        position: relative;
+        background: #000;
+        overflow: hidden;
+    }
+
+    .phone-punchhole {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 10px;
+        background: #1a1a1a;
+        border-radius: 50%;
+        z-index: 20;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+@keyframes fadeInUpHero {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

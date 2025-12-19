@@ -14,9 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       colors: {
+        brand: '#0B5FFF',
+        dark: '#1A1A1A',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -120,7 +122,7 @@ export default {
             transform: "translateY(0)"
           },
           "50%": {
-            transform: "translateY(-10px)"
+            transform: "translateY(-20px)"
           }
         }
       },
@@ -129,7 +131,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out",
         "scale-in": "scale-in 0.4s ease-out",
-        "float": "float 3s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',
