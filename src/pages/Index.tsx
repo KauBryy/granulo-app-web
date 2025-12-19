@@ -75,7 +75,7 @@ const Index = () => {
               >
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              <a href="#" className="hidden md:inline-flex bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
+              <a href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo" target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
                 Installer sur Android
               </a>
             </div>
@@ -104,13 +104,13 @@ const Index = () => {
                 L'application intelligente pour suivre votre consommation de granulés, gérer votre stock et anticiper vos dépenses de chauffage.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex items-center justify-center space-x-3 bg-dark dark:bg-white dark:text-dark text-white px-8 py-4 rounded-2xl hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-xl hover:scale-[1.02]">
+                <a href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 bg-dark dark:bg-white dark:text-dark text-white px-8 py-4 rounded-2xl hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-xl hover:scale-[1.02]">
                   <i className="fab fa-google-play text-2xl"></i>
                   <div className="text-left">
                     <p className="text-[10px] uppercase opacity-60">Disponible sur</p>
                     <p className="text-lg font-bold leading-none">Google Play</p>
                   </div>
-                </button>
+                </a>
                 <div className="flex items-center justify-center space-x-3 border-2 border-dashed border-gray-200 dark:border-gray-700 px-8 py-4 rounded-2xl opacity-60">
                   <i className="fab fa-apple text-2xl text-gray-400 dark:text-gray-500"></i>
                   <div className="text-left">
