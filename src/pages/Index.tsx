@@ -66,7 +66,11 @@ const Index = () => {
                 <span>EXCLUSIVITÉ ANDROID</span>
               </div>
               <h1 className="text-6xl md:text-7xl font-extrabold leading-[1.1] mb-6">
-                Maîtrisez votre <span className="text-brand">chaleur.</span>
+                Maîtrisez votre{" "}
+                <span className="flame-container relative z-10">
+                  <div className="flame-effect"></div>
+                  <span className="text-gradient-flame">chaleur.</span>
+                </span>
               </h1>
               <p className="text-xl text-gray-500 mb-10 max-w-lg leading-relaxed">
                 L'application intelligente pour suivre votre consommation de granulés, gérer votre stock et anticiper vos dépenses de chauffage.
