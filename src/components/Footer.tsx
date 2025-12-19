@@ -1,4 +1,5 @@
 import granuloLogo from "@/assets/granulo-logo.png";
+import kaubryLogo from "@/assets/kaubry-logo.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -64,9 +65,13 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Granulo. Tous droits réservés.
           </p>
-          <p className="text-xs text-muted-foreground/80">
-            Propulsé par <a href="https://kaubry.fr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">KauBry App's</a>
-          </p>
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-xs text-muted-foreground/80">Propulsé par</span>
+            <a href="https://kaubry.fr" target="_blank" rel="noopener noreferrer" className="bg-muted hover:bg-muted/80 p-1.5 rounded-lg transition-all duration-300 group flex items-center gap-2 border border-border/50 hover:border-primary/20">
+              <img src={kaubryLogo} alt="KauBry App's" className="h-6 w-auto object-contain" />
+              <span className="font-bold text-sm bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">KauBry App's</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer >

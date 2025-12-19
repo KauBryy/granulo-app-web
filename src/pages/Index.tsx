@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
+import kaubryLogo from "@/assets/kaubry-logo.png";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(() => {
@@ -309,9 +310,18 @@ const Index = () => {
                 <Link to="/legal-notice" className="hover:text-dark dark:hover:text-white transition-colors">Mentions Légales</Link>
                 <a href="mailto:contact@granulo.app" className="hover:text-dark dark:hover:text-white transition-colors">Contact</a>
               </div>
-              <p className="text-gray-400 text-sm">
-                &copy; 2025 Granulo. Développé en France.
-              </p>
+              <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-right">
+                <p className="text-gray-400 text-sm">
+                  &copy; {new Date().getFullYear()} Granulo. Développé en France.
+                </p>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs text-gray-500">Propulsé par</span>
+                  <a href="https://kaubry.fr" target="_blank" rel="noopener noreferrer" className="bg-white/50 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 p-1.5 rounded-lg transition-all duration-300 group flex items-center gap-2 border border-transparent hover:border-brand/20">
+                    <img src={kaubryLogo} alt="KauBry App's" className="h-6 w-auto object-contain" />
+                    <span className="font-bold text-sm bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">KauBry App's</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </footer>
