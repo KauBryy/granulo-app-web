@@ -1,20 +1,17 @@
-
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 
 const Index = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    return false;
+  });
 
   useEffect(() => {
-    // Check initial preference
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDark(true);
-    } else {
-      setIsDark(false);
-    }
-
     const reveal = () => {
       const reveals = document.querySelectorAll(".reveal");
       for (let i = 0; i < reveals.length; i++) {
@@ -69,7 +66,8 @@ const Index = () => {
               <a href="#features" className="hover:text-brand dark:hover:text-brand transition-colors">Fonctionnalités</a>
               <a href="#demo" className="hover:text-brand dark:hover:text-brand transition-colors">Démonstration</a>
               <a href="#donate" className="hover:text-brand dark:hover:text-brand transition-colors">Soutenir</a>
-
+            </div>
+            <div className="flex items-center space-x-4">
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300"
@@ -77,10 +75,10 @@ const Index = () => {
               >
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
+              <a href="#" className="hidden md:inline-flex bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
+                Installer sur Android
+              </a>
             </div>
-            <a href="#" className="hidden md:inline-flex bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
-              Installer sur Android
-            </a>
           </div>
         </nav>
 
@@ -240,7 +238,7 @@ const Index = () => {
                       window.open(
                         "https://buymeacoffee.com/kaubry",
                         "Buy Me A Coffee",
-                        `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes`
+                        `width = ${width}, height = ${height}, top = ${top}, left = ${left}, scrollbars = yes, resizable = yes`
                       );
                     }}
                     className="bg-white text-[#121212] px-8 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all shadow-xl flex items-center space-x-2 hover:scale-[1.02]"
@@ -258,7 +256,7 @@ const Index = () => {
                       window.open(
                         "https://www.paypal.com/donate/?hosted_button_id=32YRTVCLJPNVJ",
                         "PayPal Donate",
-                        `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes`
+                        `width = ${width}, height = ${height}, top = ${top}, left = ${left}, scrollbars = yes, resizable = yes`
                       );
                     }}
                     className="bg-brand text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl flex items-center space-x-2 hover:scale-[1.02]"
