@@ -112,13 +112,22 @@ const Index = () => {
                     <p className="text-lg font-bold leading-none">Google Play</p>
                   </div>
                 </a>
-                <div className="flex items-center justify-center space-x-3 border-2 border-dashed border-gray-200 dark:border-gray-700 px-8 py-4 rounded-2xl opacity-60">
-                  <i className="fab fa-apple text-2xl text-gray-400 dark:text-gray-500"></i>
+                <a href="https://www.facebook.com/groups/2980169345517291/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 border-2 border-dashed border-gray-200 dark:border-gray-700 px-8 py-4 rounded-2xl opacity-60 hover:opacity-100 hover:border-blue-600/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all cursor-pointer group">
+                  <i className="fab fa-apple text-2xl text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"></i>
                   <div className="text-left">
-                    <p className="text-[10px] uppercase text-gray-400 dark:text-gray-500 font-bold">Bientôt sur</p>
-                    <p className="text-lg font-bold leading-none text-gray-400 dark:text-gray-500">App Store</p>
+                    <p className="text-[10px] uppercase text-gray-400 dark:text-gray-500 font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Rejoindre pour</p>
+                    <p className="text-lg font-bold leading-none text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">iOS (Bientôt)</p>
                   </div>
-                </div>
+                </a>
+              </div>
+
+              <div className="mt-8">
+                <a href="https://www.facebook.com/groups/2980169345517291/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
+                  <span className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <i className="fab fa-facebook text-blue-600 dark:text-blue-400 text-xl"></i>
+                  </span>
+                  <span className="font-semibold border-b border-transparent group-hover:border-blue-600 dark:group-hover:border-blue-400 transition-all">Rejoindre la communauté Facebook</span>
+                </a>
               </div>
             </div>
 
@@ -308,6 +317,10 @@ const Index = () => {
                 <Link to="/terms-app" className="hover:text-dark dark:hover:text-white transition-colors">Conditions</Link>
                 <Link to="/privacy-website" className="hover:text-dark dark:hover:text-white transition-colors">Confidentialité</Link>
                 <Link to="/legal-notice" className="hover:text-dark dark:hover:text-white transition-colors">Mentions Légales</Link>
+                <a href="https://www.facebook.com/groups/2980169345517291/" target="_blank" rel="noopener noreferrer" className="hover:text-dark dark:hover:text-white transition-colors flex items-center gap-2">
+                  <i className="fab fa-facebook"></i>
+                  <span>Communauté</span>
+                </a>
                 <a href="mailto:contact@granulo.app" className="hover:text-dark dark:hover:text-white transition-colors">Contact</a>
               </div>
               <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-right">

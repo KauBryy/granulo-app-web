@@ -86,31 +86,31 @@ const Hero = () => {
       <div className="container relative mx-auto px-4">
         <div className="flex flex-col items-center text-center">
           <div className="mb-8 animate-float">
-            <img 
-              src={granuloLogo} 
-              alt="Granulo Logo" 
+            <img
+              src={granuloLogo}
+              alt="Granulo Logo"
               className="h-32 w-32 rounded-full drop-shadow-2xl md:h-40 md:w-40"
             />
           </div>
-          
+
           <h1 className="mb-6 text-4xl font-bold text-foreground md:text-6xl lg:text-7xl animate-fade-in">
             Suivez votre consommation<br />de granulés
           </h1>
-          
+
           <p className="mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl animate-fade-in" style={{ animationDelay: "0.1s" }}>
             Une application pensée pour vous, évolutive et simple à vivre !<br />
             Gérez votre stock, vos achats et analysez vos habitudes de chauffage.
           </p>
-          
+
           <div className="mb-12 flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 shadow-medium transition-transform hover:scale-105 rounded-2xl"
               asChild
             >
-              <a 
-                href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo" 
-                target="_blank" 
+              <a
+                href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
@@ -120,12 +120,12 @@ const Hero = () => {
                 Télécharger sur le Play Store
               </a>
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-green-support text-white hover:bg-green-support/90 text-lg px-8 py-6 shadow-medium transition-transform hover:scale-105 rounded-2xl"
               asChild
             >
-              <a 
+              <a
                 href="#donation-section"
                 className="flex items-center gap-2"
               >
@@ -134,7 +134,7 @@ const Hero = () => {
               </a>
             </Button>
           </div>
-        
+
           <Carousel
             setApi={setApi}
             opts={{

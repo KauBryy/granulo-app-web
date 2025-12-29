@@ -60,6 +60,21 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Communauté</p>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="https://www.facebook.com/groups/2980169345517291/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 justify-center sm:justify-start"
+                >
+                  <i className="fab fa-facebook"></i>
+                  <span>Groupe Facebook</span>
+                </a>
+              </div>
+            </div>
           </div>
 
           <p className="text-sm text-muted-foreground">
