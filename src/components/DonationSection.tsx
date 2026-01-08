@@ -1,121 +1,87 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Heart } from "lucide-react";
 
-const donationOptions = [
-  { amount: 1, description: "Aide à couvrir deux mois de boîte mail pro" },
-  { amount: 5, description: "C'est un sac de granulés pour le chauffage" },
-  { amount: 10, description: "Aide à payer le site web et le nom de domaine" },
-];
-
-declare global {
-  interface Window {
-    PayPal?: {
-      Donation: {
-        Button: (config: any) => {
-          render: (selector: string) => void;
-        };
-      };
-    };
-  }
+interface DonationSectionProps {
+  showImmediately?: boolean;
+  className?: string;
 }
 
-const DonationSection = () => {
-  const paypalContainerRef = useRef<HTMLDivElement>(null);
-  const initializedRef = useRef(false);
-
-  useEffect(() => {
-    if (initializedRef.current) return;
-    initializedRef.current = true;
-
-    const renderButton = () => {
-      if (window.PayPal?.Donation && paypalContainerRef.current) {
-        paypalContainerRef.current.innerHTML = '';
-        window.PayPal.Donation.Button({
-          env: 'production',
-          hosted_button_id: '32YRTVCLJPNVJ',
-          image: {
-            src: 'https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif',
-            alt: 'Bouton Faites un don avec PayPal',
-            title: 'PayPal - The safer, easier way to pay online!',
-          }
-        }).render('#paypal-donate-button');
-        return true;
-      }
-      return false;
-    };
-
-    const ensureRender = () => {
-      let attempts = 0;
-      const maxAttempts = 20;
-      const interval = setInterval(() => {
-        if (renderButton() || attempts >= maxAttempts) {
-          clearInterval(interval);
-        }
-        attempts++;
-      }, 200);
-    };
-
-    if (document.getElementById('paypal-donate-sdk')) {
-      if (!renderButton()) ensureRender();
-    } else {
-      const script = document.createElement('script');
-      script.id = 'paypal-donate-sdk';
-      script.src = 'https://www.paypalobjects.com/donate/sdk/donate-sdk.js';
-      script.charset = 'UTF-8';
-      script.async = true;
-      script.onload = () => {
-        renderButton() || ensureRender();
-      };
-      document.body.appendChild(script);
-    }
-  }, []);
-
-
+const DonationSection = ({ showImmediately = false, className = "py-24" }: DonationSectionProps) => {
   return (
-    <section id="donation-section" className="py-16 md:py-24 bg-muted relative animate-fade-in">
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/50 to-transparent pointer-events-none" />
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-support/20 mb-6">
-            <Heart className="h-8 w-8 text-green-support" />
-          </div>
-          
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Soutenez Granulo 💚
-          </h2>
-          
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Le projet évolue petit à petit grâce à vos retours et idées. Chaque amélioration a un coût (Firebase, hébergement, nom de domaine, etc.). Votre soutien nous aide à continuer !
-          </p>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-3 mb-8">
-          {donationOptions.map((option) => (
-            <div
-              key={option.amount}
-              className="rounded-2xl border-2 border-green-support/30 bg-card/80 backdrop-blur-sm p-6 text-left hover:border-green-support/50 transition-all"
-            >
-              <div className="text-3xl font-bold text-green-support mb-2">{option.amount} €</div>
-              <p className="text-sm text-muted-foreground">{option.description}</p>
+    <>
+      <div id="donation-section" className="scroll-mt-24" />
+      <section id="donate" className={`${className} scroll-mt-24 transition-colors duration-300 relative`}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-[#121212] dark:bg-black rounded-[3rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center gap-12 overflow-hidden relative shadow-2xl border border-white/10">
+            <div className={`md:w-3/5 z-10 ${showImmediately ? '' : 'reveal'}`}>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Soutenez le développement de Granulo.</h2>
+              <p className="text-gray-400 text-lg mb-8">
+                Granulo est un projet indépendant développé avec passion. Vos dons m'aident à couvrir les frais de serveur et à consacrer du temps pour ajouter de nouvelles fonctionnalités.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const width = 500;
+                    const height = 650;
+                    const left = window.screen.width / 2 - width / 2;
+                    const top = window.screen.height / 2 - height / 2;
+                    window.open(
+                      "https://buymeacoffee.com/kaubry",
+                      "Buy Me A Coffee",
+                      `width = ${width}, height = ${height}, top = ${top}, left = ${left}, scrollbars = yes, resizable = yes`
+                    );
+                  }}
+                  className="bg-white text-[#121212] px-8 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all shadow-xl flex items-center space-x-2 hover:scale-[1.02]"
+                >
+                  <i className="fas fa-coffee"></i>
+                  <span>Offrez-moi un café</span>
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const width = 500;
+                    const height = 650;
+                    const left = window.screen.width / 2 - width / 2;
+                    const top = window.screen.height / 2 - height / 2;
+                    window.open(
+                      "https://www.paypal.com/donate/?hosted_button_id=32YRTVCLJPNVJ",
+                      "PayPal Donate",
+                      `width = ${width}, height = ${height}, top = ${top}, left = ${left}, scrollbars = yes, resizable = yes`
+                    );
+                  }}
+                  className="bg-brand text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl flex items-center space-x-2 hover:scale-[1.02]"
+                >
+                  <i className="fab fa-paypal"></i>
+                  <span>Faire un don via PayPal</span>
+                </button>
+              </div>
             </div>
-          ))}
+            <div className={`md:w-2/5 relative ${showImmediately ? '' : 'reveal'}`}>
+              <div className="relative bg-white/5 p-8 rounded-3xl backdrop-blur-md border border-white/10">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-brand">
+                    <i className="fas fa-heart text-2xl"></i>
+                  </div>
+                  <div>
+                    <p className="font-bold text-xl leading-none">Merci !</p>
+                    <p className="text-sm text-gray-400 mt-1">Chaque geste compte.</p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="h-2 w-full bg-white/10 rounded-full">
+                    <div className="h-full w-2/3 bg-brand rounded-full shadow-[0_0_15px_rgba(11,95,255,0.5)]"></div>
+                  </div>
+                  <p className="text-xs text-center text-gray-500 uppercase font-bold tracking-widest">Objectif Serveurs 2026</p>
+                </div>
+              </div>
+            </div>
+            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand/10 rounded-full blur-[120px]"></div>
+            <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px]"></div>
+          </div>
         </div>
-
-        <div className="rounded-2xl border-2 border-green-support/30 bg-card/80 backdrop-blur-sm p-6 mb-8">
-          <p className="text-sm text-muted-foreground mb-4 text-center">
-            Merci à vous, chaque geste compte et aide Granulo à s'améliorer
-          </p>
-        </div>
-
-        <div className="text-center">
-          <div 
-            ref={paypalContainerRef}
-            id="paypal-donate-button" 
-            className="flex justify-center"
-          />
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
