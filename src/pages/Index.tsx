@@ -77,8 +77,8 @@ const Index = () => {
               >
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              <a href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo" target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
-                Installer sur Android
+              <a href="#features" className="hidden md:inline-flex bg-dark dark:bg-white dark:text-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-md">
+                Installer l'app
               </a>
             </div>
           </div>
@@ -113,11 +113,11 @@ const Index = () => {
                     <p className="text-lg font-bold leading-none">Google Play</p>
                   </div>
                 </a>
-                <a href="https://www.facebook.com/groups/2980169345517291/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 border-2 border-dashed border-gray-200 dark:border-gray-700 px-8 py-4 rounded-2xl opacity-60 hover:opacity-100 hover:border-blue-600/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all cursor-pointer group">
-                  <i className="fab fa-apple text-2xl text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"></i>
+                <a href="https://apps.apple.com/app/id6758664406" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 bg-dark dark:bg-white dark:text-dark text-white px-8 py-4 rounded-2xl hover:bg-brand dark:hover:bg-gray-200 transition-all shadow-xl hover:scale-[1.02]">
+                  <i className="fab fa-apple text-2xl"></i>
                   <div className="text-left">
-                    <p className="text-[10px] uppercase text-gray-400 dark:text-gray-500 font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Rejoindre pour</p>
-                    <p className="text-lg font-bold leading-none text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">iOS (Bientôt)</p>
+                    <p className="text-[10px] uppercase opacity-60">Disponible sur</p>
+                    <p className="text-lg font-bold leading-none">App Store</p>
                   </div>
                 </a>
               </div>
@@ -139,7 +139,7 @@ const Index = () => {
                   <img
                     src="/app-mockup.jpg"
                     onError={(e) => e.currentTarget.src = 'https://via.placeholder.com/300x610?text=App+Preview'}
-                    alt="Application Granulo Android"
+                    alt="Application Granulo"
                     className="w-full h-full object-cover"
                   />
                 </div>
