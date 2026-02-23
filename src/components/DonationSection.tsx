@@ -15,7 +15,7 @@ const DonationSection = ({ showImmediately = false, className = "py-24" }: Donat
           <div className="bg-[#121212] dark:bg-black rounded-[3rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center gap-12 overflow-hidden relative shadow-2xl border border-white/10">
             <div className={`md:w-3/5 z-10 ${showImmediately ? '' : 'reveal'}`}>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Soutenez le développement de Granulo.</h2>
-              <p className="text-gray-400 text-lg mb-8">
+              <p className="text-gray-300 text-lg mb-8">
                 Granulo est un projet indépendant développé avec passion. Vos dons m'aident à couvrir les frais de serveur et à consacrer du temps pour ajouter de nouvelles fonctionnalités.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -65,14 +65,14 @@ const DonationSection = ({ showImmediately = false, className = "py-24" }: Donat
                   </div>
                   <div>
                     <p className="font-bold text-xl leading-none">Merci !</p>
-                    <p className="text-sm text-gray-400 mt-1">Chaque geste compte.</p>
+                    <p className="text-sm text-gray-300 mt-1">Chaque geste compte.</p>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="h-2 w-full bg-white/10 rounded-full">
                     <div className="h-full w-2/3 bg-brand rounded-full shadow-[0_0_15px_rgba(11,95,255,0.5)]"></div>
                   </div>
-                  <p className="text-xs text-center text-gray-500 uppercase font-bold tracking-widest">Objectif Serveurs 2026</p>
+                  <p className="text-xs text-center text-gray-300 uppercase font-bold tracking-widest">Objectif Serveurs 2026</p>
                 </div>
               </div>
             </div>
