@@ -58,7 +58,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <img
-                src="https://storage.googleapis.com/gpt-engineer-file-uploads/IXPC0sNyeKdOu4cvzCJBGoAmVJr2/uploads/1762786411988-sourire2-flamme.png"
+                src="/logo-granulo.png"
                 alt="Logo Granulo"
                 width="48"
                 height="48"
@@ -105,7 +105,7 @@ const Index = () => {
                     <span className="text-gradient-flame">chaleur.</span>
                   </span>
                 </h1>
-                <p className="text-xl text-gray-500 dark:text-gray-400 mb-10 max-w-lg leading-relaxed">
+                <p className="text-xl text-gray-700 dark:text-gray-400 mb-10 max-w-lg leading-relaxed">
                   L'application intelligente pour suivre votre consommation de granulés, gérer votre stock et anticiper vos dépenses de chauffage.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -160,7 +160,7 @@ const Index = () => {
             <div className="max-w-7xl mx-auto px-6">
               <div className="text-center max-w-2xl mx-auto mb-20 reveal">
                 <h2 className="text-4xl font-extrabold mb-4">Pensée pour votre confort.</h2>
-                <p className="text-gray-500 dark:text-gray-400">Toutes les fonctionnalités nécessaires pour une gestion simplifiée de votre poêle à granulés.</p>
+                <p className="text-gray-600 dark:text-gray-400">Toutes les fonctionnalités nécessaires pour une gestion simplifiée de votre poêle à granulés.</p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
@@ -172,7 +172,7 @@ const Index = () => {
                     <i className="fas fa-boxes-stacked"></i>
                   </div>
                   <h3 className="relative text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-brand transition-colors duration-300">Gestion de Stock</h3>
-                  <p className="relative text-gray-500 dark:text-gray-400 leading-relaxed group-hover:text-gray-600 dark:group-hover:text-gray-300">
+                  <p className="relative text-gray-600 dark:text-gray-400 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-300">
                     Saisissez vos achats et vos sacs brûlés. L'app calcule automatiquement votre <span className="font-semibold text-brand/80">autonomie restante</span>.
                   </p>
                 </div>
@@ -185,7 +185,7 @@ const Index = () => {
                     <i className="fas fa-chart-line"></i>
                   </div>
                   <h3 className="relative text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-purple-600 transition-colors duration-300">Statistiques Avancées</h3>
-                  <p className="relative text-gray-500 dark:text-gray-400 leading-relaxed group-hover:text-gray-600 dark:group-hover:text-gray-300">
+                  <p className="relative text-gray-600 dark:text-gray-400 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-300">
                     Comparez vos saisons, analysez l'évolution des prix et <span className="font-semibold text-purple-600/80">optimisez votre budget</span> de chauffage.
                   </p>
                 </div>
@@ -198,7 +198,7 @@ const Index = () => {
                     <i className="fas fa-tools"></i>
                   </div>
                   <h3 className="relative text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors duration-300">Rappels d'Entretien</h3>
-                  <p className="relative text-gray-500 dark:text-gray-400 leading-relaxed group-hover:text-gray-600 dark:group-hover:text-gray-300">
+                  <p className="relative text-gray-600 dark:text-gray-400 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-300">
                     Ne loupez plus un ramonage ou un nettoyage de vitre grâce aux <span className="font-semibold text-orange-500/80">notifications intelligentes</span>.
                   </p>
                 </div>
@@ -211,7 +211,7 @@ const Index = () => {
             <div className="max-w-5xl mx-auto px-6 text-center">
               <div className="reveal mb-12">
                 <h2 className="text-4xl font-extrabold mb-4">Découvrez Granulo en action.</h2>
-                <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                   Une démonstration rapide pour comprendre comment l'application révolutionne votre gestion quotidienne de chauffage.
                 </p>
               </div>
@@ -243,13 +243,15 @@ const Index = () => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-8">
               <div className="flex items-center space-x-2">
                 <img
-                  src="https://storage.googleapis.com/gpt-engineer-file-uploads/IXPC0sNyeKdOu4cvzCJBGoAmVJr2/uploads/1762786411988-sourire2-flamme.png"
+                  src="/logo-granulo.png"
                   alt="Logo Granulo"
+                  width="32"
+                  height="32"
                   className="w-8 h-8 object-contain rounded-xl"
                 />
                 <span className="text-xl font-bold uppercase tracking-tighter">Granulo</span>
               </div>
-              <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2 text-sm text-gray-400 font-medium">
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2 text-sm text-gray-500 font-medium">
                 <Link to="/terms-app" className="hover:text-dark dark:hover:text-white transition-colors">Conditions</Link>
                 <Link to="/privacy-website" className="hover:text-dark dark:hover:text-white transition-colors">Confidentialité</Link>
                 <Link to="/legal-notice" className="hover:text-dark dark:hover:text-white transition-colors">Mentions Légales</Link>
@@ -260,7 +262,7 @@ const Index = () => {
                 <a href="mailto:contact@granulo.app" className="hover:text-dark dark:hover:text-white transition-colors">Contact</a>
               </div>
               <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-right">
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-500 text-sm">
                   &copy; {new Date().getFullYear()} Granulo. Développé en France.
                 </p>
                 <div className="flex items-center gap-2 mt-1">
