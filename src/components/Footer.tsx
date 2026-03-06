@@ -24,20 +24,12 @@ const Footer = () => {
               <h4 className="font-bold text-foreground text-lg">Application Mobile</h4>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://auth.granulo.app/privacy"
+                  href="https://auth.granulo.app/legal"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-brand transition-colors text-base"
                 >
-                  Politique de confidentialité
-                </a>
-                <a
-                  href="https://auth.granulo.app/terms"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-brand transition-colors text-base"
-                >
-                  Conditions d'utilisation
+                  Documents légaux
                 </a>
               </div>
             </div>
@@ -45,22 +37,20 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="font-bold text-foreground text-lg">Site Web</h4>
               <div className="flex flex-col gap-3">
-                <a
-                  href="https://auth.granulo.app/privacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/privacy-website"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="text-muted-foreground hover:text-brand transition-colors text-base"
                 >
                   Politique de confidentialité
-                </a>
-                <a
-                  href="https://auth.granulo.app/legal"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                </Link>
+                <Link
+                  to="/legal-notice"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="text-muted-foreground hover:text-brand transition-colors text-base"
                 >
                   Mentions légales
-                </a>
+                </Link>
                 <a
                   href="mailto:contact@granulo.app"
                   className="text-muted-foreground hover:text-brand transition-colors text-base"
