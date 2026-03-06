@@ -141,7 +141,7 @@ const Index = () => {
                   <div className="phone-mockup w-[300px] h-[610px] mx-auto relative border-dark dark:border-gray-800">
                     <div className="phone-punchhole bg-dark dark:bg-gray-800"></div>
                     <img
-                      src="/app-mockup.jpg"
+                      src="/app-mockup.png"
                       onError={(e) => e.currentTarget.src = 'https://via.placeholder.com/300x610?text=App+Preview'}
                       alt="Application Granulo"
                       width="300"
