@@ -6,10 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import PrivacyPolicyApp from "./pages/PrivacyPolicyApp";
-import TermsApp from "./pages/TermsApp";
-import PrivacyPolicyWebsite from "./pages/PrivacyPolicyWebsite";
-import LegalNotice from "./pages/LegalNotice";
 import DonationSectionPage from "./pages/DonationSectionPage";
 
 const queryClient = new QueryClient();
@@ -23,10 +19,6 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/privacy-app" element={<PrivacyPolicyApp />} />
-            <Route path="/terms-app" element={<TermsApp />} />
-            <Route path="/privacy-website" element={<PrivacyPolicyWebsite />} />
-            <Route path="/legal-notice" element={<LegalNotice />} />
             <Route path="/donation-section" element={<DonationSectionPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

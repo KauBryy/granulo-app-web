@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import kaubryLogo from "@/assets/kaubry-logo.png";
 import DonationSection from "@/components/DonationSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(() => {
@@ -238,45 +239,7 @@ const Index = () => {
           <DonationSection />
         </main>
 
-        {/* Footer */}
-        <footer className="bg-white dark:bg-[#1A1A1A] py-16 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-              <div className="flex items-center space-x-2">
-                <img
-                  src="/logo-granulo.png"
-                  alt="Logo Granulo"
-                  width="32"
-                  height="32"
-                  className="w-8 h-8 object-contain rounded-xl"
-                />
-                <span className="text-xl font-bold uppercase tracking-tighter">Granulo</span>
-              </div>
-              <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2 text-sm text-gray-700 dark:text-gray-300 font-medium">
-                <Link to="/terms-app" className="hover:text-dark dark:hover:text-white transition-colors">Conditions</Link>
-                <Link to="/privacy-website" className="hover:text-dark dark:hover:text-white transition-colors">Confidentialité</Link>
-                <Link to="/legal-notice" className="hover:text-dark dark:hover:text-white transition-colors">Mentions Légales</Link>
-                <a href="https://www.facebook.com/groups/2980169345517291/" target="_blank" rel="noopener noreferrer" className="hover:text-dark dark:hover:text-white transition-colors flex items-center gap-2">
-                  <i className="fab fa-facebook"></i>
-                  <span>Communauté</span>
-                </a>
-                <a href="mailto:contact@granulo.app" className="hover:text-dark dark:hover:text-white transition-colors">Contact</a>
-              </div>
-              <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-right">
-                <p className="text-gray-500 text-sm">
-                  &copy; {new Date().getFullYear()} Granulo. Développé en France.
-                </p>
-                <div className="flex items-center gap-2 mt-1">
-                  <span className="text-xs text-gray-600 dark:text-gray-400">Propulsé par</span>
-                  <a href="https://kaubry.fr" target="_blank" rel="noopener noreferrer" className="bg-white/50 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 p-1.5 rounded-lg transition-all duration-300 group flex items-center gap-2 border border-transparent hover:border-brand/20">
-                    <img src={kaubryLogo} alt="Logo KauBry App's" width="24" height="24" loading="lazy" className="h-6 w-auto object-contain" />
-                    <span className="font-bold text-sm bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">KauBry App's</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
