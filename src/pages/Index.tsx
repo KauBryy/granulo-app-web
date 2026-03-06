@@ -59,7 +59,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <img
-                src="/logo-granulo.png"
+                src="/logo-granulo.jpg"
                 alt="Logo Granulo"
                 width="48"
                 height="48"

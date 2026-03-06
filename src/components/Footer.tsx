@@ -11,7 +11,7 @@ const Footer = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-4 hover:opacity-80 transition-opacity mb-6"
           >
-            <img src="/logo-granulo.png" alt="Granulo" className="h-16 w-16 rounded-2xl shadow-sm" />
+            <img src="/logo-granulo.jpg" alt="Granulo" className="h-16 w-16 rounded-2xl shadow-sm" />
             <span className="text-3xl font-extrabold tracking-tight uppercase text-foreground">Granulo</span>
           </Link>
 
