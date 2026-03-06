@@ -24,7 +24,7 @@ const Footer = () => {
               <h4 className="font-bold text-foreground text-lg">Application Mobile</h4>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://auth.granulo.app/legal"
+                  href="https://auth.granulo.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-brand transition-colors text-base"
