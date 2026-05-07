@@ -141,20 +141,34 @@ const HomeAssistantGuide = () => {
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
-                                Tableau de Bord Interactif
+                                Création du Tableau de Bord Interactif
                             </h2>
-                            <div className="space-y-4">
+                            <div className="space-y-6">
                                 <p className="text-muted-foreground">
-                                    Utilisez le code YAML généré dans l'application pour créer vos boutons d'action.
+                                    Une fois l'intégration activée, vous devez créer l'interface visuelle. Suivez ces étapes précisément :
                                 </p>
-                                <div className="bg-muted p-6 rounded-lg border border-border font-mono text-xs overflow-x-auto">
-                                    <pre>{`# Exemple de bouton dans votre Dashboard
-type: button
-name: Ajouter un Brûlage
-service: granulo.add_burn
-data:
-  amount: 1
-  note: "Via Home Assistant"`}</pre>
+                                
+                                <div className="space-y-4 bg-card p-6 rounded-xl border border-border">
+                                    <div className="flex gap-4">
+                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">A</div>
+                                        <p className="text-sm">Allez dans <strong>Tableaux de bord</strong> &gt; <strong>Ajouter un tableau de bord</strong> &gt; <strong>À partir de zéro</strong>. Appelez-le "Granulo".</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">B</div>
+                                        <p className="text-sm">Ouvrez ce nouveau tableau de bord, cliquez sur le <strong>Crayon (Modifier)</strong> en haut à droite.</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">C</div>
+                                        <p className="text-sm">Cliquez sur les <strong>trois petits points (⋮)</strong> en haut à droite, puis sur <strong>Éditeur de configuration</strong>.</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">D</div>
+                                        <p className="text-sm"><strong>Effacez tout</strong> le code présent et <strong>collez</strong> le code YAML que vous avez copié depuis l'application Granulo.</p>
+                                    </div>
+                                </div>
+
+                                <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20 text-xs text-orange-400">
+                                    <strong>Conseil :</strong> Pour une expérience complète, n'oubliez pas de créer les "Entrées" (Helpers) pour la quantité et les notes dans Home Assistant comme indiqué dans l'application.
                                 </div>
                             </div>
                         </section>
