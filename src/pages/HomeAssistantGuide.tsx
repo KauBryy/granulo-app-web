@@ -74,10 +74,10 @@ const HomeAssistantGuide = () => {
                                 <div className="space-y-2 text-muted-foreground">
                                     <p>1. <strong>Extrayez</strong> le contenu du fichier ZIP téléchargé.</p>
                                     <p>
-                                        2. Accédez aux fichiers de votre serveur Home Assistant. 
+                                        2. Accédez au dossier <strong>/config</strong> de votre serveur Home Assistant. 
                                         <br />
                                         <span className="text-xs text-muted-foreground block mb-1">
-                                            (Chemin conseillé : <strong>Paramètres &gt; Système &gt; Modules complémentaires</strong>, puis installez "Samba" ou "File Editor")
+                                            (Selon votre installation, utilisez Samba, SSH, ou l'explorateur de fichiers de votre machine)
                                         </span>
                                         <a 
                                             href="https://www.home-assistant.io/common-tasks/os/" 
@@ -85,7 +85,7 @@ const HomeAssistantGuide = () => {
                                             rel="noopener noreferrer"
                                             className="text-primary hover:underline text-sm inline-flex items-center gap-1"
                                         >
-                                            Voir la documentation officielle →
+                                            Aide sur l'accès aux fichiers →
                                         </a>
                                     </p>
                                     <p>3. <strong>Copiez le dossier</strong> <code className="bg-muted px-1.5 py-0.5 rounded text-primary">custom_components</code> (qui contient "granulo") à la racine de la configuration de votre Home Assistant (dans le même dossier que votre fichier `configuration.yaml`).</p>
