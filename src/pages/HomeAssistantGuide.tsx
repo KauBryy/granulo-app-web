@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Download, RefreshCw, Smartphone, LayoutDashboard, CheckCircle2, AlertTriangle, PlusCircle } from "lucide-react";
+import { ArrowLeft, Download, RefreshCw, Smartphone, LayoutDashboard, CheckCircle2, AlertTriangle, PlusCircle, Fingerprint } from "lucide-react";
 
 const HomeAssistantGuide = () => {
     useEffect(() => {
@@ -33,7 +33,7 @@ const HomeAssistantGuide = () => {
                         Mode Expert : Granulo & Home Assistant
                     </h1>
                     <p className="text-xl text-muted-foreground mb-12">
-                        Suivez ce guide pour activer les <strong>boutons d'action</strong> (Ajout de sacs/brûlages) directement depuis votre tableau de bord Home Assistant.
+                        Suivez ce guide pour activer les <strong>boutons d'action</strong> et la <strong>synchronisation autonome</strong>.
                     </p>
 
                     <div className="prose prose-invert max-w-none space-y-12">
@@ -46,7 +46,7 @@ const HomeAssistantGuide = () => {
                             <p className="text-muted-foreground mb-4">
                                 L'affichage simple de vos données Granulo sur Home Assistant (Mode Standard) <strong>ne nécessite aucune installation de fichier</strong>.
                                 <br />
-                                Ce guide <strong>Expert</strong> est uniquement destiné à ceux qui souhaitent utiliser les boutons d'action interactifs depuis leur domotique.
+                                Ce guide <strong>Expert</strong> est uniquement destiné à ceux qui souhaitent utiliser les boutons d'action interactifs et profiter d'une synchronisation 24h/24 sans ouvrir l'application.
                             </p>
                         </section>
 
@@ -74,21 +74,9 @@ const HomeAssistantGuide = () => {
                                 <div className="space-y-2 text-muted-foreground">
                                     <p>1. <strong>Extrayez</strong> le contenu du fichier ZIP téléchargé.</p>
                                     <p>
-                                        2. Accédez au dossier <strong>/config</strong> de votre serveur Home Assistant. 
-                                        <br />
-                                        <span className="text-xs text-muted-foreground block mb-1">
-                                            (Selon votre installation, utilisez Samba, SSH, ou l'explorateur de fichiers de votre machine)
-                                        </span>
-                                        <a 
-                                            href="https://www.home-assistant.io/common-tasks/os/" 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            className="text-primary hover:underline text-sm inline-flex items-center gap-1"
-                                        >
-                                            Aide sur l'accès aux fichiers →
-                                        </a>
+                                        2. Accédez au dossier <strong>/config</strong> de votre serveur Home Assistant (via Samba, SSH, ou Studio Code Server).
                                     </p>
-                                    <p>3. <strong>Copiez le dossier</strong> <code className="bg-muted px-1.5 py-0.5 rounded text-primary">custom_components</code> (qui contient "granulo") à la racine de la configuration de votre Home Assistant (dans le même dossier que votre fichier `configuration.yaml`).</p>
+                                    <p>3. <strong>Copiez le dossier</strong> <code className="bg-muted px-1.5 py-0.5 rounded text-primary">custom_components</code> à la racine de votre configuration.</p>
                                 </div>
                             </div>
                         </section>
@@ -102,7 +90,7 @@ const HomeAssistantGuide = () => {
                             <div className="flex flex-col md:flex-row gap-6 items-start">
                                 <div className="flex-1 space-y-4">
                                     <p className="text-muted-foreground">
-                                        Une fois les fichiers copiés, vous devez redémarrer Home Assistant pour qu'il puisse charger l'intégration.
+                                        Une fois les fichiers copiés, vous devez redémarrer Home Assistant :
                                     </p>
                                     <ol className="list-decimal pl-6 text-muted-foreground space-y-2 font-medium">
                                         <li>Allez dans <strong>Outils de développement</strong>.</li>
@@ -117,83 +105,56 @@ const HomeAssistantGuide = () => {
                             </div>
                         </section>
 
-                        {/* Étape 3 - AJOUTÉE */}
+                        {/* Étape 3 */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
-                                Activation de l'intégration
+                                ID Utilisateur & Synchronisation Autonome
                             </h2>
-                            <div className="space-y-4">
-                                <p className="text-muted-foreground">
-                                    Maintenant que votre serveur connaît Granulo, vous devez l'activer dans l'interface :
-                                </p>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div className="bg-card p-5 rounded-lg border border-border flex gap-4 items-start">
-                                        <PlusCircle className="h-6 w-6 text-primary shrink-0" />
-                                        <div>
-                                            <p className="font-semibold mb-1">Ajouter l'intégration</p>
-                                            <p className="text-xs text-muted-foreground text-pretty">
-                                                Allez dans <strong>Paramètres</strong> &gt; <strong>Appareils et services</strong> &gt; <strong>Ajouter une intégration</strong>.
-                                            </p>
-                                        </div>
+                            <div className="bg-card p-6 rounded-xl border border-border space-y-6">
+                                <div className="flex gap-4">
+                                    <div className="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0">
+                                        <Fingerprint className="h-6 w-6 text-primary" />
                                     </div>
-                                    <div className="bg-card p-5 rounded-lg border border-border flex gap-4 items-start">
-                                        <CheckCircle2 className="h-6 w-6 text-green-500 shrink-0" />
-                                        <div>
-                                            <p className="font-semibold mb-1">Rechercher Granulo</p>
-                                            <p className="text-xs text-muted-foreground text-pretty">
-                                                Cherchez "Granulo" dans la liste et validez. Vos capteurs et services seront alors créés.
-                                            </p>
-                                        </div>
+                                    <div>
+                                        <p className="font-bold">Récupérez votre UID</p>
+                                        <p className="text-sm text-muted-foreground">
+                                            Ouvrez l'app Granulo, allez dans <strong>Réglages &gt; Home Assistant</strong> et copiez votre <strong>ID Utilisateur (UID)</strong>.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0">
+                                        <PlusCircle className="h-6 w-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <p className="font-bold">Ajoutez l'intégration</p>
+                                        <p className="text-sm text-muted-foreground">
+                                            Dans HA, allez dans <strong>Paramètres &gt; Appareils et services &gt; Ajouter l'intégration</strong>. Cherchez "Granulo" et collez votre <strong>UID</strong>.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        {/* Étape 4 (Ancienne étape 3) */}
+                        {/* Étape 4 */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
-                                Création du Dashboard (Via l'App)
+                                Tableau de Bord Interactif
                             </h2>
-                            <div className="space-y-6">
+                            <div className="space-y-4">
                                 <p className="text-muted-foreground">
-                                    Dernière étape ! Récupérez votre code de tableau de bord prêt à l'emploi :
+                                    Utilisez le code YAML généré dans l'application pour créer vos boutons d'action.
                                 </p>
-                                <div className="bg-card p-6 rounded-xl border border-border space-y-6">
-                                    <div className="flex gap-4">
-                                        <div className="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0">
-                                            <Smartphone className="h-6 w-6 text-primary" />
-                                        </div>
-                                        <div>
-                                            <p className="font-bold">Ouvrez l'application Granulo</p>
-                                            <p className="text-sm text-muted-foreground">
-                                                Allez dans <strong>Réglages &gt; Home Assistant</strong>, et choisissez <strong>Mode Expert (Avancé)</strong>.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0">
-                                            <LayoutDashboard className="h-6 w-6 text-primary" />
-                                        </div>
-                                        <div>
-                                            <p className="font-bold">Copiez votre code YAML</p>
-                                            <p className="text-sm text-muted-foreground">
-                                                Cliquez sur le bouton pour copier votre Dashboard généré sur mesure, puis collez-le dans un Dashboard vide (via l'éditeur de configuration brut) sur votre Home Assistant.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0">
-                                            <CheckCircle2 className="h-6 w-6 text-green-500" />
-                                        </div>
-                                        <div>
-                                            <p className="font-bold">C'est terminé !</p>
-                                            <p className="text-sm text-muted-foreground">
-                                                Vos boutons "Ajouter Achat" et "Ajouter Brûlage" sont maintenant fonctionnels.
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div className="bg-muted p-6 rounded-lg border border-border font-mono text-xs overflow-x-auto">
+                                    <pre>{`# Exemple de bouton dans votre Dashboard
+type: button
+name: Ajouter un Brûlage
+service: granulo.add_burn
+data:
+  amount: 1
+  note: "Via Home Assistant"`}</pre>
                                 </div>
                             </div>
                         </section>
@@ -202,7 +163,7 @@ const HomeAssistantGuide = () => {
                         <section className="pt-12 border-t border-border">
                             <h2 className="text-xl font-semibold text-foreground mb-4">Besoin d'aide ?</h2>
                             <p className="text-muted-foreground">
-                                Si vous rencontrez des difficultés, n'hésitez pas à nous contacter à <strong className="text-foreground">contact@granulo.app</strong>.
+                                Si vous rencontrez des difficultés, contactez-nous à <strong className="text-foreground">contact@granulo.app</strong>.
                             </p>
                         </section>
                     </div>
