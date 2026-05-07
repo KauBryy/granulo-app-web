@@ -11,6 +11,7 @@ import TermsApp from "./pages/TermsApp";
 import PrivacyPolicyWebsite from "./pages/PrivacyPolicyWebsite";
 import LegalNotice from "./pages/LegalNotice";
 import DonationSectionPage from "./pages/DonationSectionPage";
+import HomeAssistantGuide from "./pages/HomeAssistantGuide";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/privacy-website" element={<PrivacyPolicyWebsite />} />
             <Route path="/legal-notice" element={<LegalNotice />} />
             <Route path="/donation-section" element={<DonationSectionPage />} />
+            <Route path="/home-assistant" element={<HomeAssistantGuide />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
