@@ -116,51 +116,117 @@ const HomeAssistantGuide = () => {
                                 <em>Pensez à créer les entrées (Helpers) <code>input_number.granulo_amount</code>, <code>input_text.granulo_note</code> et <code>input_number.granulo_price</code> au préalable.</em>
                             </p>
                             
-                            <div className="bg-card rounded-xl border border-border overflow-hidden">
-                                <div className="bg-muted px-4 py-2 text-[10px] font-bold border-b border-border">YAML DASHBOARD COMPLET</div>
+                            <div className="bg-card rounded-xl border border-border overflow-hidden relative group">
+                                <div className="bg-muted px-4 py-2 text-[10px] font-bold border-b border-border flex justify-between items-center">
+                                    <span>DASHBOARD COMPLET (YAML)</span>
+                                    <button 
+                                        onClick={() => {
+                                            const yaml = `views:
+  - title: Granulo
+    icon: mdi:fire
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: sensor
+                entity: sensor.granulo_stock_actuel
+                name: Stock (sacs)
+              - type: sensor
+                entity: sensor.granulo_stock_kg
+                name: Stock (kg)
+          - type: entities
+            title: ✍️ Saisie Rapide
+            entities:
+              - entity: input_number.granulo_amount
+                name: Quantité (sacs)
+              - entity: input_text.granulo_note
+                name: Note
+              - entity: input_number.granulo_price
+                name: Prix (Achat)
+          - type: horizontal-stack
+            cards:
+              - type: button
+                name: 🔥 Brûler
+                icon: mdi:fire
+                tap_action:
+                  action: call-service
+                  service: granulo.add_burn
+                  data:
+                    amount: "{{ states('input_number.granulo_amount') | float }}"
+                    note: "{{ states('input_text.granulo_note') }}"
+              - type: button
+                name: 🛒 Acheter
+                icon: mdi:cart-plus
+                tap_action:
+                  action: call-service
+                  service: granulo.add_purchase
+                  data:
+                    amount: "{{ states('input_number.granulo_amount') | float }}"
+                    note: "{{ states('input_text.granulo_note') }}"
+                    price: "{{ states('input_number.granulo_price') | float }}"`;
+                                            navigator.clipboard.writeText(yaml);
+                                            const btn = document.getElementById('copy-btn-yaml');
+                                            if (btn) {
+                                                btn.innerText = 'Copié !';
+                                                setTimeout(() => btn.innerText = 'Copier', 2000);
+                                            }
+                                        }}
+                                        id="copy-btn-yaml"
+                                        className="text-[10px] bg-primary/20 text-primary px-2 py-1 rounded hover:bg-primary/30 transition-colors"
+                                    >
+                                        Copier
+                                    </button>
+                                </div>
                                 <div className="p-4 font-mono text-[10px] text-gray-400 overflow-x-auto bg-black/20">
-                                    <pre>{`type: vertical-stack
-cards:
-  - type: grid
-    columns: 2
-    square: false
+                                    <pre>{`views:
+  - title: Granulo
+    icon: mdi:fire
     cards:
-      - type: sensor
-        entity: sensor.granulo_stock_actuel
-        name: Stock (sacs)
-      - type: sensor
-        entity: sensor.granulo_stock_kg
-        name: Stock (kg)
-  - type: entities
-    title: ✍️ Saisie Rapide
-    entities:
-      - entity: input_number.granulo_amount
-        name: Quantité (sacs)
-      - entity: input_text.granulo_note
-        name: Note
-      - entity: input_number.granulo_price
-        name: Prix (Achat)
-  - type: horizontal-stack
-    cards:
-      - type: button
-        name: 🔥 Brûler
-        icon: mdi:fire
-        tap_action:
-          action: call-service
-          service: granulo.add_burn
-          data:
-            amount: "{{ states('input_number.granulo_amount') | float }}"
-            note: "{{ states('input_text.granulo_note') }}"
-      - type: button
-        name: 🛒 Acheter
-        icon: mdi:cart-plus
-        tap_action:
-          action: call-service
-          service: granulo.add_purchase
-          data:
-            amount: "{{ states('input_number.granulo_amount') | float }}"
-            note: "{{ states('input_text.granulo_note') }}"
-            price: "{{ states('input_number.granulo_price') | float }}"`}</pre>
+      - type: vertical-stack
+        cards:
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: sensor
+                entity: sensor.granulo_stock_actuel
+                name: Stock (sacs)
+              - type: sensor
+                entity: sensor.granulo_stock_kg
+                name: Stock (kg)
+          - type: entities
+            title: ✍️ Saisie Rapide
+            entities:
+              - entity: input_number.granulo_amount
+                name: Quantité (sacs)
+              - entity: input_text.granulo_note
+                name: Note
+              - entity: input_number.granulo_price
+                name: Prix (Achat)
+          - type: horizontal-stack
+            cards:
+              - type: button
+                name: 🔥 Brûler
+                icon: mdi:fire
+                tap_action:
+                  action: call-service
+                  service: granulo.add_burn
+                  data:
+                    amount: "{{ states('input_number.granulo_amount') | float }}"
+                    note: "{{ states('input_text.granulo_note') }}"
+              - type: button
+                name: 🛒 Acheter
+                icon: mdi:cart-plus
+                tap_action:
+                  action: call-service
+                  service: granulo.add_purchase
+                  data:
+                    amount: "{{ states('input_number.granulo_amount') | float }}"
+                    note: "{{ states('input_text.granulo_note') }}"
+                    price: "{{ states('input_number.granulo_price') | float }}"`}</pre>
                                 </div>
                             </div>
                         </section>
