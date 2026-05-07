@@ -91,15 +91,76 @@ const HomeAssistantGuide = () => {
                                 Votre Tableau de Bord
                             </h2>
                             <p className="text-muted-foreground mb-6">
-                                Pour un affichage optimal, créez un nouveau tableau de bord et utilisez l'éditeur de configuration pour coller le code YAML que vous trouverez dans l'application mobile.
+                                Grâce à votre UID, Home Assistant reste synchronisé avec vos données même si l'application est fermée ou votre téléphone éteint.
                             </p>
-                            <div className="bg-blue-500/10 p-6 rounded-xl border border-blue-500/20 flex gap-4 items-start">
+                            <div className="bg-blue-500/10 p-6 rounded-xl border border-blue-500/20 flex gap-4 items-start mb-8">
                                 <Zap className="h-6 w-6 text-blue-400 shrink-0" />
                                 <div>
                                     <p className="font-bold text-sm text-blue-400">Synchronisation 24h/24</p>
                                     <p className="text-xs text-muted-foreground mt-1">
-                                        Grâce à votre UID, Home Assistant reste synchronisé avec vos données même si l'application est fermée ou votre téléphone éteint.
+                                        L'intégration communique directement avec nos serveurs pour une fiabilité maximale.
                                     </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Étape 4 : Code YAML */}
+                        <section>
+                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
+                                Code du Dashboard (Pro)
+                            </h2>
+                            <p className="text-muted-foreground text-sm mb-6">
+                                Copiez ce code YAML dans l'<strong>Éditeur de configuration</strong> de votre tableau de bord HA.
+                                <br />
+                                <em>Pensez à créer les entrées (Helpers) <code>input_number.granulo_amount</code>, <code>input_text.granulo_note</code> et <code>input_number.granulo_price</code> au préalable.</em>
+                            </p>
+                            
+                            <div className="bg-card rounded-xl border border-border overflow-hidden">
+                                <div className="bg-muted px-4 py-2 text-[10px] font-bold border-b border-border">YAML DASHBOARD COMPLET</div>
+                                <div className="p-4 font-mono text-[10px] text-gray-400 overflow-x-auto bg-black/20">
+                                    <pre>{`type: vertical-stack
+cards:
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: sensor
+        entity: sensor.granulo_stock_actuel
+        name: Stock (sacs)
+      - type: sensor
+        entity: sensor.granulo_stock_kg
+        name: Stock (kg)
+  - type: entities
+    title: ✍️ Saisie Rapide
+    entities:
+      - entity: input_number.granulo_amount
+        name: Quantité (sacs)
+      - entity: input_text.granulo_note
+        name: Note
+      - entity: input_number.granulo_price
+        name: Prix (Achat)
+  - type: horizontal-stack
+    cards:
+      - type: button
+        name: 🔥 Brûler
+        icon: mdi:fire
+        tap_action:
+          action: call-service
+          service: granulo.add_burn
+          data:
+            amount: "{{ states('input_number.granulo_amount') | float }}"
+            note: "{{ states('input_text.granulo_note') }}"
+      - type: button
+        name: 🛒 Acheter
+        icon: mdi:cart-plus
+        tap_action:
+          action: call-service
+          service: granulo.add_purchase
+          data:
+            amount: "{{ states('input_number.granulo_amount') | float }}"
+            note: "{{ states('input_text.granulo_note') }}"
+            price: "{{ states('input_number.granulo_price') | float }}"`}</pre>
                                 </div>
                             </div>
                         </section>
