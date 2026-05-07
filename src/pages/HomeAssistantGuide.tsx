@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Download, RefreshCw, Smartphone, LayoutDashboard, CheckCircle2, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Download, RefreshCw, Smartphone, LayoutDashboard, CheckCircle2, AlertTriangle, PlusCircle } from "lucide-react";
 
 const HomeAssistantGuide = () => {
     useEffect(() => {
@@ -117,15 +117,48 @@ const HomeAssistantGuide = () => {
                             </div>
                         </section>
 
-                        {/* Étape 3 */}
+                        {/* Étape 3 - AJOUTÉE */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
+                                Activation de l'intégration
+                            </h2>
+                            <div className="space-y-4">
+                                <p className="text-muted-foreground">
+                                    Maintenant que votre serveur connaît Granulo, vous devez l'activer dans l'interface :
+                                </p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="bg-card p-5 rounded-lg border border-border flex gap-4 items-start">
+                                        <PlusCircle className="h-6 w-6 text-primary shrink-0" />
+                                        <div>
+                                            <p className="font-semibold mb-1">Ajouter l'intégration</p>
+                                            <p className="text-xs text-muted-foreground text-pretty">
+                                                Allez dans <strong>Paramètres</strong> &gt; <strong>Appareils et services</strong> &gt; <strong>Ajouter une intégration</strong>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="bg-card p-5 rounded-lg border border-border flex gap-4 items-start">
+                                        <CheckCircle2 className="h-6 w-6 text-green-500 shrink-0" />
+                                        <div>
+                                            <p className="font-semibold mb-1">Rechercher Granulo</p>
+                                            <p className="text-xs text-muted-foreground text-pretty">
+                                                Cherchez "Granulo" dans la liste et validez. Vos capteurs et services seront alors créés.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Étape 4 (Ancienne étape 3) */}
+                        <section>
+                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
                                 Création du Dashboard (Via l'App)
                             </h2>
                             <div className="space-y-6">
                                 <p className="text-muted-foreground">
-                                    L'intégration est installée ! Il ne vous reste plus qu'à récupérer votre code de tableau de bord prêt à l'emploi.
+                                    Dernière étape ! Récupérez votre code de tableau de bord prêt à l'emploi :
                                 </p>
                                 <div className="bg-card p-6 rounded-xl border border-border space-y-6">
                                     <div className="flex gap-4">
@@ -174,7 +207,6 @@ const HomeAssistantGuide = () => {
                         </section>
                     </div>
                 </div>
-                <main />
                 <Footer />
             </main>
         </>
