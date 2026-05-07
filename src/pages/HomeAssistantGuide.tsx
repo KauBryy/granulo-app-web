@@ -73,7 +73,18 @@ const HomeAssistantGuide = () => {
                                 </div>
                                 <div className="space-y-2 text-muted-foreground">
                                     <p>1. <strong>Extrayez</strong> le contenu du fichier ZIP téléchargé.</p>
-                                    <p>2. Accédez aux fichiers de votre serveur Home Assistant (via Samba, SSH, ou l'add-on Studio Code Server).</p>
+                                    <p>
+                                        2. Accédez aux fichiers de votre serveur Home Assistant. 
+                                        <br />
+                                        <a 
+                                            href="https://www.home-assistant.io/common-tasks/os/" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-primary hover:underline text-sm inline-flex items-center gap-1"
+                                        >
+                                            Voir comment accéder aux fichiers (Samba, SSH, etc.) →
+                                        </a>
+                                    </p>
                                     <p>3. <strong>Copiez le dossier</strong> <code className="bg-muted px-1.5 py-0.5 rounded text-primary">custom_components</code> (qui contient "granulo") à la racine de la configuration de votre Home Assistant (dans le même dossier que votre fichier `configuration.yaml`).</p>
                                 </div>
                             </div>
