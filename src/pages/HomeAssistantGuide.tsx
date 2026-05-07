@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Download, RefreshCw, Smartphone, LayoutDashboard, CheckCircle2, AlertTriangle, PlusCircle, Fingerprint } from "lucide-react";
+import { ArrowLeft, Download, RefreshCw, Smartphone, LayoutDashboard, CheckCircle2, AlertTriangle, PlusCircle, Fingerprint, Sliders } from "lucide-react";
 
 const HomeAssistantGuide = () => {
     useEffect(() => {
@@ -15,7 +15,7 @@ const HomeAssistantGuide = () => {
                 <title>Guide Home Assistant (Mode Expert) - Granulo</title>
                 <meta
                     name="description"
-                    content="Guide d'installation de l'intégration Home Assistant Avancée (Boutons d'action) pour l'application Granulo."
+                    content="Guide d'installation de l'intégration Home Assistant Avancée pour l'application Granulo."
                 />
             </Helmet>
 
@@ -33,151 +33,136 @@ const HomeAssistantGuide = () => {
                         Mode Expert : Granulo & Home Assistant
                     </h1>
                     <p className="text-xl text-muted-foreground mb-12">
-                        Suivez ce guide pour activer les <strong>boutons d'action</strong> et la <strong>synchronisation autonome</strong>.
+                        Devenez 100% autonome : contrôlez votre stock 24h/24 sans ouvrir l'application.
                     </p>
 
                     <div className="prose prose-invert max-w-none space-y-12">
-                        {/* Introduction / Prérequis */}
-                        <section className="bg-orange-500/10 p-6 rounded-xl border border-orange-500/20">
+                        {/* Status Card */}
+                        <section className="bg-green-500/10 p-6 rounded-xl border border-green-500/20">
                             <h2 className="text-2xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                                <AlertTriangle className="h-6 w-6 text-orange-500" />
-                                À lire avant de commencer
+                                <CheckCircle2 className="h-6 w-6 text-green-500" />
+                                Nouveauté : Mode Autonome
                             </h2>
-                            <p className="text-muted-foreground mb-4">
-                                L'affichage simple de vos données Granulo sur Home Assistant (Mode Standard) <strong>ne nécessite aucune installation de fichier</strong>.
-                                <br />
-                                Ce guide <strong>Expert</strong> est uniquement destiné à ceux qui souhaitent utiliser les boutons d'action interactifs et profiter d'une synchronisation 24h/24 sans ouvrir l'application.
+                            <p className="text-muted-foreground mb-0">
+                                L'intégration écrit désormais directement dans votre base de données. Plus besoin que votre téléphone soit allumé ou que l'application Granulo soit ouverte pour enregistrer vos sacs.
                             </p>
                         </section>
 
-                        {/* Étape 1 */}
+                        {/* Étape 1 & 2 (Résumé) */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">1</span>
-                                Téléchargement & Installation
+                                Installation des fichiers
                             </h2>
-                            <div className="space-y-4">
-                                <p className="text-muted-foreground">
-                                    L'intégration Granulo est une "Custom Component" pour Home Assistant.
-                                </p>
-                                <div className="bg-card p-6 rounded-lg border border-border">
-                                    <p className="font-medium mb-4">Téléchargez les fichiers requis :</p>
-                                    <a
-                                        href="/granulo-ha-integration.zip"
-                                        download
-                                        className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-                                    >
-                                        <Download className="h-5 w-5" />
-                                        Télécharger le fichier .ZIP
-                                    </a>
-                                </div>
-                                <div className="space-y-2 text-muted-foreground">
-                                    <p>1. <strong>Extrayez</strong> le contenu du fichier ZIP téléchargé.</p>
-                                    <p>
-                                        2. Accédez au dossier <strong>/config</strong> de votre serveur Home Assistant (via Samba, SSH, ou Studio Code Server).
-                                    </p>
-                                    <p>3. <strong>Copiez le dossier</strong> <code className="bg-muted px-1.5 py-0.5 rounded text-primary">custom_components</code> à la racine de votre configuration.</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Étape 2 */}
-                        <section>
-                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">2</span>
-                                Redémarrage de Home Assistant
-                            </h2>
-                            <div className="flex flex-col md:flex-row gap-6 items-start">
-                                <div className="flex-1 space-y-4">
-                                    <p className="text-muted-foreground">
-                                        Une fois les fichiers copiés, vous devez redémarrer Home Assistant :
-                                    </p>
-                                    <ol className="list-decimal pl-6 text-muted-foreground space-y-2 font-medium">
-                                        <li>Allez dans <strong>Outils de développement</strong>.</li>
-                                        <li>Cliquez sur le bouton <strong>Vérifier la configuration</strong>.</li>
-                                        <li>Si tout est vert, cliquez sur <strong>Redémarrer</strong>.</li>
-                                    </ol>
-                                </div>
-                                <div className="bg-muted/20 p-4 rounded-lg border border-border flex flex-col items-center gap-3 min-w-[200px]">
-                                    <RefreshCw className="h-12 w-12 text-primary animate-spin-slow" />
-                                    <span className="text-sm font-medium">Redémarrage requis</span>
-                                </div>
+                            <div className="bg-card p-6 rounded-lg border border-border">
+                                <p className="mb-4">1. Téléchargez et décompressez le ZIP dans votre dossier <code className="bg-muted px-1.5 py-0.5 rounded">custom_components</code>.</p>
+                                <a
+                                    href="/granulo-ha-integration.zip"
+                                    download
+                                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity mb-4"
+                                >
+                                    <Download className="h-5 w-5" />
+                                    Télécharger le ZIP
+                                </a>
+                                <p className="text-sm text-muted-foreground italic">2. Redémarrez Home Assistant pour valider l'installation.</p>
                             </div>
                         </section>
 
                         {/* Étape 3 */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
-                                ID Utilisateur & Synchronisation Autonome
+                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">2</span>
+                                Configuration du Mode Expert
                             </h2>
-                            <div className="bg-card p-6 rounded-xl border border-border space-y-6">
-                                <div className="flex gap-4">
-                                    <div className="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0">
-                                        <Fingerprint className="h-6 w-6 text-primary" />
-                                    </div>
+                            <div className="space-y-4">
+                                <div className="flex gap-4 items-start">
+                                    <div className="bg-muted p-2 rounded-lg mt-1"><Fingerprint className="h-5 w-5 text-primary" /></div>
                                     <div>
-                                        <p className="font-bold">Récupérez votre UID</p>
-                                        <p className="text-sm text-muted-foreground">
-                                            Ouvrez l'app Granulo, allez dans <strong>Réglages &gt; Home Assistant</strong> et copiez votre <strong>ID Utilisateur (UID)</strong>.
-                                        </p>
+                                        <p className="font-bold">Collez votre UID</p>
+                                        <p className="text-sm text-muted-foreground">Dans HA, ajoutez l'intégration "Granulo" et collez l'UID trouvé dans les réglages de votre application.</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-4">
-                                    <div className="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0">
-                                        <PlusCircle className="h-6 w-6 text-primary" />
-                                    </div>
-                                    <div>
-                                        <p className="font-bold">Ajoutez l'intégration</p>
-                                        <p className="text-sm text-muted-foreground">
-                                            Dans HA, allez dans <strong>Paramètres &gt; Appareils et services &gt; Ajouter l'intégration</strong>. Cherchez "Granulo" et collez votre <strong>UID</strong>.
-                                        </p>
-                                    </div>
+                                <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20 text-sm">
+                                    <strong>Important :</strong> Vous n'avez plus besoin de configurer l'adresse IP de HA dans l'application mobile en Mode Expert. Tout passe par Firebase.
                                 </div>
                             </div>
                         </section>
 
-                        {/* Étape 4 */}
+                        {/* Étape 4 - LA NOUVELLE ÉTAPE UI */}
+                        <section>
+                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
+                                Créer les outils de saisie (Helpers)
+                            </h2>
+                            <p className="text-muted-foreground mb-6">
+                                Pour pouvoir choisir la quantité et mettre une note avant de valider, vous devez créer 3 "Entrées" dans Home Assistant :
+                            </p>
+                            <div className="space-y-3 bg-muted/30 p-6 rounded-xl border border-border">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-primary" />
+                                    <code className="text-sm">input_number.granulo_amount</code>
+                                    <span className="text-xs text-muted-foreground">(Nombre, min: 0, max: 100, step: 1)</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-primary" />
+                                    <code className="text-sm">input_text.granulo_note</code>
+                                    <span className="text-xs text-muted-foreground">(Texte libre)</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-primary" />
+                                    <code className="text-sm">input_number.granulo_price</code>
+                                    <span className="text-xs text-muted-foreground">(Nombre, pour les achats uniquement)</span>
+                                </div>
+                                <p className="text-xs text-muted-foreground mt-4 italic">Allez dans Paramètres &gt; Appareils et services &gt; Entrées pour les créer en 2 clics.</p>
+                            </div>
+                        </section>
+
+                        {/* Étape 5 */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
-                                Création du Tableau de Bord Interactif
+                                Code du Dashboard (YAML)
                             </h2>
-                            <div className="space-y-6">
-                                <p className="text-muted-foreground">
-                                    Une fois l'intégration activée, vous devez créer l'interface visuelle. Suivez ces étapes précisément :
-                                </p>
-                                
-                                <div className="space-y-4 bg-card p-6 rounded-xl border border-border">
-                                    <div className="flex gap-4">
-                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">A</div>
-                                        <p className="text-sm">Allez dans <strong>Tableaux de bord</strong> &gt; <strong>Ajouter un tableau de bord</strong> &gt; <strong>À partir de zéro</strong>. Appelez-le "Granulo".</p>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">B</div>
-                                        <p className="text-sm">Ouvrez ce nouveau tableau de bord, cliquez sur le <strong>Crayon (Modifier)</strong> en haut à droite.</p>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">C</div>
-                                        <p className="text-sm">Cliquez sur les <strong>trois petits points (⋮)</strong> en haut à droite, puis sur <strong>Éditeur de configuration</strong>.</p>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center shrink-0 text-xs font-bold">D</div>
-                                        <p className="text-sm"><strong>Effacez tout</strong> le code présent et <strong>collez</strong> le code YAML que vous avez copié depuis l'application Granulo.</p>
-                                    </div>
-                                </div>
-
-                                <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20 text-xs text-orange-400">
-                                    <strong>Conseil :</strong> Pour une expérience complète, n'oubliez pas de créer les "Entrées" (Helpers) pour la quantité et les notes dans Home Assistant comme indiqué dans l'application.
-                                </div>
+                            <p className="text-muted-foreground mb-4">
+                                Voici le code complet à coller dans votre tableau de bord (via l'éditeur de configuration brut) pour obtenir une console de saisie pro :
+                            </p>
+                            <div className="bg-black p-6 rounded-xl border border-border font-mono text-xs overflow-x-auto text-gray-300">
+                                <pre>{`type: entities
+title: ✍️ Saisie Granulo
+entities:
+  - entity: input_number.granulo_amount
+    name: Quantité (sacs)
+  - entity: input_text.granulo_note
+    name: Note / Commentaire
+  - entity: input_number.granulo_price
+    name: Prix Unitaire (Achat)
+  - type: button
+    name: 🔥 Ajouter un Brûlage
+    action_name: Valider
+    tap_action:
+      action: call-service
+      service: granulo.add_burn
+      data:
+        amount: "{{ states('input_number.granulo_amount') | float }}"
+        note: "{{ states('input_text.granulo_note') }}"
+  - type: button
+    name: 🛒 Ajouter un Achat
+    action_name: Valider
+    tap_action:
+      action: call-service
+      service: granulo.add_purchase
+      data:
+        amount: "{{ states('input_number.granulo_amount') | float }}"
+        note: "{{ states('input_text.granulo_note') }}"
+        price: "{{ states('input_number.granulo_price') | float }}"`}</pre>
                             </div>
                         </section>
 
-                        {/* Aide supplémentaire */}
+                        {/* Footer Help */}
                         <section className="pt-12 border-t border-border">
-                            <h2 className="text-xl font-semibold text-foreground mb-4">Besoin d'aide ?</h2>
+                            <h2 className="text-xl font-semibold text-foreground mb-4">Une question ?</h2>
                             <p className="text-muted-foreground">
-                                Si vous rencontrez des difficultés, contactez-nous à <strong className="text-foreground">contact@granulo.app</strong>.
+                                L'équipe Granulo est là pour vous aider sur <strong className="text-foreground">contact@granulo.app</strong>.
                             </p>
                         </section>
                     </div>
