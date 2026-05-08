@@ -92,7 +92,9 @@ const HomeAssistantGuide = () => {
           - entity: input_number.granulo_amount
             name: Nombre de sacs
           - entity: input_number.granulo_price
-            name: Prix (si achat)
+            name: Prix total (achat)
+          - entity: input_text.granulo_note
+            name: Note / Commentaire
           - type: button
             name: 🔥 Enregistrer un Brûlage
             icon: mdi:fire
@@ -102,6 +104,7 @@ const HomeAssistantGuide = () => {
               service: granulo.add_burn
               data:
                 amount: "{{ states('input_number.granulo_amount') }}"
+                note: "{{ states('input_text.granulo_note') }}"
           - type: button
             name: 🛒 Enregistrer un Achat
             icon: mdi:cart
@@ -111,7 +114,8 @@ const HomeAssistantGuide = () => {
               service: granulo.add_purchase
               data:
                 amount: "{{ states('input_number.granulo_amount') }}"
-                price: "{{ states('input_number.granulo_price') }}"`;
+                price: "{{ states('input_number.granulo_price') }}"
+                note: "{{ states('input_text.granulo_note') }}"`;
         
         navigator.clipboard.writeText(yaml);
         setCopied(true);
@@ -193,10 +197,49 @@ const HomeAssistantGuide = () => {
                             </div>
                         </section>
 
-                        {/* Étape 3 : Dashboard */}
+                        {/* Étape 3 : Helpers */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
+                                Création des compteurs de saisie
+                            </h2>
+                            <p className="text-muted-foreground mb-6">
+                                Pour que les boutons de saisie rapide fonctionnent, vous devez créer 3 "Entrées" (Helpers) dans vos paramètres Home Assistant :
+                            </p>
+                            <div className="bg-card p-6 rounded-xl border border-border space-y-4">
+                                <ul className="space-y-4 text-sm">
+                                    <li className="flex items-start gap-3">
+                                        <div className="h-5 w-5 rounded bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">1</div>
+                                        <div>
+                                            <strong className="text-foreground">granulo_amount</strong> (Entrée de type Nombre)
+                                            <p className="text-xs text-muted-foreground">Sert à indiquer le nombre de sacs à brûler ou à acheter.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="h-5 w-5 rounded bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">2</div>
+                                        <div>
+                                            <strong className="text-foreground">granulo_price</strong> (Entrée de type Nombre)
+                                            <p className="text-xs text-muted-foreground">Sert à indiquer le prix total lors d'un achat.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="h-5 w-5 rounded bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">3</div>
+                                        <div>
+                                            <strong className="text-foreground">granulo_note</strong> (Entrée de type Texte)
+                                            <p className="text-xs text-muted-foreground">Sert à ajouter un petit commentaire (ex: "Promo Leclerc").</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p className="text-xs bg-orange-500/10 text-orange-500 p-3 rounded-lg border border-orange-500/20">
+                                    ⚠️ Allez dans <strong>Paramètres &gt; Appareils et services &gt; Entrées &gt; Créer une entrée</strong> pour configurer ces 3 éléments.
+                                </p>
+                            </div>
+                        </section>
+
+                        {/* Étape 4 : Dashboard */}
+                        <section>
+                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
                                 Votre Tableau de Bord
                             </h2>
                             <p className="text-muted-foreground mb-6">
@@ -213,10 +256,10 @@ const HomeAssistantGuide = () => {
                             </div>
                         </section>
 
-                        {/* Étape 4 : Code YAML */}
+                        {/* Étape 5 : Code YAML */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
+                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">5</span>
                                 Code du Dashboard (Pro)
                             </h2>
                             <p className="text-muted-foreground text-sm mb-6">
