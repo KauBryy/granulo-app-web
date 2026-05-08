@@ -173,8 +173,8 @@ const HomeAssistantGuide = () => {
                                 </a>
                             </div>
                             <div className="space-y-2 text-sm text-muted-foreground">
-                                <p>• Extrayez l'archive <code>.zip</code> pour obtenir un dossier nommé <code>granulo</code>.</p>
-                                <p>• Copiez ce dossier dans le répertoire <code>/config/custom_components/</code> de votre Home Assistant (créez le dossier <code>custom_components</code> s'il n'existe pas).</p>
+                                <p>• Extrayez l'archive <code>.zip</code> pour obtenir un dossier nommé <strong>granulo</strong>.</p>
+                                <p>• Copiez ce dossier dans le répertoire <strong>/config/custom_components/</strong> de votre Home Assistant (créez le dossier <code>custom_components</code> s'il n'existe pas).</p>
                                 <p>• <strong>Redémarrez Home Assistant</strong> pour activer l'intégration.</p>
                             </div>
                         </section>
@@ -213,8 +213,18 @@ const HomeAssistantGuide = () => {
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
                                 Code du Dashboard (Pro)
                             </h2>
+                            <div className="bg-card p-6 rounded-xl border border-border mb-6 space-y-4">
+                                <p className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">Procédure :</p>
+                                <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
+                                    <li>Allez dans <strong>Paramètres &gt; Tableaux de bord &gt; Ajouter un tableau de bord</strong>.</li>
+                                    <li>Choisissez "Tableau de bord vide" et donnez-lui un nom (ex: "Mon Poêle").</li>
+                                    <li>Ouvrez votre nouveau tableau de bord, cliquez sur les <strong>3 petits points</strong> (en haut à droite) &gt; <strong>Modifier le tableau de bord</strong>.</li>
+                                    <li>Cliquez à nouveau sur les <strong>3 petits points</strong> &gt; <strong>Éditeur de configuration (YAML)</strong>.</li>
+                                    <li>Effacez tout et collez le code ci-dessous.</li>
+                                </ol>
+                            </div>
                             <p className="text-muted-foreground text-sm mb-6">
-                                Copiez ce code YAML dans l'<strong>Éditeur de configuration</strong> de votre tableau de bord HA.
+                                Copiez ce code YAML complet pour générer l'interface premium Granulo sur votre Home Assistant.
                             </p>
                             
                             <div className="bg-card rounded-xl border border-border overflow-hidden relative group">
