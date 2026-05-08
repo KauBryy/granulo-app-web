@@ -34,7 +34,7 @@ const HomeAssistantGuide = () => {
             name: Autonomie
 
       - type: grid
-        title: "Cette Saison (Sept - Août)"
+        title: "Cette Saison"
         columns: 3
         cards:
           - type: entity
@@ -258,7 +258,7 @@ const HomeAssistantGuide = () => {
           - type: entity
             entity: sensor.granulo_poele_jours_restants
       - type: grid
-        title: "Cette Saison (Sept - Août)"
+        title: "Cette Saison"
         columns: 3
         # ... (cliquez sur copier pour le code complet)`}</pre>
                                 </div>
