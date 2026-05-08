@@ -145,9 +145,19 @@ const HomeAssistantGuide = () => {
                     <h1 className="text-4xl font-bold text-foreground mb-4">
                         Granulo + Home Assistant
                     </h1>
-                    <p className="text-xl text-muted-foreground mb-12">
+                    <p className="text-xl text-muted-foreground mb-8">
                         Suivez ce guide pour piloter votre stock de granulés directement depuis votre domotique.
                     </p>
+
+                    <div className="bg-blue-500/10 p-6 rounded-xl border border-blue-500/20 flex gap-4 items-start mb-12">
+                        <Zap className="h-6 w-6 text-blue-400 shrink-0" />
+                        <div>
+                            <p className="font-bold text-sm text-blue-400">Synchronisation 24h/24</p>
+                            <p className="text-xs text-muted-foreground mt-1">
+                                Grâce à votre UID, l'intégration communique directement avec nos serveurs. Vos données restent synchronisées même si l'application est fermée ou votre téléphone éteint.
+                            </p>
+                        </div>
+                    </div>
 
                     <div className="prose prose-invert max-w-none space-y-12">
                         {/* Étape 1 : Téléchargement */}
@@ -197,30 +207,10 @@ const HomeAssistantGuide = () => {
                             </div>
                         </section>
 
-                        {/* Étape 3 : Dashboard */}
+                        {/* Étape 3 : Code YAML */}
                         <section>
                             <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
-                                Votre Tableau de Bord
-                            </h2>
-                            <p className="text-muted-foreground mb-6">
-                                Grâce à votre UID, Home Assistant reste synchronisé avec vos données même si l'application est fermée ou votre téléphone éteint.
-                            </p>
-                            <div className="bg-blue-500/10 p-6 rounded-xl border border-blue-500/20 flex gap-4 items-start mb-8">
-                                <Zap className="h-6 w-6 text-blue-400 shrink-0" />
-                                <div>
-                                    <p className="font-bold text-sm text-blue-400">Synchronisation 24h/24</p>
-                                    <p className="text-xs text-muted-foreground mt-1">
-                                        L'intégration communique directement avec nos serveurs pour une fiabilité maximale.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Étape 4 : Code YAML */}
-                        <section>
-                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
                                 Code du Dashboard (Pro)
                             </h2>
                             <p className="text-muted-foreground text-sm mb-6">
