@@ -95,6 +95,8 @@ const HomeAssistantGuide = () => {
             name: Prix total (achat)
           - entity: text.granulo_poele_note
             name: Note / Commentaire
+          - entity: button.granulo_poele_actualiser_donnees
+            name: 🔄 Actualiser données
           - type: button
             name: 🔥 Enregistrer un Brûlage
             icon: mdi:fire
@@ -118,6 +120,8 @@ const HomeAssistantGuide = () => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
+
+    const [installMethod, setInstallMethod] = useState<"hacs" | "manual">("hacs");
 
     return (
         <>
@@ -151,28 +155,97 @@ const HomeAssistantGuide = () => {
                         <div>
                             <p className="font-bold text-sm text-blue-400">Synchronisation 24h/24</p>
                             <p className="text-xs text-muted-foreground mt-1">
-                                Grâce à votre UID, l'intégration communique directement avec nos serveurs. Vos données restent synchronisées même si l'application est fermée ou votre téléphone éteint.
+                                Grâce à votre UID, l'intégration communique directement avec nos serveurs. Vos données restent synchronisées même si l'application est fermée. L'actualisation automatique se fait toutes les 6 heures ou manuellement via le bouton dédié.
                             </p>
                         </div>
                     </div>
 
                     <div className="prose prose-invert max-w-none space-y-12">
-                        {/* Étape 1 : Téléchargement */}
+                        {/* Étape 1 : Installation */}
                         <section>
-                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">1</span>
-                                Installation des fichiers
-                            </h2>
-                            <div className="bg-card p-6 rounded-lg border border-border mb-4">
-                                <p className="mb-4 text-sm text-muted-foreground">Téléchargez l'intégration officielle Granulo pour Home Assistant :</p>
-                                <a href="/granulo-ha-integration.zip" download className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                                    <Download className="h-5 w-5" /> Télécharger l'intégration (.zip)
-                                </a>
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                                <h2 className="text-2xl font-semibold text-foreground flex items-center gap-3">
+                                    <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">1</span>
+                                    Installation de l'intégration
+                                </h2>
+                                
+                                {/* Sélecteur de méthode (Tabs) */}
+                                <div className="flex bg-muted p-1 rounded-lg border border-border">
+                                    <button 
+                                        onClick={() => setInstallMethod("hacs")}
+                                        className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${installMethod === "hacs" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+                                    >
+                                        HACS (Recommandé)
+                                    </button>
+                                    <button 
+                                        onClick={() => setInstallMethod("manual")}
+                                        className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${installMethod === "manual" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+                                    >
+                                        MANUELLE (Zip)
+                                    </button>
+                                </div>
                             </div>
-                            <div className="space-y-2 text-sm text-muted-foreground">
-                                <p>• Extrayez l'archive <code>.zip</code> pour obtenir un dossier nommé <strong>granulo</strong>.</p>
-                                <p>• Copiez ce dossier dans le répertoire <strong>/config/custom_components/</strong> de votre Home Assistant (créez le dossier <code>custom_components</code> s'il n'existe pas).</p>
-                                <p>• <strong>Redémarrez Home Assistant</strong> pour activer l'intégration.</p>
+                            
+                            <div className="space-y-6">
+                                {installMethod === "hacs" ? (
+                                    <div className="bg-card p-6 rounded-xl border border-primary/20 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+                                            <p className="text-sm font-bold text-green-500">Mises à jour automatiques via GitHub</p>
+                                        </div>
+                                        <div className="space-y-4 text-sm text-muted-foreground">
+                                            <div className="flex gap-4">
+                                                <span className="font-mono text-primary font-bold">01.</span>
+                                                <p>Dans Home Assistant, allez dans <strong>HACS &gt; Intégrations</strong>.</p>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <span className="font-mono text-primary font-bold">02.</span>
+                                                <p>Cliquez sur les <strong>3 points</strong> (en haut à droite) &gt; <strong>Dépôts personnalisés</strong>.</p>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <span className="font-mono text-primary font-bold">03.</span>
+                                                <p>Ajoutez l'URL : <code>https://github.com/KauBryy/granulo-home-assistant</code></p>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <span className="font-mono text-primary font-bold">04.</span>
+                                                <p>Sélectionnez <strong>Intégration</strong> et cliquez sur <strong>Ajouter</strong>.</p>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <span className="font-mono text-primary font-bold">05.</span>
+                                                <p>Recherchez "<strong>Granulo</strong>" dans la barre de recherche et cliquez sur <strong>Télécharger</strong>.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="bg-card p-6 rounded-xl border border-border animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-8 border-b border-border pb-6">
+                                            <div>
+                                                <p className="font-bold text-foreground">Archive ZIP Officielle</p>
+                                                <p className="text-xs text-muted-foreground mt-1 text-red-400">⚠️ Attention : les mises à jour seront manuelles.</p>
+                                            </div>
+                                            <a href="/granulo-ha-integration.zip" download className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">
+                                                <Download className="h-5 w-5" /> Télécharger .zip
+                                            </a>
+                                        </div>
+                                        <div className="space-y-4 text-sm text-muted-foreground">
+                                            <div className="flex gap-4">
+                                                <span className="font-mono text-foreground font-bold">01.</span>
+                                                <p>Extrayez l'archive pour obtenir un dossier nommé <code>granulo</code>.</p>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <span className="font-mono text-foreground font-bold">02.</span>
+                                                <p>Copiez ce dossier dans <code>/config/custom_components/</code> de votre Home Assistant.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            
+                            <div className="mt-8 bg-muted/50 p-4 rounded-lg flex items-center gap-3">
+                                <RefreshCw className="h-4 w-4 text-primary animate-spin-slow" />
+                                <p className="text-xs text-muted-foreground italic">
+                                    Une fois les fichiers installés, n'oubliez pas de <strong>redémarrer Home Assistant</strong>.
+                                </p>
                             </div>
                         </section>
 
@@ -182,20 +255,20 @@ const HomeAssistantGuide = () => {
                                 <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">2</span>
                                 Connexion à votre compte
                             </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="flex flex-col gap-4">
                                 <div className="bg-card p-5 rounded-xl border border-border space-y-4">
                                     <div className="flex items-center gap-3">
                                         <img src="/logo-granulo.jpg" alt="Granulo" className="h-6 w-6 rounded-md object-cover" />
-                                        <span className="font-bold text-orange-500">Côté App mobile</span>
+                                        <span className="font-bold text-orange-500">1. Côté App mobile</span>
                                     </div>
                                     <p className="text-xs text-muted-foreground">
-                                        Allez dans <strong>Réglages &gt; Home Assistant</strong> et copiez votre <strong>ID Utilisateur (UID)</strong>.
+                                        Allez dans <strong>Réglages &gt; Assistant Domotique</strong> (ou Home Assistant) et copiez votre <strong>ID Utilisateur (UID)</strong>.
                                     </p>
                                 </div>
                                 <div className="bg-card p-5 rounded-xl border border-border space-y-4">
                                     <div className="flex items-center gap-3">
                                         <img src="https://brands.home-assistant.io/_/homeassistant/icon.png" alt="Home Assistant" className="h-6 w-6" />
-                                        <span className="font-bold text-blue-500">Côté Home Assistant</span>
+                                        <span className="font-bold text-blue-500">2. Côté Home Assistant</span>
                                     </div>
                                     <p className="text-xs text-muted-foreground">
                                         Allez dans <strong>Paramètres &gt; Appareils et services &gt; Ajouter</strong>, cherchez "Granulo" et collez votre <strong>UID</strong>.
@@ -215,7 +288,7 @@ const HomeAssistantGuide = () => {
                                 <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
                                     <li>Allez dans <strong>Paramètres &gt; Tableaux de bord &gt; Ajouter un tableau de bord</strong>.</li>
                                     <li>Choisissez "Tableau de bord vide" et donnez-lui un nom (ex: "Mon Poêle").</li>
-                                    <li>Ouvrez votre nouveau tableau de bord, cliquez sur les <strong>3 petits points</strong> (en haut à droite) &gt; <strong>Modifier le tableau de bord</strong>.</li>
+                                    <li>Ouvrez votre nouveau tableau de bord, cliquez sur les <strong>3 petits points</strong> &gt; <strong>Modifier le tableau de bord</strong>.</li>
                                     <li>Cliquez à nouveau sur les <strong>3 petits points</strong> &gt; <strong>Éditeur de configuration (YAML)</strong>.</li>
                                     <li>Effacez tout et collez le code ci-dessous.</li>
                                 </ol>
@@ -256,10 +329,14 @@ const HomeAssistantGuide = () => {
             entity: sensor.granulo_poele_stock_actuel
           - type: entity
             entity: sensor.granulo_poele_jours_restants
-      - type: grid
-        title: "Cette Saison"
-        columns: 3
-        # ... (cliquez sur copier pour le code complet)`}</pre>
+      - type: entities
+        title: "✍️ Saisie Rapide"
+        entities:
+          - entity: number.granulo_poele_quantite
+          - entity: number.granulo_poele_prix
+          - entity: button.granulo_poele_actualiser_donnees
+            name: 🔄 Actualiser données
+      # ... (cliquez sur copier pour le code complet)`}</pre>
                                 </div>
                             </div>
                         </section>
