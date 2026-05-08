@@ -177,18 +177,18 @@ const HomeAssistantGuide = () => {
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="bg-card p-5 rounded-xl border border-border space-y-4">
-                                    <div className="flex items-center gap-3 text-orange-500">
-                                        <Fingerprint className="h-5 w-5" />
-                                        <span className="font-bold">Côté App mobile</span>
+                                    <div className="flex items-center gap-3">
+                                        <img src="/logo-granulo.jpg" alt="Granulo" className="h-6 w-6 rounded-md object-cover" />
+                                        <span className="font-bold text-orange-500">Côté App mobile</span>
                                     </div>
                                     <p className="text-xs text-muted-foreground">
                                         Allez dans <strong>Réglages &gt; Home Assistant</strong> et copiez votre <strong>ID Utilisateur (UID)</strong>.
                                     </p>
                                 </div>
                                 <div className="bg-card p-5 rounded-xl border border-border space-y-4">
-                                    <div className="flex items-center gap-3 text-blue-500">
-                                        <PlusCircle className="h-5 w-5" />
-                                        <span className="font-bold">Côté Home Assistant</span>
+                                    <div className="flex items-center gap-3">
+                                        <img src="https://brands.home-assistant.io/_/homeassistant/icon.png" alt="Home Assistant" className="h-6 w-6" />
+                                        <span className="font-bold text-blue-500">Côté Home Assistant</span>
                                     </div>
                                     <p className="text-xs text-muted-foreground">
                                         Allez dans <strong>Paramètres &gt; Appareils et services &gt; Ajouter</strong>, cherchez "Granulo" et collez votre <strong>UID</strong>.
