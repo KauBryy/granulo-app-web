@@ -163,8 +163,8 @@ const HomeAssistantGuide = () => {
                                 </a>
                             </div>
                             <div className="space-y-2 text-sm text-muted-foreground">
-                                <p>• Extrayez le dossier <code>custom_components/granulo</code>.</p>
-                                <p>• Copiez-le dans le dossier <code>/config</code> de votre Home Assistant.</p>
+                                <p>• Extrayez l'archive <code>.zip</code> pour obtenir un dossier nommé <code>granulo</code>.</p>
+                                <p>• Copiez ce dossier dans le répertoire <code>/config/custom_components/</code> de votre Home Assistant (créez le dossier <code>custom_components</code> s'il n'existe pas).</p>
                                 <p>• <strong>Redémarrez Home Assistant</strong> pour activer l'intégration.</p>
                             </div>
                         </section>
