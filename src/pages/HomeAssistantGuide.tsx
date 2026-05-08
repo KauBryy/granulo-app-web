@@ -122,6 +122,13 @@ const HomeAssistantGuide = () => {
     };
 
     const [installMethod, setInstallMethod] = useState<"hacs" | "manual">("hacs");
+    const [urlCopied, setUrlCopied] = useState(false);
+
+    const handleCopyUrl = () => {
+        navigator.clipboard.writeText("https://github.com/KauBryy/granulo-home-assistant");
+        setUrlCopied(true);
+        setTimeout(() => setUrlCopied(false), 2000);
+    };
 
     return (
         <>
@@ -204,9 +211,21 @@ const HomeAssistantGuide = () => {
                                             </div>
                                             <div className="flex gap-4">
                                                 <span className="font-mono text-primary font-bold">03.</span>
-                                                <p>Ajoutez l'URL : <code>https://github.com/KauBryy/granulo-home-assistant</code></p>
+                                                <div className="flex-1">
+                                                    <p className="mb-2">Ajoutez l'URL du dépôt :</p>
+                                                    <div className="flex items-center gap-2 bg-black/40 p-2 rounded border border-border group">
+                                                        <code className="text-xs break-all text-primary flex-1">https://github.com/KauBryy/granulo-home-assistant</code>
+                                                        <button 
+                                                            onClick={handleCopyUrl}
+                                                            className="p-1.5 hover:bg-white/10 rounded transition-colors text-muted-foreground hover:text-primary"
+                                                            title="Copier l'URL"
+                                                        >
+                                                            {urlCopied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="flex gap-4">
+                                            <div className="flex gap-4 pt-2">
                                                 <span className="font-mono text-primary font-bold">04.</span>
                                                 <p>Sélectionnez <strong>Intégration</strong> et cliquez sur <strong>Ajouter</strong>.</p>
                                             </div>
