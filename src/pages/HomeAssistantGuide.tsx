@@ -101,21 +101,18 @@ const HomeAssistantGuide = () => {
             action_name: Enregistrer
             tap_action:
               action: call-service
-              service: granulo.add_burn
-              data:
-                amount: "{{ states('number.granulo_poele_quantite') }}"
-                note: "{{ states('text.granulo_poele_note') }}"
+              service: button.press
+              target:
+                entity_id: button.granulo_poele_enregistrer_un_brulage
           - type: button
             name: 🛒 Enregistrer un Achat
             icon: mdi:cart
             action_name: Enregistrer
             tap_action:
               action: call-service
-              service: granulo.add_purchase
-              data:
-                amount: "{{ states('number.granulo_poele_quantite') }}"
-                price: "{{ states('number.granulo_poele_prix') }}"
-                note: "{{ states('text.granulo_poele_note') }}"`;
+              service: button.press
+              target:
+                entity_id: button.granulo_poele_enregistrer_un_achat`;
         
         navigator.clipboard.writeText(yaml);
         setCopied(true);
