@@ -1,9 +1,180 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Copy, Check, Download, Zap, RefreshCw } from "lucide-react";
+import { ArrowLeft, Copy, Check, Download, Zap, RefreshCw, LayoutTemplate, SquareCode } from "lucide-react";
 
 type Language = "fr" | "en" | "it" | "de";
+
+const rawDashboardYaml = `views:
+  - title: Granulo
+    path: granulo
+    icon: mdi:fire
+    cards:
+      - type: vertical-stack
+        title: 🔥 Mon Poêle à Granulés
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.granulo_poele_stock_actuel
+                name: Stock restant
+                unit: sacs
+                min: 0
+                max: 60
+                needle: true
+                severity:
+                  red: 0
+                  yellow: 5
+                  green: 15
+              - type: entity
+                entity: sensor.granulo_poele_jours_restants
+                name: Autonomie estimée
+                icon: mdi:clock-outline
+
+          - type: glance
+            title: 📊 Statistiques Saison
+            show_name: true
+            show_state: true
+            entities:
+              - entity: sensor.granulo_poele_achats_saison
+                name: Achats
+              - entity: sensor.granulo_poele_brulages_saison
+                name: Brûlés
+              - entity: sensor.granulo_poele_depenses_saison
+                name: Dépenses
+              - entity: sensor.granulo_poele_moyenne_7j
+                name: Moyenne 7j
+
+          - type: entities
+            title: 🧹 Entretien du Poêle
+            entities:
+              - entity: sensor.granulo_poele_vitre
+                name: Nettoyage Vitre
+              - entity: sensor.granulo_poele_entretien
+                name: Prochain entretien
+
+          - type: entities
+            title: ⚡ Enregistrement rapide
+            show_header_toggle: false
+            entities:
+              - entity: select.poele_granulo_marque_de_granules
+                name: Marque de granulés
+              - entity: number.granulo_poele_quantite
+                name: Quantité (sacs)
+              - entity: number.granulo_poele_prix
+                name: Prix unitaire (€)
+              - entity: text.granulo_poele_note
+                name: Note optionnelle
+
+          - type: horizontal-stack
+            cards:
+              - type: button
+                name: 🔥 Brûler sac(s)
+                icon: mdi:fire
+                tap_action:
+                  action: perform-action
+                  perform_action: button.press
+                  target:
+                    entity_id: button.granulo_poele_enregistrer_un_brulage
+              - type: button
+                name: 🛒 Ajouter Achat
+                icon: mdi:cart-plus
+                tap_action:
+                  action: perform-action
+                  perform_action: button.press
+                  target:
+                    entity_id: button.granulo_poele_enregistrer_un_achat
+              - type: button
+                name: 🔄 Rafraîchir
+                icon: mdi:refresh
+                tap_action:
+                  action: perform-action
+                  perform_action: button.press
+                  target:
+                    entity_id: button.granulo_poele_actualiser_donnees`;
+
+const manualCardYaml = `type: vertical-stack
+title: 🔥 Mon Poêle à Granulés
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: gauge
+        entity: sensor.granulo_poele_stock_actuel
+        name: Stock restant
+        unit: sacs
+        min: 0
+        max: 60
+        needle: true
+        severity:
+          red: 0
+          yellow: 5
+          green: 15
+      - type: entity
+        entity: sensor.granulo_poele_jours_restants
+        name: Autonomie estimée
+        icon: mdi:clock-outline
+
+  - type: glance
+    title: 📊 Statistiques Saison
+    show_name: true
+    show_state: true
+    entities:
+      - entity: sensor.granulo_poele_achats_saison
+        name: Achats
+      - entity: sensor.granulo_poele_brulages_saison
+        name: Brûlés
+      - entity: sensor.granulo_poele_depenses_saison
+        name: Dépenses
+      - entity: sensor.granulo_poele_moyenne_7j
+        name: Moyenne 7j
+
+  - type: entities
+    title: 🧹 Entretien du Poêle
+    entities:
+      - entity: sensor.granulo_poele_vitre
+        name: Nettoyage Vitre
+      - entity: sensor.granulo_poele_entretien
+        name: Prochain entretien
+
+  - type: entities
+    title: ⚡ Enregistrement rapide
+    show_header_toggle: false
+    entities:
+      - entity: select.poele_granulo_marque_de_granules
+        name: Marque de granulés
+      - entity: number.granulo_poele_quantite
+        name: Quantité (sacs)
+      - entity: number.granulo_poele_prix
+        name: Prix unitaire du sac (€)
+      - entity: text.granulo_poele_note
+        name: Note optionnelle
+
+  - type: horizontal-stack
+    cards:
+      - type: button
+        name: 🔥 Brûler sac(s)
+        icon: mdi:fire
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.granulo_poele_enregistrer_un_brulage
+      - type: button
+        name: 🛒 Ajouter Achat
+        icon: mdi:cart-plus
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.granulo_poele_enregistrer_un_achat
+      - type: button
+        name: 🔄 Rafraîchir
+        icon: mdi:refresh
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.granulo_poele_actualiser_donnees`;
 
 const translations = {
     fr: {
@@ -22,7 +193,7 @@ const translations = {
         hacsStep3: "Ajoutez l'URL du dépôt :",
         hacsStep4: "Sélectionnez Intégration et cliquez sur Ajouter.",
         hacsStep5: "Recherchez \"Granulo\" dans la barre de recherche et cliquez sur Télécharger.",
-        manualTitle: "Archive ZIP Officielle",
+        manualTitle: "Archive ZIP Officielle (v1.1.2)",
         manualWarn: "Attention : les mises à jour seront manuelles.",
         manualStep1: "Extrayez l'archive pour obtenir un dossier nommé granulo.",
         manualStep2: "Copiez ce dossier dans /config/custom_components/ de votre Home Assistant.",
@@ -31,10 +202,12 @@ const translations = {
         appDesc: "Allez dans Réglages > Assistant Domotique (ou Home Assistant) et copiez votre ID Utilisateur (UID).",
         haSide: "2. Côté Home Assistant",
         haDesc: "Allez dans Paramètres > Appareils et services > Ajouter, cherchez \"Granulo\" et collez votre UID.",
-        dashDesc: "Pour un affichage optimal, nous vous conseillons d'ajouter une carte \"Manuel\" à votre tableau de bord :",
-        dashStep1: "Cliquez sur Modifier le tableau de bord > Ajouter une carte.",
-        dashStep2: "Cherchez \"Manuel\" tout en bas de la liste.",
-        dashStep3: "Basculez en mode Éditeur de code et collez le code suivant :",
+        optionATitle: "Option A : Éditeur de Configuration Brute",
+        optionABadge: "Recommandé (Vue complète)",
+        optionADesc: "3 points en haut à droite de votre Dashboard > Éditeur de configuration brute. Collez ce code pour créer la vue complète avec son onglet dédié :",
+        optionBTitle: "Option B : Carte Manuelle",
+        optionBBadge: "Ajout dans une vue existante",
+        optionBDesc: "Modifier le tableau de bord > + Ajouter une carte > Manuel (tout en bas). Collez ce code :",
         copyBtn: "Copier le code YAML",
         copiedBtn: "Code copié !",
         backBtn: "Retour au site"
@@ -55,7 +228,7 @@ const translations = {
         hacsStep3: "Add the repository URL:",
         hacsStep4: "Select Integration and click Add.",
         hacsStep5: "Search for \"Granulo\" in the search bar and click Download.",
-        manualTitle: "Official ZIP Archive",
+        manualTitle: "Official ZIP Archive (v1.1.2)",
         manualWarn: "Warning: updates will be manual.",
         manualStep1: "Extract the archive to get a folder named granulo.",
         manualStep2: "Copy this folder to /config/custom_components/ in your Home Assistant.",
@@ -64,10 +237,12 @@ const translations = {
         appDesc: "Go to Settings > Home Assistant and copy your User ID (UID).",
         haSide: "2. Home Assistant side",
         haDesc: "Go to Settings > Devices & Services > Add, search for \"Granulo\" and paste your UID.",
-        dashDesc: "For optimal display, we recommend adding a \"Manual\" card to your dashboard:",
-        dashStep1: "Click Edit Dashboard > Add Card.",
-        dashStep2: "Search for \"Manual\" at the bottom of the list.",
-        dashStep3: "Switch to Code Editor mode and paste the following code:",
+        optionATitle: "Option A: Raw Configuration Editor",
+        optionABadge: "Recommended (Full View)",
+        optionADesc: "3 dots top right of Dashboard > Raw Configuration Editor. Paste this code to create a full view with its dedicated tab:",
+        optionBTitle: "Option B: Manual Card",
+        optionBBadge: "Add to existing view",
+        optionBDesc: "Edit Dashboard > + Add Card > Manual (at the very bottom). Paste this code:",
         copyBtn: "Copy YAML code",
         copiedBtn: "Code copied!",
         backBtn: "Back to site"
@@ -87,20 +262,22 @@ const translations = {
         hacsStep2: "Fai clic sui 3 punti (in alto a destra) > Repository personalizzati.",
         hacsStep3: "Aggiungi l'URL del repository:",
         hacsStep4: "Seleziona Integrazione e fai clic su Aggiungi.",
-        hacsStep5: "Cerca \"Granulo\" nella barra di ricerca e fai clic su Scarica.",
-        manualTitle: "Archivio ZIP Ufficiale",
+        hacsStep5: "Cerca \"Granulo\" nella barra di recherche e fai clic su Scarica.",
+        manualTitle: "Archivio ZIP Ufficiale (v1.1.2)",
         manualWarn: "Attenzione: gli aggiornamenti saranno manuali.",
         manualStep1: "Estrai l'archivio per ottenere una cartella chiamata granulo.",
         manualStep2: "Copia questa cartella in /config/custom_components/ nel tuo Home Assistant.",
-        restartNote: "Once files are installed, remember to restart Home Assistant.",
+        restartNote: "Una volta installati i file, ricorda di riavviare Home Assistant.",
         appSide: "1. Lato App mobile",
         appDesc: "Vai su Impostazioni > Home Assistant e copia il tuo ID Utente (UID).",
         haSide: "2. Lato Home Assistant",
         haDesc: "Vai su Impostazioni > Dispositivi e servizi > Aggiungi, cerca \"Granulo\" e incolla il tuo UID.",
-        dashDesc: "Per una visualizzazione ottimale, ti consigliamo di aggiungere una scheda \"Manuale\" alla tua dashboard:",
-        dashStep1: "Fai clic su Modifica dashboard > Aggiungi scheda.",
-        dashStep2: "Cerca \"Manuale\" in fondo alla lista.",
-        dashStep3: "Passa alla modalità Editor di codice e incolla il seguente codice:",
+        optionATitle: "Opzione A : Editor di configurazione grezza",
+        optionABadge: "Consigliato (Vista completa)",
+        optionADesc: "3 punti in alto a destra > Editor di configurazione grezza. Incolla questo codice per creare la vista completa:",
+        optionBTitle: "Opzione B : Scheda Manuale",
+        optionBBadge: "Aggiungi alla vista esistente",
+        optionBDesc: "Modifica Dashboard > + Aggiungi scheda > Manuale. Incolla questo codice:",
         copyBtn: "Copia codice YAML",
         copiedBtn: "Codice copiato!",
         backBtn: "Torna al sito"
@@ -121,19 +298,21 @@ const translations = {
         hacsStep3: "Fügen Sie die Repository-URL hinzu:",
         hacsStep4: "Wählen Sie Integration und klicken Sie auf Hinzufügen.",
         hacsStep5: "Suchen Sie in der Suchleiste nach „Granulo“ und klicken Sie auf Herunterladen.",
-        manualTitle: "Offizielles ZIP-Archiv",
+        manualTitle: "Offizielles ZIP-Archiv (v1.1.2)",
         manualWarn: "Achtung: Updates müssen manuell durchgeführt werden.",
-        manualStep1: "Entpacken Sie das Archiv, um einen Ordner namens granulo erhalten.",
+        manualStep1: "Entpacken Sie das Archiv, um einen Ordner namens granulo zu erhalten.",
         manualStep2: "Kopieren Sie diesen Ordner nach /config/custom_components/ in Ihrem Home Assistant.",
         restartNote: "Sobald die Dateien installiert sind, denken Sie daran, Home Assistant neu zu starten.",
         appSide: "1. Seite der mobilen App",
         appDesc: "Gehen Sie zu Einstellungen > Home Assistant und kopieren Sie Ihre Benutzer-ID (UID).",
         haSide: "2. Seite von Home Assistant",
         haDesc: "Gehen Sie zu Einstellungen > Geräte & Dienste > Hinzufügen, suchen Sie nach „Granulo“ und fügen Sie Ihre UID ein.",
-        dashDesc: "Für eine optimale Anzeige empfehlen wir, Ihrem Dashboard eine „Manuelle“ Karte hinzuzufügen:",
-        dashStep1: "Klicken Sie auf Dashboard bearbeiten > Karte hinzufügen.",
-        dashStep2: "Suchen Sie am Ende der Liste nach „Manuell“.",
-        dashStep3: "Wechseln Sie in den Code-Editor-Modus und fügen Sie den folgenden Code ein:",
+        optionATitle: "Option A: Raw-Konfigurationseditor",
+        optionABadge: "Empfohlen (Vollständige Ansicht)",
+        optionADesc: "3 Punkte oben rechts > Raw-Konfigurationseditor. Fügen Sie diesen Code ein:",
+        optionBTitle: "Option B: Manuelle Karte",
+        optionBBadge: "Zu bestehender Ansicht hinzufügen",
+        optionBDesc: "Dashboard bearbeiten > + Karte hinzufügen > Manuell. Fügen Sie diesen Code ein:",
         copyBtn: "YAML-Code kopieren",
         copiedBtn: "Code kopiert!",
         backBtn: "Zurück zur Website"
@@ -141,8 +320,10 @@ const translations = {
 };
 
 const HomeAssistantGuide = () => {
-    const [copied, setCopied] = useState(false);
+    const [copiedA, setCopiedA] = useState(false);
+    const [copiedB, setCopiedB] = useState(false);
     const [installMethod, setInstallMethod] = useState<"hacs" | "manual">("hacs");
+    const [dashboardOption, setDashboardOption] = useState<"optionA" | "optionB">("optionA");
     const [urlCopied, setUrlCopied] = useState(false);
     const [lang, setLang] = useState<Language>("fr");
 
@@ -154,34 +335,16 @@ const HomeAssistantGuide = () => {
         setTimeout(() => setUrlCopied(false), 2000);
     };
 
-    const handleCopyYaml = () => {
-        const yaml = `type: vertical-stack
-cards:
-  - type: entity
-    entity: sensor.granulo_poele_stock_actuel
-    name: Stock de granulés
-    icon: mdi:package-variant
-  - type: horizontal-stack
-    cards:
-      - type: button
-        name: Actualiser
-        icon: mdi:refresh
-        entity: button.granulo_poele_actualiser_donnees
-        show_name: true
-        show_icon: true
-      - type: button
-        name: Entretien
-        icon: mdi:wrench
-        entity: sensor.granulo_poele_entretien
-  - type: entities
-    entities:
-      - entity: sensor.granulo_poele_jours_restants
-      - entity: sensor.granulo_poele_moyenne_7j
-      - entity: sensor.granulo_poele_brulages_saison
-      - entity: sensor.granulo_poele_achats_saison`;
-        navigator.clipboard.writeText(yaml);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+    const handleCopyYamlA = () => {
+        navigator.clipboard.writeText(rawDashboardYaml);
+        setCopiedA(true);
+        setTimeout(() => setCopiedA(false), 2000);
+    };
+
+    const handleCopyYamlB = () => {
+        navigator.clipboard.writeText(manualCardYaml);
+        setCopiedB(true);
+        setTimeout(() => setCopiedB(false), 2000);
     };
 
     return (
@@ -364,56 +527,80 @@ cards:
 
                         {/* Étape 3 : Dashboard */}
                         <section className="pb-12">
-                            <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
-                                {t.step3}
-                            </h2>
-                            <div className="bg-card p-6 rounded-xl border border-border space-y-6">
-                                <p className="text-sm text-muted-foreground leading-relaxed">
-                                    {t.dashDesc}
-                                </p>
-                                <div className="space-y-4 text-xs text-muted-foreground border-l-2 border-primary/20 pl-4 py-1">
-                                    <p>• {t.dashStep1}</p>
-                                    <p>• {t.dashStep2}</p>
-                                    <p>• {t.dashStep3}</p>
-                                </div>
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+                                <h2 className="text-2xl font-semibold text-foreground flex items-center gap-3">
+                                    <span className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
+                                    {t.step3}
+                                </h2>
 
-                                <div className="relative group">
-                                    <pre className="bg-black/50 p-6 rounded-xl overflow-x-auto text-[11px] leading-relaxed text-blue-300 font-mono border border-white/5">
-                                        {`type: vertical-stack
-cards:
-  - type: entity
-    entity: sensor.granulo_poele_stock_actuel
-    name: Stock de granulés
-    icon: mdi:package-variant
-  - type: horizontal-stack
-    cards:
-      - type: button
-        name: Actualiser
-        icon: mdi:refresh
-        entity: button.granulo_poele_actualiser_donnees
-        show_name: true
-        show_icon: true
-      - type: button
-        name: Entretien
-        icon: mdi:wrench
-        entity: sensor.granulo_poele_entretien
-  - type: entities
-    entities:
-      - entity: sensor.granulo_poele_jours_restants
-      - entity: sensor.granulo_poele_moyenne_7j
-      - entity: sensor.granulo_poele_brulages_saison
-      - entity: sensor.granulo_poele_achats_saison`}
-                                    </pre>
-                                    <button
-                                        onClick={handleCopyYaml}
-                                        className="absolute top-4 right-4 flex items-center gap-2 bg-primary/20 hover:bg-primary/30 text-primary-foreground px-3 py-1.5 rounded-lg text-xs font-bold transition-all backdrop-blur-sm border border-primary/30"
+                                {/* Sélecteur Option A / Option B */}
+                                <div className="flex bg-muted p-1 rounded-lg border border-border">
+                                    <button 
+                                        onClick={() => setDashboardOption("optionA")}
+                                        className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-bold transition-all ${dashboardOption === "optionA" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
                                     >
-                                        {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
-                                        {copied ? t.copiedBtn : t.copyBtn}
+                                        <LayoutTemplate size={14} />
+                                        Option A
+                                    </button>
+                                    <button 
+                                        onClick={() => setDashboardOption("optionB")}
+                                        className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-bold transition-all ${dashboardOption === "optionB" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+                                    >
+                                        <SquareCode size={14} />
+                                        Option B
                                     </button>
                                 </div>
                             </div>
+
+                            {dashboardOption === "optionA" ? (
+                                <div className="bg-card p-6 rounded-xl border border-primary/30 space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="font-bold text-foreground">{t.optionATitle}</p>
+                                            <span className="text-[10px] text-primary font-semibold uppercase">{t.optionABadge}</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground leading-relaxed">
+                                        {t.optionADesc}
+                                    </p>
+                                    <div className="relative group">
+                                        <pre className="bg-black/60 p-6 rounded-xl overflow-x-auto text-[11px] leading-relaxed text-blue-300 font-mono border border-white/5 max-h-[420px]">
+                                            {rawDashboardYaml}
+                                        </pre>
+                                        <button
+                                            onClick={handleCopyYamlA}
+                                            className="absolute top-4 right-4 flex items-center gap-2 bg-primary/30 hover:bg-primary text-primary-foreground px-3 py-1.5 rounded-lg text-xs font-bold transition-all backdrop-blur-sm border border-primary/40"
+                                        >
+                                            {copiedA ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+                                            {copiedA ? t.copiedBtn : t.copyBtn}
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="bg-card p-6 rounded-xl border border-border space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="font-bold text-foreground">{t.optionBTitle}</p>
+                                            <span className="text-[10px] text-muted-foreground font-semibold uppercase">{t.optionBBadge}</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground leading-relaxed">
+                                        {t.optionBDesc}
+                                    </p>
+                                    <div className="relative group">
+                                        <pre className="bg-black/60 p-6 rounded-xl overflow-x-auto text-[11px] leading-relaxed text-blue-300 font-mono border border-white/5 max-h-[420px]">
+                                            {manualCardYaml}
+                                        </pre>
+                                        <button
+                                            onClick={handleCopyYamlB}
+                                            className="absolute top-4 right-4 flex items-center gap-2 bg-primary/30 hover:bg-primary text-primary-foreground px-3 py-1.5 rounded-lg text-xs font-bold transition-all backdrop-blur-sm border border-primary/40"
+                                        >
+                                            {copiedB ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+                                            {copiedB ? t.copiedBtn : t.copyBtn}
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
                         </section>
                     </div>
                 </div>
