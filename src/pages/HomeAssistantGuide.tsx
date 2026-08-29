@@ -5,20 +5,113 @@ import { ArrowLeft, Copy, Check, Download, Zap, RefreshCw, LayoutTemplate, Squar
 
 type Language = "fr" | "en" | "it" | "de";
 
-const rawDashboardYaml = `views:
+const dashboardTranslations = {
+    fr: {
+        stoveTitle: "🔥 Mon Poêle à Granulés",
+        stockRestant: "Stock restant",
+        unitSacks: "sacs",
+        autonomieEstimee: "Autonomie estimée",
+        statsTitle: "📊 Statistiques Saison",
+        achats: "Achats",
+        brules: "Brûlés",
+        depenses: "Dépenses",
+        moyenne7j: "Moyenne 7j",
+        entretienTitle: "🧹 Entretien du Poêle",
+        vitre: "Nettoyage Vitre",
+        entretien: "Prochain entretien",
+        enregistrementRapide: "⚡ Enregistrement rapide",
+        marque: "Marque de granulés",
+        quantite: "Quantité (sacs)",
+        prixUnitaire: "Prix unitaire du sac (€)",
+        note: "Note optionnelle",
+        btnBrule: "🔥 Brûler sac(s)",
+        btnAchat: "🛒 Ajouter Achat",
+        btnRefresh: "🔄 Rafraîchir",
+    },
+    en: {
+        stoveTitle: "🔥 My Pellet Stove",
+        stockRestant: "Remaining stock",
+        unitSacks: "bags",
+        autonomieEstimee: "Estimated autonomy",
+        statsTitle: "📊 Season Statistics",
+        achats: "Purchases",
+        brules: "Burned",
+        depenses: "Expenses",
+        moyenne7j: "7-day average",
+        entretienTitle: "🧹 Stove Maintenance",
+        vitre: "Glass cleaning",
+        entretien: "Next maintenance",
+        enregistrementRapide: "⚡ Quick entry",
+        marque: "Pellet brand",
+        quantite: "Quantity (bags)",
+        prixUnitaire: "Unit price per bag (€)",
+        note: "Optional note",
+        btnBrule: "🔥 Burn bag(s)",
+        btnAchat: "🛒 Add Purchase",
+        btnRefresh: "🔄 Refresh",
+    },
+    it: {
+        stoveTitle: "🔥 La mia Stufa a Pellet",
+        stockRestant: "Stock rimanente",
+        unitSacks: "sacchi",
+        autonomieEstimee: "Autonomia stimata",
+        statsTitle: "📊 Statistiche Stagione",
+        achats: "Acquisti",
+        brules: "Bruciati",
+        depenses: "Spese",
+        moyenne7j: "Media 7g",
+        entretienTitle: "🧹 Manutenzione Stufa",
+        vitre: "Pulizia vetro",
+        entretien: "Prossima manutenzione",
+        enregistrementRapide: "⚡ Registrazione rapida",
+        marque: "Marca di pellet",
+        quantite: "Quantità (sacchi)",
+        prixUnitaire: "Prezzo unitario sacco (€)",
+        note: "Nota opzionale",
+        btnBrule: "🔥 Brucia sacco/i",
+        btnAchat: "🛒 Aggiungi Acquisto",
+        btnRefresh: "🔄 Aggiorna",
+    },
+    de: {
+        stoveTitle: "🔥 Mein Pelletofen",
+        stockRestant: "Verbleibender Vorrat",
+        unitSacks: "Säcke",
+        autonomieEstimee: "Geschätzte Autonomie",
+        statsTitle: "📊 Saisonstatistiken",
+        achats: "Einkäufe",
+        brules: "Verbrannt",
+        depenses: "Ausgaben",
+        moyenne7j: "7-Tage-Schnitt",
+        entretienTitle: "🧹 Ofenwartung",
+        vitre: "Glasreinigung",
+        entretien: "Nächste Wartung",
+        enregistrementRapide: "⚡ Schnelleingabe",
+        marque: "Pelletmarke",
+        quantite: "Menge (Säcke)",
+        prixUnitaire: "Stückpreis pro Sack (€)",
+        note: "Optionale Notiz",
+        btnBrule: "🔥 Sack/Säcke verbrennen",
+        btnAchat: "🛒 Einkauf hinzufügen",
+        btnRefresh: "🔄 Aktualisieren",
+    },
+};
+
+const getRawDashboardYaml = (lang: Language) => {
+    const d = dashboardTranslations[lang];
+    return `views:
   - title: Granulo
     path: granulo
     icon: mdi:fire
     cards:
       - type: vertical-stack
-        title: 🔥 Mon Poêle à Granulés
+        title: ${d.stoveTitle}
         cards:
           - type: horizontal-stack
             cards:
               - type: gauge
                 entity: sensor.granulo_poele_stock_actuel
-                name: Stock restant
-                unit: sacs
+                name: ${d.stockRestant}
+                unit: ${d.unitSacks}
                 min: 0
                 max: 60
                 needle: true
@@ -28,48 +121,48 @@ const rawDashboardYaml = `views:
                   green: 15
               - type: entity
                 entity: sensor.granulo_poele_jours_restants
-                name: Autonomie estimée
+                name: ${d.autonomieEstimee}
                 icon: mdi:clock-outline
 
           - type: glance
-            title: 📊 Statistiques Saison
+            title: ${d.statsTitle}
             show_name: true
             show_state: true
             entities:
               - entity: sensor.granulo_poele_achats_saison
-                name: Achats
+                name: ${d.achats}
               - entity: sensor.granulo_poele_brulages_saison
-                name: Brûlés
+                name: ${d.brules}
               - entity: sensor.granulo_poele_depenses_saison
-                name: Dépenses
+                name: ${d.depenses}
               - entity: sensor.granulo_poele_moyenne_7j
-                name: Moyenne 7j
+                name: ${d.moyenne7j}
 
           - type: entities
-            title: 🧹 Entretien du Poêle
+            title: ${d.entretienTitle}
             entities:
               - entity: sensor.granulo_poele_vitre
-                name: Nettoyage Vitre
+                name: ${d.vitre}
               - entity: sensor.granulo_poele_entretien
-                name: Prochain entretien
+                name: ${d.entretien}
 
           - type: entities
-            title: ⚡ Enregistrement rapide
+            title: ${d.enregistrementRapide}
             show_header_toggle: false
             entities:
               - entity: select.poele_granulo_marque_de_granules
-                name: Marque de granulés
+                name: ${d.marque}
               - entity: number.granulo_poele_quantite
-                name: Quantité (sacs)
+                name: ${d.quantite}
               - entity: number.granulo_poele_prix
-                name: Prix unitaire (€)
+                name: ${d.prixUnitaire}
               - entity: text.granulo_poele_note
-                name: Note optionnelle
+                name: ${d.note}
 
           - type: horizontal-stack
             cards:
               - type: button
-                name: 🔥 Brûler sac(s)
+                name: ${d.btnBrule}
                 icon: mdi:fire
                 tap_action:
                   action: perform-action
@@ -77,7 +170,7 @@ const rawDashboardYaml = `views:
                   target:
                     entity_id: button.granulo_poele_enregistrer_un_brulage
               - type: button
-                name: 🛒 Ajouter Achat
+                name: ${d.btnAchat}
                 icon: mdi:cart-plus
                 tap_action:
                   action: perform-action
@@ -85,23 +178,26 @@ const rawDashboardYaml = `views:
                   target:
                     entity_id: button.granulo_poele_enregistrer_un_achat
               - type: button
-                name: 🔄 Rafraîchir
+                name: ${d.btnRefresh}
                 icon: mdi:refresh
                 tap_action:
                   action: perform-action
                   perform_action: button.press
                   target:
                     entity_id: button.granulo_poele_actualiser_donnees`;
+};
 
-const manualCardYaml = `type: vertical-stack
-title: 🔥 Mon Poêle à Granulés
+const getManualCardYaml = (lang: Language) => {
+    const d = dashboardTranslations[lang];
+    return `type: vertical-stack
+title: ${d.stoveTitle}
 cards:
   - type: horizontal-stack
     cards:
       - type: gauge
         entity: sensor.granulo_poele_stock_actuel
-        name: Stock restant
-        unit: sacs
+        name: ${d.stockRestant}
+        unit: ${d.unitSacks}
         min: 0
         max: 60
         needle: true
@@ -111,48 +207,48 @@ cards:
           green: 15
       - type: entity
         entity: sensor.granulo_poele_jours_restants
-        name: Autonomie estimée
+        name: ${d.autonomieEstimee}
         icon: mdi:clock-outline
 
   - type: glance
-    title: 📊 Statistiques Saison
+    title: ${d.statsTitle}
     show_name: true
     show_state: true
     entities:
       - entity: sensor.granulo_poele_achats_saison
-        name: Achats
+        name: ${d.achats}
       - entity: sensor.granulo_poele_brulages_saison
-        name: Brûlés
+        name: ${d.brules}
       - entity: sensor.granulo_poele_depenses_saison
-        name: Dépenses
+        name: ${d.depenses}
       - entity: sensor.granulo_poele_moyenne_7j
-        name: Moyenne 7j
+        name: ${d.moyenne7j}
 
   - type: entities
-    title: 🧹 Entretien du Poêle
+    title: ${d.entretienTitle}
     entities:
       - entity: sensor.granulo_poele_vitre
-        name: Nettoyage Vitre
+        name: ${d.vitre}
       - entity: sensor.granulo_poele_entretien
-        name: Prochain entretien
+        name: ${d.entretien}
 
   - type: entities
-    title: ⚡ Enregistrement rapide
+    title: ${d.enregistrementRapide}
     show_header_toggle: false
     entities:
       - entity: select.poele_granulo_marque_de_granules
-        name: Marque de granulés
+        name: ${d.marque}
       - entity: number.granulo_poele_quantite
-        name: Quantité (sacs)
+        name: ${d.quantite}
       - entity: number.granulo_poele_prix
-        name: Prix unitaire du sac (€)
+        name: ${d.prixUnitaire}
       - entity: text.granulo_poele_note
-        name: Note optionnelle
+        name: ${d.note}
 
   - type: horizontal-stack
     cards:
       - type: button
-        name: 🔥 Brûler sac(s)
+        name: ${d.btnBrule}
         icon: mdi:fire
         tap_action:
           action: perform-action
@@ -160,7 +256,7 @@ cards:
           target:
             entity_id: button.granulo_poele_enregistrer_un_brulage
       - type: button
-        name: 🛒 Ajouter Achat
+        name: ${d.btnAchat}
         icon: mdi:cart-plus
         tap_action:
           action: perform-action
@@ -168,13 +264,14 @@ cards:
           target:
             entity_id: button.granulo_poele_enregistrer_un_achat
       - type: button
-        name: 🔄 Rafraîchir
+        name: ${d.btnRefresh}
         icon: mdi:refresh
         tap_action:
           action: perform-action
           perform_action: button.press
           target:
             entity_id: button.granulo_poele_actualiser_donnees`;
+};
 
 const translations = {
     fr: {
@@ -262,7 +359,7 @@ const translations = {
         hacsStep2: "Fai clic sui 3 punti (in alto a destra) > Repository personalizzati.",
         hacsStep3: "Aggiungi l'URL del repository:",
         hacsStep4: "Seleziona Integrazione e fai clic su Aggiungi.",
-        hacsStep5: "Cerca \"Granulo\" nella barra di recherche e fai clic su Scarica.",
+        hacsStep5: "Cerca \"Granulo\" nella barra di ricerca e fai clic su Scarica.",
         manualTitle: "Archivio ZIP Ufficiale (v1.1.2)",
         manualWarn: "Attenzione: gli aggiornamenti saranno manuali.",
         manualStep1: "Estrai l'archivio per ottenere una cartella chiamata granulo.",
@@ -329,6 +426,9 @@ const HomeAssistantGuide = () => {
 
     const t = translations[lang];
 
+    const currentYamlA = getRawDashboardYaml(lang);
+    const currentYamlB = getManualCardYaml(lang);
+
     const handleCopyUrl = () => {
         navigator.clipboard.writeText("https://github.com/KauBryy/granulo-home-assistant");
         setUrlCopied(true);
@@ -336,13 +436,13 @@ const HomeAssistantGuide = () => {
     };
 
     const handleCopyYamlA = () => {
-        navigator.clipboard.writeText(rawDashboardYaml);
+        navigator.clipboard.writeText(currentYamlA);
         setCopiedA(true);
         setTimeout(() => setCopiedA(false), 2000);
     };
 
     const handleCopyYamlB = () => {
-        navigator.clipboard.writeText(manualCardYaml);
+        navigator.clipboard.writeText(currentYamlB);
         setCopiedB(true);
         setTimeout(() => setCopiedB(false), 2000);
     };
@@ -565,7 +665,7 @@ const HomeAssistantGuide = () => {
                                     </p>
                                     <div className="relative group">
                                         <pre className="bg-black/60 p-6 rounded-xl overflow-x-auto text-[11px] leading-relaxed text-blue-300 font-mono border border-white/5 max-h-[420px]">
-                                            {rawDashboardYaml}
+                                            {currentYamlA}
                                         </pre>
                                         <button
                                             onClick={handleCopyYamlA}
@@ -589,7 +689,7 @@ const HomeAssistantGuide = () => {
                                     </p>
                                     <div className="relative group">
                                         <pre className="bg-black/60 p-6 rounded-xl overflow-x-auto text-[11px] leading-relaxed text-blue-300 font-mono border border-white/5 max-h-[420px]">
-                                            {manualCardYaml}
+                                            {currentYamlB}
                                         </pre>
                                         <button
                                             onClick={handleCopyYamlB}
