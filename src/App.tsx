@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { LanguageProvider } from "./context/LanguageContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicyApp from "./pages/PrivacyPolicyApp";
@@ -18,23 +19,25 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/privacy-app" element={<PrivacyPolicyApp />} />
-            <Route path="/terms-app" element={<TermsApp />} />
-            <Route path="/privacy-website" element={<PrivacyPolicyWebsite />} />
-            <Route path="/legal-notice" element={<LegalNotice />} />
-            <Route path="/donation-section" element={<DonationSectionPage />} />
-            <Route path="/home-assistant" element={<HomeAssistantGuide />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/privacy-app" element={<PrivacyPolicyApp />} />
+              <Route path="/terms-app" element={<TermsApp />} />
+              <Route path="/privacy-website" element={<PrivacyPolicyWebsite />} />
+              <Route path="/legal-notice" element={<LegalNotice />} />
+              <Route path="/donation-section" element={<DonationSectionPage />} />
+              <Route path="/home-assistant" element={<HomeAssistantGuide />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
     </HelmetProvider>
   </QueryClientProvider>
 );

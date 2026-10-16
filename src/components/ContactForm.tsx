@@ -1,133 +1,133 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
+import { Send, MailCheck } from "lucide-react";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Le nom est requis").max(100, "Le nom ne doit pas dépasser 100 caractères"),
-  email: z.string().trim().email("Veuillez entrer une adresse e-mail valide").max(255, "L'email ne doit pas dépasser 255 caractères"),
-  message: z.string().trim().min(1, "Le message est requis").max(1000, "Le message ne doit pas dépasser 1000 caractères"),
-});
-
-const ContactForm = () => {
+export const ContactForm: React.FC = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  const validate = () => {
+    const errs: { name?: string; email?: string; message?: string } = {};
+    if (!formData.name.trim() || formData.name.length > 100) {
+      errs.name = t.contact.errName;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email)) {
+      errs.email = t.contact.errEmail;
+    }
+    if (!formData.message.trim() || formData.message.length > 1000) {
+      errs.message = t.contact.errMessage;
+    }
+    return errs;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrors({});
-    
-    const validation = contactSchema.safeParse(formData);
-    
-    if (!validation.success) {
-      const fieldErrors: { name?: string; email?: string; message?: string } = {};
-      validation.error.errors.forEach((error) => {
-        const field = error.path[0] as keyof typeof fieldErrors;
-        fieldErrors[field] = error.message;
-      });
-      setErrors(fieldErrors);
+    const errs = validate();
+    setErrors(errs);
+
+    if (Object.keys(errs).length > 0) {
       return;
     }
 
     setIsSubmitting(true);
-    
-    const mailtoLink = `mailto:contact@granulo.app?subject=${encodeURIComponent(`Contact de ${formData.name}`)}&body=${encodeURIComponent(`De: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+
+    const mailtoLink = `mailto:contact@granulo.app?subject=${encodeURIComponent(
+      `Contact de ${formData.name}`
+    )}&body=${encodeURIComponent(
+      `De: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
     window.location.href = mailtoLink;
-    
+
     toast({
-      title: "Merci pour votre message !",
-      description: "Votre client mail va s'ouvrir pour envoyer votre message.",
+      title: t.contact.successTitle,
+      description: t.contact.successDesc,
     });
-    
+
     setFormData({ name: "", email: "", message: "" });
     setIsSubmitting(false);
   };
 
   return (
-    <section className="py-16 md:py-24">
+    <section id="contact" className="py-20 md:py-28 bg-muted/30">
       <div className="container mx-auto px-4 max-w-2xl">
-        <div className="rounded-3xl bg-card p-8 md:p-12 shadow-medium border border-border">
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl text-center">
-            Contactez-nous
-          </h2>
-          
-          <p className="mb-8 text-center text-muted-foreground">
-            Vous souhaitez nous contacter pour signaler un bug, une suggestion, nous remercier ou pour toute autre raison ?
-          </p>
+        <div className="rounded-[36px] bg-card p-8 md:p-12 shadow-medium border border-border">
+          <div className="text-center mb-10">
+            <h2 className="mb-3 text-3xl font-black text-foreground md:text-4xl tracking-tight">
+              {t.contact.title}
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              {t.contact.subtitle}
+            </p>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-foreground">
-                Nom
+              <Label htmlFor="name" className="text-foreground font-semibold text-xs uppercase tracking-wider">
+                {t.contact.nameLabel}
               </Label>
               <Input
                 id="name"
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Votre nom"
-                className={errors.name ? "border-destructive" : ""}
+                placeholder={t.contact.namePlaceholder}
+                className={`rounded-xl py-5 ${errors.name ? "border-destructive ring-1 ring-destructive" : ""}`}
               />
-              {errors.name && (
-                <p className="text-sm text-destructive">{errors.name}</p>
-              )}
+              {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-foreground">
-                Adresse e-mail <span className="text-destructive">*</span>
+              <Label htmlFor="email" className="text-foreground font-semibold text-xs uppercase tracking-wider">
+                {t.contact.emailLabel} <span className="text-destructive">*</span>
               </Label>
               <Input
                 id="email"
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="votre@email.com"
+                placeholder={t.contact.emailPlaceholder}
                 required
-                className={errors.email ? "border-destructive" : ""}
+                className={`rounded-xl py-5 ${errors.email ? "border-destructive ring-1 ring-destructive" : ""}`}
               />
-              {errors.email && (
-                <p className="text-sm text-destructive">{errors.email}</p>
-              )}
-              <p className="text-xs text-muted-foreground">
-                Veuillez utiliser votre propre adresse e-mail pour nous permettre de vous répondre correctement. Toute utilisation frauduleuse n'entraînera aucune prise en compte.
-              </p>
+              {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+              <p className="text-[11px] text-muted-foreground">{t.contact.emailHelp}</p>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message" className="text-foreground">
-                Message <span className="text-destructive">*</span>
+              <Label htmlFor="message" className="text-foreground font-semibold text-xs uppercase tracking-wider">
+                {t.contact.messageLabel} <span className="text-destructive">*</span>
               </Label>
               <Textarea
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Votre message..."
-                rows={6}
+                placeholder={t.contact.messagePlaceholder}
+                rows={5}
                 required
-                className={errors.message ? "border-destructive" : ""}
+                className={`rounded-2xl ${errors.message ? "border-destructive ring-1 ring-destructive" : ""}`}
               />
-              {errors.message && (
-                <p className="text-sm text-destructive">{errors.message}</p>
-              )}
+              {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
             </div>
 
-            <p className="text-xs text-muted-foreground">
-              Nous respectons votre vie privée, vos données ne seront jamais transmises à un tiers.
-            </p>
+            <p className="text-xs text-muted-foreground">{t.contact.privacyText}</p>
 
             <Button
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-lg py-6"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-base py-6 rounded-2xl shadow-soft hover:shadow-medium transition-all"
             >
-              {isSubmitting ? "Envoi en cours..." : "Envoyer mon message"}
+              <Send className="h-4 w-4 mr-2" />
+              <span>{isSubmitting ? t.contact.submittingBtn : t.contact.submitBtn}</span>
             </Button>
           </form>
         </div>
