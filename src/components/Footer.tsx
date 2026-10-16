@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
               className="h-14 w-14 rounded-full drop-shadow-md transition-transform group-hover:scale-105"
             />
             <span className="text-2xl font-black tracking-tight text-foreground">
-              Granulo<span className="text-primary">+</span>
+              Granulo
             </span>
           </Link>
 

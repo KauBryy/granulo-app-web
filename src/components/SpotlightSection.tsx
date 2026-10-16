@@ -1,7 +1,7 @@
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Bot, MapPin, CheckCircle2, Sparkles, Navigation } from "lucide-react";
-import toastyMascot from "@/assets/toasty.png";
+import toastyThinking from "@/assets/toasty-thinking.png";
 
 export const SpotlightSection: React.FC = () => {
   const { t } = useLanguage();
@@ -45,11 +45,11 @@ export const SpotlightSection: React.FC = () => {
 
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative rounded-[36px] bg-gradient-to-br from-purple-500/15 via-card to-background p-8 border border-purple-500/20 shadow-strong max-w-lg w-full text-center">
-              <div className="absolute -top-10 -right-6 animate-float">
+              <div className="absolute -top-12 -right-4 sm:-right-8 animate-gentle-float group cursor-pointer z-10">
                 <img
-                  src={toastyMascot}
-                  alt="Toasty IA"
-                  className="h-28 w-28 drop-shadow-2xl"
+                  src={toastyThinking}
+                  alt="Toasty IA Coach"
+                  className="h-28 w-28 sm:h-32 sm:w-32 drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
 

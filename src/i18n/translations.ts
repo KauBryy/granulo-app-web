@@ -65,6 +65,19 @@ export interface TranslationSchema {
     bulletMap2: string;
     bulletMap3: string;
   };
+  granuloPlus: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    feature1Title: string;
+    feature1Desc: string;
+    feature2Title: string;
+    feature2Desc: string;
+    feature3Title: string;
+    feature3Desc: string;
+    bubble: string;
+    ctaNote: string;
+  };
   donation: {
     title: string;
     description: string;
@@ -137,7 +150,7 @@ export const translations: Record<Language, TranslationSchema> = {
       download: "Télécharger",
     },
     hero: {
-      badge: "✨ Nouvelle version 2026 • Granulo+ & IA",
+      badge: "✨ Nouvelle version 2026 • Granulo & IA",
       titleLine1: "Maîtrisez votre poêle,",
       titleHighlight: "anticipez votre stock",
       titleLine2: "en toute sérénité",
@@ -196,7 +209,7 @@ export const translations: Record<Language, TranslationSchema> = {
       closeModal: "Fermer l'aperçu",
       slides: [
         {
-          title: "Dashboard Granulo+",
+          title: "Dashboard Granulo",
           caption: "Tout votre poêle en un coup d'œil",
           details: "Stock actuel, pourcentage de remplissage, autonomie estimée avec météo en temps réel et accès rapide à la carte.",
         },
@@ -240,6 +253,19 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletMap1: "Géolocalisation des points de vente partenaires et magasins",
       bulletMap2: "Filtres 24h/24, livreurs et magasins favoris",
       bulletMap3: "Signalement communautaire simple en 1 clic",
+    },
+    granuloPlus: {
+      badge: "Mode Premium",
+      title: "Passez à la vitesse supérieure avec Granulo+",
+      subtitle: "L'application de base Granulo est 100% complète et gratuite. Pour les foyers équipés de plusieurs poêles et les utilisateurs exigeants, le mode Granulo+ débloque des fonctionnalités avancées !",
+      feature1Title: "Multi-Poêles & Multi-Stocks",
+      feature1Desc: "Gérez plusieurs poêles indépendamment (résidence principale, chalet, atelier) avec des stocks de granulés dédiés.",
+      feature2Title: "Historique & Données Illimités",
+      feature2Desc: "Conservez l'historique complet de toutes vos saisons sans limitation et exportez vos données à tout moment.",
+      feature3Title: "Sauvegarde Cloud en Temps Réel",
+      feature3Desc: "Synchronisation instantanée entre tous vos appareils et sécurité totale de vos données.",
+      bubble: "Prêt pour les grosses chaleurs ? Granulo+ s'occupe de tout !",
+      ctaNote: "Option Premium disponible directement dans l'application Granulo",
     },
     donation: {
       title: "Soutenez Granulo 💚",
@@ -312,7 +338,7 @@ export const translations: Record<Language, TranslationSchema> = {
       download: "Download",
     },
     hero: {
-      badge: "✨ New 2026 Edition • Granulo+ & AI",
+      badge: "✨ New 2026 Edition • Granulo & AI",
       titleLine1: "Master your stove,",
       titleHighlight: "forecast your pellet stock",
       titleLine2: "with total peace of mind",
@@ -371,7 +397,7 @@ export const translations: Record<Language, TranslationSchema> = {
       closeModal: "Close preview",
       slides: [
         {
-          title: "Granulo+ Dashboard",
+          title: "Granulo Dashboard",
           caption: "Your stove at a single glance",
           details: "Current stock, fill percentage, estimated runtime with live weather and instant shortcut to the community map.",
         },
@@ -415,6 +441,19 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletMap1: "GPS map of verified stockists and supermarkets",
       bulletMap2: "Filters for 24/7 availability, delivery options, and favorites",
       bulletMap3: "Easy one-tap price update mechanism for the community",
+    },
+    granuloPlus: {
+      badge: "Premium Mode",
+      title: "Power Up with Granulo+",
+      subtitle: "The core Granulo app is 100% free and feature-packed. For enthusiasts and multi-stove homes, Granulo+ unlocks advanced power features!",
+      feature1Title: "Multi-Stoves & Multi-Stock",
+      feature1Desc: "Manage multiple pellet stoves independently (main home, cabin, workshop) with dedicated inventory.",
+      feature2Title: "Unlimited History & Insights",
+      feature2Desc: "Keep your complete heating records across all seasons with zero limits and instant CSV exports.",
+      feature3Title: "Real-time Cloud Sync",
+      feature3Desc: "Seamless synchronization across all your devices with automatic cloud backup.",
+      bubble: "Ready for heavy winter heating? Granulo+ has your back!",
+      ctaNote: "Premium option available directly inside the Granulo app",
     },
     donation: {
       title: "Support Granulo 💚",
@@ -487,7 +526,7 @@ export const translations: Record<Language, TranslationSchema> = {
       download: "Scarica",
     },
     hero: {
-      badge: "✨ Nuova versione 2026 • Granulo+ & IA",
+      badge: "✨ Nuova versione 2026 • Granulo & IA",
       titleLine1: "Controlla la tua stufa,",
       titleHighlight: "anticipa le tue scorte",
       titleLine2: "in totale serenità",
@@ -546,7 +585,7 @@ export const translations: Record<Language, TranslationSchema> = {
       closeModal: "Chiudi anteprima",
       slides: [
         {
-          title: "Dashboard Granulo+",
+          title: "Dashboard Granulo",
           caption: "La tua stufa a colpo d'occhio",
           details: "Scorte in corso, livello serbatoio, autonomia calcolata con meteo locale e accesso immediato alla mappa.",
         },
@@ -590,6 +629,19 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletMap1: "Mappa GPS dei punti vendita e supermercati",
       bulletMap2: "Filtri 24h/24, consegna a domicilio e negozi preferiti",
       bulletMap3: "Segnalazione prezzi immediata con un semplice tocco",
+    },
+    granuloPlus: {
+      badge: "Modalità Premium",
+      title: "Sblocca la massima potenza con Granulo+",
+      subtitle: "L'app base Granulo è 100% gratuita e ricca di funzioni. Per chi possiede più stufe o cerca il massimo controllo, la modalità Granulo+ sblocca funzionalità avanzate!",
+      feature1Title: "Multi-Stufa & Multi-Scorte",
+      feature1Desc: "Gestisci più stufe separatamente (casa principale, baita, laboratorio) con scorte dedicate.",
+      feature2Title: "Storico & Dati Illimitati",
+      feature2Desc: "Conserva tutti i dati delle tue stagioni senza limiti con esportazione rapida in qualsiasi momento.",
+      feature3Title: "Sincronizzazione Cloud Istantanea",
+      feature3Desc: "Sincronizzazione immediata tra tutti i tuoi dispositivi e massima sicurezza per i tuoi dati.",
+      bubble: "Pronto per l'inverno intenso? Granulo+ pensa a tutto!",
+      ctaNote: "Opzione Premium disponibile direttamente nell'app Granulo",
     },
     donation: {
       title: "Sostieni Granulo 💚",
@@ -662,7 +714,7 @@ export const translations: Record<Language, TranslationSchema> = {
       download: "Download",
     },
     hero: {
-      badge: "✨ Neue Edition 2026 • Granulo+ & KI",
+      badge: "✨ Neue Edition 2026 • Granulo & KI",
       titleLine1: "Beherrsche deinen Ofen,",
       titleHighlight: "plane deinen Pelletvorrat",
       titleLine2: "völlig stressfrei",
@@ -721,7 +773,7 @@ export const translations: Record<Language, TranslationSchema> = {
       closeModal: "Vorschau schließen",
       slides: [
         {
-          title: "Granulo+ Dashboard",
+          title: "Granulo Dashboard",
           caption: "Dein Ofen auf einen Blick",
           details: "Aktueller Vorrat, Füllstand, geschätzte Laufzeit mit lokalem Wetter und Direktzugriff zur Pellet-Karte.",
         },
@@ -765,6 +817,19 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletMap1: "GPS-Übersicht aller Verkaufsstellen in deinem Umkreis",
       bulletMap2: "Filter für 24/7-Abholung, Lieferanten und Favoriten",
       bulletMap3: "Unkomplizierte 1-Klick-Preismeldung für alle",
+    },
+    granuloPlus: {
+      badge: "Premium-Modus",
+      title: "Hol das Maximum heraus mit Granulo+",
+      subtitle: "Die Basisversion von Granulo ist 100% kostenlos und komplett. Für alle mit mehreren Öfen oder höchsten Ansprüchen schaltet Granulo+ die volle Power frei!",
+      feature1Title: "Mehrere Öfen & Vorräte",
+      feature1Desc: "Verwalte mehrere Pelletöfen unabhängig voneinander (Hauptwohnsitz, Ferienhaus, Werkstatt) mit getrennten Vorratsständen.",
+      feature2Title: "Unbegrenzte Chronik & Export",
+      feature2Desc: "Behalte deine gesamten Heizdaten über alle Winter hinweg ohne Limit und exportiere sie jederzeit mit einem Klick.",
+      feature3Title: "Echtzeit-Cloud-Synchronisierung",
+      feature3Desc: "Nahtloser Datenabgleich zwischen all deinen Geräten mit automatischer Sicherung und voller Datensicherheit.",
+      bubble: "Bereit für echte Spitzenlasten? Granulo+ regelt das!",
+      ctaNote: "Premium-Option direkt in der Granulo-App verfügbar",
     },
     donation: {
       title: "Granulo unterstützen 💚",

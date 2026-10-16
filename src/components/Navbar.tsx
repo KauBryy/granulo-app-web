@@ -22,6 +22,7 @@ export const Navbar: React.FC = () => {
     { href: "#features", label: t.nav.features },
     { href: "#screenshots", label: t.nav.screenshots },
     { href: "#spotlight", label: t.nav.aiAndMap },
+    { href: "#granulo-plus", label: "Granulo+" },
     { href: "#donation-section", label: t.nav.support },
     { href: "#contact", label: t.nav.contact },
   ];
@@ -66,7 +67,7 @@ export const Navbar: React.FC = () => {
           <div className="flex flex-col text-left">
             <div className="flex items-center gap-1.5">
               <span className="text-xl md:text-2xl font-black tracking-tight text-foreground">
-                Granulo<span className="text-primary">+</span>
+                Granulo
               </span>
               <span className="hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-secondary/15 text-secondary border border-secondary/20">
                 2026

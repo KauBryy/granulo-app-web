@@ -1,7 +1,7 @@
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
-import granuloLogo from "@/assets/granulo-logo.jpg";
+import toastyHappy from "@/assets/toasty-happy.png";
 import { Check, ShieldCheck, Cloud, ChevronRight } from "lucide-react";
 
 export const CTASection: React.FC = () => {
@@ -15,11 +15,14 @@ export const CTASection: React.FC = () => {
 
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-          <img
-            src={granuloLogo}
-            alt="Granulo"
-            className="mb-8 h-24 w-24 rounded-full animate-float drop-shadow-2xl"
-          />
+          <div className="relative mb-8 group cursor-pointer animate-gentle-float">
+            <div className="absolute -inset-4 bg-gradient-to-tr from-orange-500/25 via-primary/20 to-amber-500/20 rounded-full blur-2xl opacity-75 group-hover:opacity-100 transition-opacity" />
+            <img
+              src={toastyHappy}
+              alt="Toasty Granulo"
+              className="relative h-28 sm:h-36 w-auto drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
 
           <h2 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-tight leading-tight">
             {t.cta.title}

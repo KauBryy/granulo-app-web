@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Heart, Coffee } from "lucide-react";
+import toastyScarf from "@/assets/toasty-scarf.png";
 
 declare global {
   interface Window {
@@ -85,8 +86,15 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
       <section id="donate" className={`${className} bg-muted/60 relative scroll-mt-24`}>
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 mb-6 shadow-sm">
-              <Heart className="h-8 w-8 fill-emerald-500/20" />
+            <div className="relative inline-block mb-4 group cursor-pointer animate-gentle-float">
+              <img
+                src={toastyScarf}
+                alt="Toasty au chaud"
+                className="h-24 w-24 sm:h-28 sm:w-28 drop-shadow-xl transition-transform duration-300 group-hover:scale-110"
+              />
+              <span className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 ring-2 ring-background text-white text-xs">
+                💚
+              </span>
             </div>
 
             <h2 className="mb-4 text-3xl sm:text-4xl font-black text-foreground tracking-tight">

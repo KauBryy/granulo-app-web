@@ -16,7 +16,7 @@ import dashboardFr from "@/assets/hero/dashboard-fr.jpg";
 import dashboardEn from "@/assets/hero/dashboard-en.jpg";
 import dashboardIt from "@/assets/hero/dashboard-it.jpg";
 import dashboardDe from "@/assets/hero/dashboard-de.jpg";
-import toastyMascot from "@/assets/toasty.png";
+import toastyWave from "@/assets/toasty-wave.png";
 
 const heroScreenshots: Record<Language, string> = {
   fr: dashboardFr,
@@ -181,17 +181,20 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* Toasty Mascot — centered above mockup with gentle float */}
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 animate-gentle-float">
-              <div className="flex items-center gap-2">
+            {/* Toasty Mascot — waving cheerfully with speech bubble */}
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 animate-gentle-float">
+              <div className="relative group cursor-pointer transition-transform duration-300 hover:scale-110">
                 <img
-                  src={toastyMascot}
+                  src={toastyWave}
                   alt="Toasty Granulo Mascot"
-                  className="h-14 w-14 sm:h-16 sm:w-16 drop-shadow-xl"
+                  className="h-16 w-16 sm:h-20 sm:w-20 drop-shadow-2xl select-none"
                 />
-                <div className="hidden md:block rounded-2xl bg-card/95 backdrop-blur-md border border-orange-500/30 px-3 py-2 text-[11px] font-bold text-foreground shadow-medium max-w-[170px] text-left">
-                  {t.hero.toastyBubble}
-                </div>
+                <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 ring-2 ring-background">
+                  <Flame className="h-2.5 w-2.5 text-white animate-pulse" />
+                </span>
+              </div>
+              <div className="hidden sm:block rounded-2xl bg-card/95 backdrop-blur-md border border-orange-500/30 px-3.5 py-2 text-xs font-bold text-foreground shadow-medium max-w-[200px] text-left">
+                {t.hero.toastyBubble}
               </div>
             </div>
 
