@@ -154,13 +154,13 @@ export const translations: Record<Language, TranslationSchema> = {
     nav: {
       features: "Fonctionnalités",
       screenshots: "Captures d'écran",
-      aiAndMap: "IA & Carte",
+      aiAndMap: "Coach IA",
       support: "Soutenir 💚",
       contact: "Contact",
       download: "Télécharger",
     },
     hero: {
-      badge: "✨ Nouvelle version 2026 • Granulo & IA",
+      badge: "Nouvelle version 2026 • Granulo & IA",
       titleLine1: "Maîtrisez votre poêle,",
       titleHighlight: "anticipez votre stock",
       titleLine2: "en toute sérénité",
@@ -184,32 +184,32 @@ export const translations: Record<Language, TranslationSchema> = {
       items: [
         {
           title: "Dashboard & Autonomie intelligente",
-          description: "Visualisez en un clin d'œil votre stock restant en sacs et la date exacte estimée de fin de stock selon votre météo locale.",
+          description: "Stock restant en direct et calcul d'autonomie selon votre météo locale.",
           tag: "Essentiel",
         },
         {
           title: "Carte Pellet collaborative",
-          description: "Trouvez les sacs et palettes les moins chers autour de vous grâce aux prix et adresses partagés par les utilisateurs en temps réel.",
+          description: "Bons plans et prix des sacs et palettes partagés par la communauté.",
           tag: "Communauté",
         },
         {
           title: "Historique & Journal complet",
-          description: "Enregistrez chaque sac brûlé, achat avec son prix au kg, et gardez une traçabilité limpide de vos dépenses.",
+          description: "Enregistrement rapide de chaque sac brûlé et suivi clair de vos achats.",
           tag: "Traçabilité",
         },
         {
           title: "Statistiques & Météo multi-saisons",
-          description: "Comparez jusqu'à 4 saisons de chauffe et observez la corrélation directe entre températures extérieures et consommation.",
+          description: "Graphiques comparatifs de consommation et corrélation avec le froid.",
           tag: "Analytique",
         },
         {
           title: "Entretiens & Alertes ramonage",
-          description: "Rappels configurables pour le nettoyage de vitre, vidage des cendres, et dates du ramonage obligatoire pour être serein.",
+          description: "Rappels programmés pour vitre, cendrier et ramonage obligatoire.",
           tag: "Sécurité",
         },
         {
           title: "Coach Granulo IA",
-          description: "Bilan mensuel en format Stories et réponses interactives à toutes vos questions d'entretien, de réglage et de stockage.",
+          description: "Conseils sur mesure et bilans mensuels interactifs en format Stories.",
           tag: "IA & Nouveauté",
         },
       ],
@@ -352,13 +352,13 @@ export const translations: Record<Language, TranslationSchema> = {
     nav: {
       features: "Features",
       screenshots: "Screenshots",
-      aiAndMap: "AI & Map",
+      aiAndMap: "AI Coach",
       support: "Support 💚",
       contact: "Contact",
       download: "Download",
     },
     hero: {
-      badge: "✨ New 2026 Edition • Granulo & AI",
+      badge: "New 2026 Edition • Granulo & AI",
       titleLine1: "Master your stove,",
       titleHighlight: "forecast your pellet stock",
       titleLine2: "with total peace of mind",
@@ -382,32 +382,32 @@ export const translations: Record<Language, TranslationSchema> = {
       items: [
         {
           title: "Dashboard & Smart Autonomy",
-          description: "See your remaining bags and the exact estimated run-out date at a single glance, dynamically adjusted to local weather.",
+          description: "Live remaining stock and run-out forecast tuned to local weather.",
           tag: "Essential",
         },
         {
           title: "Collaborative Pellet Map",
-          description: "Spot the cheapest bags and pallets nearby thanks to real-time prices and locations contributed by fellow pellet users.",
+          description: "Community-shared prices and deals for bags and pallets nearby.",
           tag: "Community",
         },
         {
-          title: "Timeline & Heating Journal",
-          description: "Log each burned bag, purchase details with price per kg, and keep transparent control of your winter heating budget.",
+          title: "Heating Journal & History",
+          description: "Quick logging of burned bags, purchases, and seasonal heating costs.",
           tag: "Tracking",
         },
         {
           title: "Multi-Season Stats & Weather",
-          description: "Compare up to 4 heating seasons and visualize the exact correlation between outdoor temperatures and pellet burn rate.",
+          description: "Multi-year usage charts and correlation with outdoor temperatures.",
           tag: "Analytics",
         },
         {
           title: "Maintenance & Sweeping Alerts",
-          description: "Configurable reminders for glass cleaning, ash vacuuming, and mandatory annual chimney inspection.",
+          description: "Timely reminders for glass cleaning, ash vacuuming, and sweeping.",
           tag: "Safety",
         },
         {
           title: "Granulo AI Coach",
-          description: "Interactive monthly digest in Story format and instant answers to help you store pellets and optimize combustion.",
+          description: "Tailored heating advice and monthly digest in Story format.",
           tag: "AI Powered",
         },
       ],
@@ -550,13 +550,13 @@ export const translations: Record<Language, TranslationSchema> = {
     nav: {
       features: "Funzionalità",
       screenshots: "Schermate",
-      aiAndMap: "IA & Mappa",
+      aiAndMap: "Coach IA",
       support: "Sostieni 💚",
       contact: "Contatto",
       download: "Scarica",
     },
     hero: {
-      badge: "✨ Nuova versione 2026 • Granulo & IA",
+      badge: "Nuova versione 2026 • Granulo & IA",
       titleLine1: "Controlla la tua stufa,",
       titleHighlight: "anticipa le tue scorte",
       titleLine2: "in totale serenità",
@@ -580,32 +580,32 @@ export const translations: Record<Language, TranslationSchema> = {
       items: [
         {
           title: "Dashboard & Autonomia intelligente",
-          description: "Visualizza in un istante i sacchi rimasti e la data esatta in cui finiranno, calcolata sulle temperature locali.",
+          description: "Scorte in tempo reale e stima dell'autonomia calcolata sul meteo locale.",
           tag: "Essenziale",
         },
         {
           title: "Mappa Pellet collaborativa",
-          description: "Trova sacchi e bancali al prezzo più vantaggioso grazie alle segnalazioni in tempo reale della community.",
+          description: "Prezzi e punti vendita di sacchi e bancali condivisi dagli utenti vicini.",
           tag: "Community",
         },
         {
           title: "Cronologia & Diario completo",
-          description: "Registra ogni sacco bruciato, acquisto con relativo costo al kg e tieni traccia trasparente delle spese.",
+          description: "Registrazione rapida di ogni sacco bruciato e storico trasparente delle spese.",
           tag: "Tracciabilità",
         },
         {
           title: "Statistiche & Meteo multi-stagione",
-          description: "Confronta fino a 4 stagioni di riscaldamento e scopri la correlazione diretta tra clima esterno e consumo.",
+          description: "Grafici comparativi dei consumi e impatto delle temperature invernali.",
           tag: "Analitica",
         },
         {
           title: "Manutenzione & Spazzacamino",
-          description: "Promemoria intelligenti per pulizia del vetro, aspirazione ceneri e controllo annuale con spazzacamino.",
+          description: "Promemoria automatici per vetro, cassetto ceneri e controllo spazzacamino.",
           tag: "Sicurezza",
         },
         {
           title: "Coach Granulo IA",
-          description: "Report mensile in formato Story e risposte puntuali per conservare i pellet ed ottimizzare i consumi.",
+          description: "Consigli su misura e sintesi mensile interattiva in formato Stories.",
           tag: "Novità IA",
         },
       ],
@@ -748,13 +748,13 @@ export const translations: Record<Language, TranslationSchema> = {
     nav: {
       features: "Funktionen",
       screenshots: "Screenshots",
-      aiAndMap: "KI & Karte",
+      aiAndMap: "KI-Coach",
       support: "Unterstützen 💚",
       contact: "Kontakt",
       download: "Download",
     },
     hero: {
-      badge: "✨ Neue Edition 2026 • Granulo & KI",
+      badge: "Neue Edition 2026 • Granulo & KI",
       titleLine1: "Beherrsche deinen Ofen,",
       titleHighlight: "plane deinen Pelletvorrat",
       titleLine2: "völlig stressfrei",
@@ -778,32 +778,32 @@ export const translations: Record<Language, TranslationSchema> = {
       items: [
         {
           title: "Dashboard & Intelligente Autonomie",
-          description: "Sieh auf einen Blick, wie viele Säcke noch da sind und an welchem Tag sie voraussichtlich leer sind – angepasst an das Wetter.",
+          description: "Echtzeit-Vorrat und präzise Laufzeit-Prognose passend zum lokalen Wetter.",
           tag: "Kernelement",
         },
         {
           title: "Kollaborative Pellet-Karte",
-          description: "Finde die günstigsten Säcke und Paletten in deiner Region dank Preisen und Händlertipps aus der Community.",
+          description: "Günstige Angebote für Säcke und Paletten aus der Community vor Ort.",
           tag: "Community",
         },
         {
           title: "Heiztagebuch & Chronik",
-          description: "Trage jeden verbrannten Sack und Einkauf mit Kilopreis ein und behalte deine Heizkosten lückenlos im Blick.",
+          description: "Schnelles Eintragen verbrannter Säcke, Einkäufe und lückenlose Kosten.",
           tag: "Transparenz",
         },
         {
           title: "Mehrjährige Statistiken & Wetter",
-          description: "Vergleiche bis zu 4 Heizperioden und erkenne sofort, wie Außentemperaturen deinen Pelletverbrauch beeinflussen.",
+          description: "Jahresvergleiche zu Verbrauch, Kosten und Außentemperatur-Einfluss.",
           tag: "Analysen",
         },
         {
           title: "Wartungserinnerungen & Schornsteinfeger",
-          description: "Schlaue Erinnerungen für Scheibenreinigung, Aschebehälter und die jährliche Schornsteinfeger-Inspektion.",
+          description: "Pünktliche Hinweise für Scheibenreinigung, Aschekasten und Kehrtermine.",
           tag: "Sicherheit",
         },
         {
           title: "Granulo KI-Coach",
-          description: "Interaktiver Monatsrückblick im Story-Format sowie kompetente Tipps zu Lagerung, Ofeneinstellungen und Sparpotenzial.",
+          description: "Individuelle Spartipps und interaktiver Monatsrückblick im Story-Format.",
           tag: "KI-Neuheit",
         },
       ],

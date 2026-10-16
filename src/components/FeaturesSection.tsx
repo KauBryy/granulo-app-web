@@ -22,23 +22,23 @@ export const FeaturesSection: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="features" className="py-20 md:py-28 bg-muted/40 relative">
+    <section id="features" className="py-14 md:py-20 bg-muted/40 relative">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1 text-xs font-semibold text-primary mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1 text-xs font-semibold text-primary mb-3">
             {t.features.sectionBadge}
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight mb-3">
             {t.features.title}
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
             {t.features.subtitle}
           </p>
         </div>
 
-        {/* 6 Grid Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* 6 Grid Cards - Compact & Snappy */}
+        <div className="grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {t.features.items.map((item, idx) => {
             const style = featureIcons[idx] || featureIcons[0];
             const Icon = style.icon;
@@ -46,26 +46,26 @@ export const FeaturesSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className={`group relative rounded-3xl p-8 bg-card/80 backdrop-blur-sm border border-border transition-all duration-300 hover:shadow-medium hover:-translate-y-1.5 ${style.borderHover}`}
+                className={`group relative rounded-2xl p-5 sm:p-6 bg-card/85 backdrop-blur-sm border border-border/80 transition-all duration-300 hover:shadow-medium hover:-translate-y-1 ${style.borderHover}`}
               >
                 {/* Header of card: Icon + Tag */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-4">
                   <div
-                    className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${style.gradient} ${style.iconColor} shadow-inner transition-transform duration-300 group-hover:scale-110`}
+                    className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${style.gradient} ${style.iconColor} shadow-inner transition-transform duration-300 group-hover:scale-110`}
                   >
-                    <Icon className="h-7 w-7" />
+                    <Icon className="h-5 w-5" />
                   </div>
                   {item.tag && (
-                    <span className="text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-muted text-muted-foreground border border-border">
+                    <span className="text-[10px] font-bold tracking-wide uppercase px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground border border-border">
                       {item.tag}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight group-hover:text-primary transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-foreground mb-1.5 tracking-tight group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
               </div>
