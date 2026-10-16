@@ -3,9 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import FeaturesSection from "@/components/FeaturesSection";
-import SpotlightSection from "@/components/SpotlightSection";
 import Screenshots from "@/components/Screenshots";
+import SpotlightSection from "@/components/SpotlightSection";
 import DonationSection from "@/components/DonationSection";
 import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/ContactForm";
@@ -39,9 +38,8 @@ const Index: React.FC = () => {
         <Navbar />
         <main className="flex-1">
           <Hero />
-          <FeaturesSection />
-          <SpotlightSection />
           <Screenshots />
+          <SpotlightSection />
 
           {/* Video Demo Section */}
           <section id="demo" className="py-20 md:py-28 bg-muted/40 relative overflow-hidden">

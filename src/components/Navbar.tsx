@@ -19,7 +19,6 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { href: "#features", label: t.nav.features },
     { href: "#screenshots", label: t.nav.screenshots },
     { href: "#spotlight", label: t.nav.aiAndMap },
     { href: "#donation-section", label: t.nav.support },
