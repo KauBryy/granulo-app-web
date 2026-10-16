@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Globe, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
 export const languages: { code: Language; label: string; flag: string }[] = [
   { code: "fr", label: "Français", flag: "🇫🇷" },
@@ -58,11 +58,11 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ variant = "h
         <Button
           variant="outline"
           size="sm"
-          className={`flex items-center gap-2 rounded-full border-border/80 bg-card/60 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-foreground hover:bg-card/90 shadow-sm transition-all duration-200 hover:scale-[1.02] ${className}`}
+          className={`flex items-center justify-center rounded-full border-border/80 bg-card/60 backdrop-blur-md h-9 w-9 p-0 text-base font-semibold text-foreground hover:bg-card/90 shadow-sm transition-all duration-200 hover:scale-105 shrink-0 ${className}`}
+          title={current.label}
+          aria-label={`Langue : ${current.label}`}
         >
-          <Globe className="h-3.5 w-3.5 text-primary" />
-          <span className="text-base leading-none">{current.flag}</span>
-          <span className="font-medium">{current.label}</span>
+          <span className="text-lg leading-none select-none">{current.flag}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-44 rounded-2xl p-1.5 backdrop-blur-xl bg-card/95 border-border/80 shadow-medium">

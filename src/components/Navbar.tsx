@@ -52,21 +52,21 @@ export const Navbar: React.FC = () => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-2 sm:gap-3 shrink-0 group"
         >
-          <div className="relative">
+          <div className="relative shrink-0">
             <img
               src={granuloLogo}
               alt="Granulo"
-              className="h-10 w-10 md:h-11 md:w-11 rounded-full drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+              className="h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 rounded-full drop-shadow-md transition-transform duration-300 group-hover:scale-105 object-cover"
             />
-            <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500 ring-2 ring-background">
+            <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3 sm:h-3.5 sm:w-3.5 items-center justify-center rounded-full bg-emerald-500 ring-2 ring-background">
               <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
             </span>
           </div>
           <div className="flex flex-col text-left">
             <div className="flex items-center gap-1.5">
-              <span className="text-xl md:text-2xl font-black tracking-tight text-foreground">
+              <span className="text-xl md:text-2xl font-black tracking-tight text-foreground whitespace-nowrap">
                 Granulo
               </span>
               <span className="hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-secondary/15 text-secondary border border-secondary/20">
@@ -91,13 +91,13 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right side: Language Switcher & Download CTA */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <LanguageSelector variant="header" />
 
           {/* Mobile Download Button (OneLink -> automatically opens App Store on iOS or Google Play on Android) */}
           <Button
             size="sm"
-            className="inline-flex sm:hidden rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-3 py-1.5 text-xs shadow-soft transition-all hover:scale-105"
+            className="inline-flex sm:hidden rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-3 py-1.5 text-xs shadow-soft transition-all hover:scale-105 shrink-0"
             asChild
           >
             <a
@@ -114,7 +114,7 @@ export const Navbar: React.FC = () => {
           {/* Desktop Download Button: smooth scrolls down to #download section with both stores */}
           <Button
             size="sm"
-            className="hidden sm:inline-flex rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-4 text-xs shadow-soft transition-all hover:scale-105"
+            className="hidden sm:inline-flex rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-4 text-xs shadow-soft transition-all hover:scale-105 shrink-0"
             asChild
           >
             <a
@@ -134,7 +134,7 @@ export const Navbar: React.FC = () => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-foreground hover:bg-muted transition-colors"
+            className="lg:hidden p-1.5 sm:p-2 rounded-xl text-foreground hover:bg-muted transition-colors shrink-0"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
