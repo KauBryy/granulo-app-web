@@ -124,6 +124,14 @@ export default {
           "50%": {
             transform: "translateY(-20px)"
           }
+        },
+        "gentle-float": {
+          "0%, 100%": {
+            transform: "translateY(0) rotate(0deg)"
+          },
+          "50%": {
+            transform: "translateY(-6px) rotate(2deg)"
+          }
         }
       },
       animation: {
@@ -132,6 +140,7 @@ export default {
         "fade-in": "fade-in 0.6s ease-out",
         "scale-in": "scale-in 0.4s ease-out",
         "float": "float 6s ease-in-out infinite",
+        "gentle-float": "gentle-float 4s ease-in-out infinite",
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',

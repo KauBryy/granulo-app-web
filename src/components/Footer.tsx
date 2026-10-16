@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
-import granuloLogo from "@/assets/granulo-logo.png";
+import granuloLogo from "@/assets/granulo-logo.jpg";
 import kaubryLogo from "@/assets/kaubry-logo.png";
 import LanguageSelector from "@/components/LanguageSelector";
 

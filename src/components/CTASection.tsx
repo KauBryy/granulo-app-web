@@ -1,7 +1,7 @@
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
-import granuloLogo from "@/assets/granulo-logo.png";
+import granuloLogo from "@/assets/granulo-logo.jpg";
 import { Check, ShieldCheck, Cloud, ChevronRight } from "lucide-react";
 
 export const CTASection: React.FC = () => {

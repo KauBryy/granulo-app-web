@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
-import { languages } from "@/components/LanguageSelector";
 
 // Hero dashboard screenshots per language
 import dashboardFr from "@/assets/hero/dashboard-fr.jpg";
@@ -27,7 +26,7 @@ const heroScreenshots: Record<Language, string> = {
 };
 
 export const Hero: React.FC = () => {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, t } = useLanguage();
 
   const currentScreenshot = heroScreenshots[language] || dashboardFr;
 
@@ -59,7 +58,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] font-black tracking-tight text-foreground leading-[1.08] mb-6 animate-fade-in">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[62px] font-black tracking-tight text-foreground leading-[1.08] mb-6 animate-fade-in">
               {t.hero.titleLine1}{" "}
               <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 bg-clip-text text-transparent">
                 {t.hero.titleHighlight}
@@ -72,39 +71,12 @@ export const Hero: React.FC = () => {
               {t.hero.description}
             </p>
 
-            {/* Language quick switcher pills */}
-            <div className="mb-8 flex flex-wrap items-center justify-center lg:justify-start gap-2 animate-fade-in" style={{ animationDelay: "0.15s" }}>
-              <span className="text-xs font-semibold text-muted-foreground mr-1">
-                4 langues disponibles :
-              </span>
-              <div className="inline-flex items-center p-1 rounded-full bg-card/90 backdrop-blur-md border border-border shadow-sm">
-                {languages.map((l) => {
-                  const isActive = l.code === language;
-                  return (
-                    <button
-                      key={l.code}
-                      type="button"
-                      onClick={() => setLanguage(l.code)}
-                      className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all duration-200 ${
-                        isActive
-                          ? "bg-primary text-primary-foreground shadow-sm scale-105"
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                      }`}
-                    >
-                      <span>{l.flag}</span>
-                      <span>{l.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
             {/* Action Buttons: Google Play, App Store, Support */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full sm:w-auto mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 w-full sm:w-auto mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               {/* Google Play */}
               <Button
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-bold px-6 py-6 rounded-2xl shadow-medium transition-all duration-300 hover:scale-105 group"
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-bold px-6 py-6 rounded-2xl shadow-medium transition-all duration-300 hover:scale-105 group"
                 asChild
               >
                 <a
@@ -124,7 +96,7 @@ export const Hero: React.FC = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-sm font-bold px-6 py-6 rounded-2xl border-2 hover:bg-muted/60 transition-all duration-300 hover:scale-105"
+                className="w-full sm:w-auto text-sm font-bold px-6 py-6 rounded-2xl border-2 hover:bg-muted/60 transition-all duration-300 hover:scale-105"
                 asChild
               >
                 <a
@@ -140,18 +112,15 @@ export const Hero: React.FC = () => {
                 </a>
               </Button>
 
-              {/* Support */}
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 hover:bg-emerald-500/15 text-sm font-semibold px-5 py-6 rounded-2xl transition-all duration-300 hover:scale-105"
-                asChild
+              {/* Support — improved gradient button */}
+              <a
+                href="#donation-section"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 transition-colors duration-200"
               >
-                <a href="#donation-section" className="flex items-center gap-2">
-                  <Heart className="h-4 w-4 text-emerald-500 fill-emerald-500/20" />
-                  <span>{t.hero.supportGranulo}</span>
-                </a>
-              </Button>
+                <Heart className="h-4 w-4 text-emerald-500 fill-emerald-500/40" />
+                <span>{t.hero.supportGranulo}</span>
+                <ChevronRight className="h-3.5 w-3.5 opacity-60" />
+              </a>
             </div>
 
             {/* Micro Trust Points */}
@@ -176,7 +145,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: High-End Smartphone Mockup */}
+          {/* Right Column: High-End Smartphone Mockup with 3D perspective */}
           <div className="lg:col-span-5 relative flex justify-center items-center mt-6 lg:mt-0">
             
             {/* Ambient phone backglow */}
@@ -212,22 +181,28 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* Toasty Mascot Speech Bubble on top right */}
-            <div className="absolute -top-10 -right-4 sm:-right-8 z-30 flex items-center gap-2 animate-bounce duration-1000">
-              <div className="relative">
+            {/* Toasty Mascot — centered above mockup with gentle float */}
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 animate-gentle-float">
+              <div className="flex items-center gap-2">
                 <img
                   src={toastyMascot}
                   alt="Toasty Granulo Mascot"
-                  className="h-16 w-16 sm:h-20 sm:w-20 drop-shadow-xl"
+                  className="h-14 w-14 sm:h-16 sm:w-16 drop-shadow-xl"
                 />
-              </div>
-              <div className="hidden md:block rounded-2xl bg-card/95 backdrop-blur-md border border-orange-500/30 px-3 py-2 text-[11px] font-bold text-foreground shadow-medium max-w-[170px] text-left">
-                {t.hero.toastyBubble}
+                <div className="hidden md:block rounded-2xl bg-card/95 backdrop-blur-md border border-orange-500/30 px-3 py-2 text-[11px] font-bold text-foreground shadow-medium max-w-[170px] text-left">
+                  {t.hero.toastyBubble}
+                </div>
               </div>
             </div>
 
-            {/* The Stylized Phone Mockup */}
-            <div className="relative w-[290px] sm:w-[320px] md:w-[340px] aspect-[9/19.5] rounded-[48px] p-3 bg-gradient-to-b from-neutral-800 via-neutral-900 to-black shadow-[0_35px_80px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-white/10">
+            {/* The Stylized Phone Mockup — 3D perspective tilt */}
+            <div
+              className="relative w-[260px] sm:w-[300px] md:w-[340px] aspect-[9/19.5] rounded-[48px] p-3 bg-gradient-to-b from-neutral-800 via-neutral-900 to-black shadow-[0_35px_80px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-white/10"
+              style={{
+                transform: "perspective(1200px) rotateY(-8deg) rotateX(3deg)",
+                transformStyle: "preserve-3d",
+              }}
+            >
               {/* Outer bezel highlights */}
               <div className="absolute inset-0 rounded-[48px] pointer-events-none border border-white/20" />
               
