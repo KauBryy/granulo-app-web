@@ -58,14 +58,14 @@ export const SpotlightSection: React.FC = () => {
               </div>
 
               <h3 className="text-2xl font-black text-foreground mb-3">
-                « Comment bien stocker mes sacs cet été ? »
+                {t.spotlight.aiQuestion}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed italic bg-muted/60 p-5 rounded-2xl border border-border text-left">
-                « Un emplacement sec et ventilé est primordial. Éloignez vos sacs des sols froids en utilisant des palettes, et vérifiez qu'aucun sac n'est perforé pour éviter la condensation. »
+                {t.spotlight.aiAnswer}
               </p>
               <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold text-purple-600 dark:text-purple-400">
                 <span className="w-2 h-2 rounded-full bg-purple-500 animate-ping" />
-                <span>Coach Granulo IA en ligne</span>
+                <span>{t.spotlight.aiOnline}</span>
               </div>
             </div>
           </div>
@@ -81,12 +81,12 @@ export const SpotlightSection: React.FC = () => {
                     <Navigation className="h-6 w-6" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-foreground">Carte Pellet</h4>
-                    <p className="text-xs text-muted-foreground">Rayon de recherche direct</p>
+                    <h4 className="font-extrabold text-foreground">{t.spotlight.mapCardTitle}</h4>
+                    <p className="text-xs text-muted-foreground">{t.spotlight.mapCardSubtitle}</p>
                   </div>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20">
-                  Prix vérifiés
+                  {t.spotlight.mapVerifiedBadge}
                 </span>
               </div>
 
@@ -96,10 +96,10 @@ export const SpotlightSection: React.FC = () => {
                     <MapPin className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-xs font-bold text-foreground">Brico Dépôt Lexy</p>
-                      <p className="text-[11px] text-muted-foreground">À 4.2 km • En stock</p>
+                      <p className="text-[11px] text-muted-foreground">{t.spotlight.mapItem1Distance}</p>
                     </div>
                   </div>
-                  <span className="font-black text-sm text-primary">4,99 € / sac</span>
+                  <span className="font-black text-sm text-primary">4,99 € {t.spotlight.mapPricePerBag}</span>
                 </div>
 
                 <div className="flex items-center justify-between p-3.5 rounded-2xl bg-muted/60 border border-border">
@@ -107,10 +107,10 @@ export const SpotlightSection: React.FC = () => {
                     <MapPin className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-xs font-bold text-foreground">Bricomarché Longuyon</p>
-                      <p className="text-[11px] text-muted-foreground">À 1.8 km • Distributeur 24/7</p>
+                      <p className="text-[11px] text-muted-foreground">{t.spotlight.mapItem2Distance}</p>
                     </div>
                   </div>
-                  <span className="font-black text-sm text-primary">5,49 € / sac</span>
+                  <span className="font-black text-sm text-primary">5,49 € {t.spotlight.mapPricePerBag}</span>
                 </div>
               </div>
             </div>

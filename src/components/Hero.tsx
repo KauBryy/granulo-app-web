@@ -132,15 +132,15 @@ export const Hero: React.FC = () => {
                   ))}
                 </div>
                 <span className="font-semibold text-foreground">4.8/5</span>
-                <span>sur les stores</span>
+                <span>{t.hero.trustRating}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                <span>100% Données sécurisées</span>
+                <span>{t.hero.trustSecurity}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Flame className="h-4 w-4 text-orange-500" />
-                <span>Mis à jour pour 2026</span>
+                <span>{t.hero.trustUpdate}</span>
               </div>
             </div>
           </div>

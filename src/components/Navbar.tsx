@@ -22,7 +22,6 @@ export const Navbar: React.FC = () => {
     { href: "#features", label: t.nav.features },
     { href: "#screenshots", label: t.nav.screenshots },
     { href: "#spotlight", label: t.nav.aiAndMap },
-    { href: "#granulo-plus", label: "Granulo+" },
     { href: "#donation-section", label: t.nav.support },
     { href: "#contact", label: t.nav.contact },
   ];
@@ -157,24 +156,6 @@ export const Navbar: React.FC = () => {
                 <span className="text-muted-foreground">→</span>
               </a>
             ))}
-
-            <div className="pt-4 border-t border-border flex flex-col gap-3">
-              <Button
-                size="lg"
-                className="w-full rounded-2xl bg-primary text-primary-foreground font-bold shadow-md"
-                asChild
-              >
-                <a
-                  href="https://onelink.to/626wcq"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2"
-                >
-                  <span>{t.nav.download}</span>
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </Button>
-            </div>
           </div>
         </div>
       )}

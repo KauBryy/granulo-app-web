@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Portail utilisateur & Légal
+                  {t.footer.userPortal}
                 </a>
               </div>
             </div>
@@ -94,14 +94,14 @@ export const Footer: React.FC = () => {
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Guide Home Assistant
+                  {t.footer.homeAssistant}
                 </Link>
               </div>
             </div>
 
             <div className="space-y-2.5">
               <p className="font-bold text-foreground uppercase tracking-wider text-xs">
-                Communauté
+                {t.footer.community}
               </p>
               <div className="flex flex-col gap-1.5">
                 <a
@@ -110,7 +110,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-xs text-muted-foreground hover:text-blue-500 transition-colors inline-flex items-center gap-1.5 justify-center sm:justify-start"
                 >
-                  <span>Groupe Facebook</span>
+                  <span>{t.footer.facebookGroup}</span>
                 </a>
                 <a
                   href="mailto:contact@granulo.app"
@@ -128,7 +128,7 @@ export const Footer: React.FC = () => {
               © {new Date().getFullYear()} Granulo. {t.footer.rightsReserved}
             </p>
             <div className="flex items-center gap-2">
-              <span>Propulsé par</span>
+              <span>{t.footer.poweredBy}</span>
               <a
                 href="https://kaubry.fr"
                 target="_blank"

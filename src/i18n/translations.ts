@@ -28,6 +28,9 @@ export interface TranslationSchema {
     chipAi: string;
     chipMap: string;
     toastyBubble: string;
+    trustRating: string;
+    trustSecurity: string;
+    trustUpdate: string;
   };
   features: {
     sectionBadge: string;
@@ -58,25 +61,26 @@ export interface TranslationSchema {
     bulletAi1: string;
     bulletAi2: string;
     bulletAi3: string;
+    aiQuestion: string;
+    aiAnswer: string;
+    aiOnline: string;
     badgeMap: string;
     titleMap: string;
     descMap: string;
     bulletMap1: string;
     bulletMap2: string;
     bulletMap3: string;
+    mapCardTitle: string;
+    mapCardSubtitle: string;
+    mapVerifiedBadge: string;
+    mapItem1Distance: string;
+    mapItem2Distance: string;
+    mapPricePerBag: string;
   };
-  granuloPlus: {
-    badge: string;
+  demo: {
+    sectionBadge: string;
     title: string;
     subtitle: string;
-    feature1Title: string;
-    feature1Desc: string;
-    feature2Title: string;
-    feature2Desc: string;
-    feature3Title: string;
-    feature3Desc: string;
-    bubble: string;
-    ctaNote: string;
   };
   donation: {
     title: string;
@@ -85,6 +89,7 @@ export interface TranslationSchema {
     tier2: string;
     tier3: string;
     gratitude: string;
+    paypalBtn: string;
   };
   cta: {
     title: string;
@@ -131,6 +136,11 @@ export interface TranslationSchema {
     privacyWebsite: string;
     legalNotice: string;
     rightsReserved: string;
+    userPortal: string;
+    homeAssistant: string;
+    community: string;
+    facebookGroup: string;
+    poweredBy: string;
   };
 }
 
@@ -163,6 +173,9 @@ export const translations: Record<Language, TranslationSchema> = {
       chipAi: "Granulo IA : Conseils personnalisés",
       chipMap: "Carte pellet : Prix locaux partagés",
       toastyBubble: "Prêt pour l'hiver ? Je veille sur ton poêle ! 🔥",
+      trustRating: "sur les stores",
+      trustSecurity: "100% Données sécurisées",
+      trustUpdate: "Mis à jour pour 2026",
     },
     features: {
       sectionBadge: "Fonctionnalités Clés",
@@ -247,25 +260,26 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletAi1: "Bilan mensuel interactif généré sous forme de Stories visuelles",
       bulletAi2: "Conseils concrets adaptés à votre modèle et votre région",
       bulletAi3: "Assistance rapide pour l'entretien et la résolution de problèmes",
+      aiQuestion: "« Comment bien stocker mes sacs cet été ? »",
+      aiAnswer: "« Un emplacement sec et ventilé est primordial. Éloignez vos sacs des sols froids en utilisant des palettes, et vérifiez qu'aucun sac n'est perforé pour éviter la condensation. »",
+      aiOnline: "Coach Granulo IA en ligne",
       badgeMap: "Carte Collaborative",
       titleMap: "Les meilleurs tarifs près de chez vous",
       descMap: "Les utilisateurs partagent en direct le prix des sacs et des palettes repérés en magasin ou chez les livreurs.",
       bulletMap1: "Géolocalisation des points de vente partenaires et magasins",
       bulletMap2: "Filtres 24h/24, livreurs et magasins favoris",
       bulletMap3: "Signalement communautaire simple en 1 clic",
+      mapCardTitle: "Carte Pellet",
+      mapCardSubtitle: "Rayon de recherche direct",
+      mapVerifiedBadge: "Prix vérifiés",
+      mapItem1Distance: "À 4.2 km • En stock",
+      mapItem2Distance: "À 1.8 km • Distributeur 24/7",
+      mapPricePerBag: "/ sac",
     },
-    granuloPlus: {
-      badge: "Mode Premium",
-      title: "Passez à la vitesse supérieure avec Granulo+",
-      subtitle: "L'application de base Granulo est 100% complète et gratuite. Pour les foyers équipés de plusieurs poêles et les utilisateurs exigeants, le mode Granulo+ débloque des fonctionnalités avancées !",
-      feature1Title: "Multi-Poêles & Multi-Stocks",
-      feature1Desc: "Gérez plusieurs poêles indépendamment (résidence principale, chalet, atelier) avec des stocks de granulés dédiés.",
-      feature2Title: "Historique & Données Illimités",
-      feature2Desc: "Conservez l'historique complet de toutes vos saisons sans limitation et exportez vos données à tout moment.",
-      feature3Title: "Sauvegarde Cloud en Temps Réel",
-      feature3Desc: "Synchronisation instantanée entre tous vos appareils et sécurité totale de vos données.",
-      bubble: "Prêt pour les grosses chaleurs ? Granulo+ s'occupe de tout !",
-      ctaNote: "Option Premium disponible directement dans l'application Granulo",
+    demo: {
+      sectionBadge: "Démonstration",
+      title: "Découvrez Granulo en action",
+      subtitle: "Une démonstration vidéo rapide pour comprendre comment l'application révolutionne votre gestion quotidienne de chauffage.",
     },
     donation: {
       title: "Soutenez Granulo 💚",
@@ -274,6 +288,7 @@ export const translations: Record<Language, TranslationSchema> = {
       tier2: "Le prix symbolique d'un sac de granulés pour nous motiver",
       tier3: "Participe activement au nom de domaine et aux futurs développements",
       gratitude: "Merci du fond du cœur à chacun d'entre vous. Chaque geste compte et permet à l'appli de rester gratuite et indépendante !",
+      paypalBtn: "Faire un don PayPal",
     },
     cta: {
       title: "Prêt à optimiser votre chauffage aux granulés ?",
@@ -320,6 +335,11 @@ export const translations: Record<Language, TranslationSchema> = {
       privacyWebsite: "Politique de confidentialité (Site)",
       legalNotice: "Mentions légales",
       rightsReserved: "Tous droits réservés.",
+      userPortal: "Portail utilisateur & Légal",
+      homeAssistant: "Guide Home Assistant",
+      community: "Communauté",
+      facebookGroup: "Groupe Facebook",
+      poweredBy: "Propulsé par",
     },
   },
 
@@ -351,6 +371,9 @@ export const translations: Record<Language, TranslationSchema> = {
       chipAi: "Granulo AI: Personalized insights",
       chipMap: "Pellet Map: Live community prices",
       toastyBubble: "Ready for winter? I'm watching over your stove! 🔥",
+      trustRating: "on app stores",
+      trustSecurity: "100% Secure Data",
+      trustUpdate: "Updated for 2026",
     },
     features: {
       sectionBadge: "Key Capabilities",
@@ -435,25 +458,26 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletAi1: "Interactive monthly digests presented as engaging visual Stories",
       bulletAi2: "Actionable recommendations tailored to your stove and local climate",
       bulletAi3: "Fast troubleshooting assistance whenever an issue arises",
+      aiQuestion: "“How should I properly store my bags this summer?”",
+      aiAnswer: "“A dry, well-ventilated spot is essential. Keep your bags off cold floors using pallets, and make sure no bag is punctured to prevent condensation.”",
+      aiOnline: "Granulo AI Coach online",
       badgeMap: "Community Powered",
       titleMap: "The best local pellet deals",
       descMap: "Stove owners share live pricing for 15kg bags and full pallets from retail stores, DIY centers, and delivery drivers.",
       bulletMap1: "GPS map of verified stockists and supermarkets",
       bulletMap2: "Filters for 24/7 availability, delivery options, and favorites",
       bulletMap3: "Easy one-tap price update mechanism for the community",
+      mapCardTitle: "Pellet Map",
+      mapCardSubtitle: "Instant search radius",
+      mapVerifiedBadge: "Verified prices",
+      mapItem1Distance: "4.2 km away • In stock",
+      mapItem2Distance: "1.8 km away • 24/7 dispenser",
+      mapPricePerBag: "/ bag",
     },
-    granuloPlus: {
-      badge: "Premium Mode",
-      title: "Power Up with Granulo+",
-      subtitle: "The core Granulo app is 100% free and feature-packed. For enthusiasts and multi-stove homes, Granulo+ unlocks advanced power features!",
-      feature1Title: "Multi-Stoves & Multi-Stock",
-      feature1Desc: "Manage multiple pellet stoves independently (main home, cabin, workshop) with dedicated inventory.",
-      feature2Title: "Unlimited History & Insights",
-      feature2Desc: "Keep your complete heating records across all seasons with zero limits and instant CSV exports.",
-      feature3Title: "Real-time Cloud Sync",
-      feature3Desc: "Seamless synchronization across all your devices with automatic cloud backup.",
-      bubble: "Ready for heavy winter heating? Granulo+ has your back!",
-      ctaNote: "Premium option available directly inside the Granulo app",
+    demo: {
+      sectionBadge: "Demo",
+      title: "See Granulo in action",
+      subtitle: "A quick video walkthrough to see how Granulo streamlines your daily stove management.",
     },
     donation: {
       title: "Support Granulo 💚",
@@ -462,6 +486,7 @@ export const translations: Record<Language, TranslationSchema> = {
       tier2: "The symbolic price of a bag of pellets to keep our motivation fired up",
       tier3: "Directly funds domain names and future app capabilities",
       gratitude: "Huge thanks to everyone contributing. Every single contribution helps keep Granulo free, independent, and ad-free!",
+      paypalBtn: "Donate via PayPal",
     },
     cta: {
       title: "Ready to optimize your pellet stove heating?",
@@ -508,6 +533,11 @@ export const translations: Record<Language, TranslationSchema> = {
       privacyWebsite: "Privacy Policy (Website)",
       legalNotice: "Legal Notice",
       rightsReserved: "All rights reserved.",
+      userPortal: "User Portal & Legal",
+      homeAssistant: "Home Assistant Guide",
+      community: "Community",
+      facebookGroup: "Facebook Group",
+      poweredBy: "Powered by",
     },
   },
 
@@ -539,6 +569,9 @@ export const translations: Record<Language, TranslationSchema> = {
       chipAi: "Granulo IA: Consigli personalizzati",
       chipMap: "Mappa pellet: Prezzi locali condivisi",
       toastyBubble: "Pronto per l'inverno? Vigilo io sulla tua stufa! 🔥",
+      trustRating: "sugli store",
+      trustSecurity: "Dati protetti al 100%",
+      trustUpdate: "Aggiornato al 2026",
     },
     features: {
       sectionBadge: "Funzionalità Principali",
@@ -623,25 +656,26 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletAi1: "Report mensile interattivo presentato sotto forma di Stories",
       bulletAi2: "Consigli concreti tarati sulla tua stufa e zona geografica",
       bulletAi3: "Assistenza rapida per pulizia e risoluzione di anomalie",
+      aiQuestion: "« Come conservare al meglio i sacchi quest'estate? »",
+      aiAnswer: "« Un luogo asciutto e ventilato è fondamentale. Tieni i sacchi sollevati da pavimenti freddi con pallet e controlla che non vi siano fori per prevenire la condensa. »",
+      aiOnline: "Coach Granulo IA online",
       badgeMap: "Community Attiva",
       titleMap: "I prezzi migliori vicino a te",
       descMap: "Gli utenti condividono in tempo reale il costo di sacchi da 15kg e bancali interi nei negozi e distributori.",
       bulletMap1: "Mappa GPS dei punti vendita e supermercati",
       bulletMap2: "Filtri 24h/24, consegna a domicilio e negozi preferiti",
       bulletMap3: "Segnalazione prezzi immediata con un semplice tocco",
+      mapCardTitle: "Mappa Pellet",
+      mapCardSubtitle: "Raggio di ricerca immediato",
+      mapVerifiedBadge: "Prezzi verificati",
+      mapItem1Distance: "A 4.2 km • Disponibile",
+      mapItem2Distance: "A 1.8 km • Distributore 24/7",
+      mapPricePerBag: "/ sacco",
     },
-    granuloPlus: {
-      badge: "Modalità Premium",
-      title: "Sblocca la massima potenza con Granulo+",
-      subtitle: "L'app base Granulo è 100% gratuita e ricca di funzioni. Per chi possiede più stufe o cerca il massimo controllo, la modalità Granulo+ sblocca funzionalità avanzate!",
-      feature1Title: "Multi-Stufa & Multi-Scorte",
-      feature1Desc: "Gestisci più stufe separatamente (casa principale, baita, laboratorio) con scorte dedicate.",
-      feature2Title: "Storico & Dati Illimitati",
-      feature2Desc: "Conserva tutti i dati delle tue stagioni senza limiti con esportazione rapida in qualsiasi momento.",
-      feature3Title: "Sincronizzazione Cloud Istantanea",
-      feature3Desc: "Sincronizzazione immediata tra tutti i tuoi dispositivi e massima sicurezza per i tuoi dati.",
-      bubble: "Pronto per l'inverno intenso? Granulo+ pensa a tutto!",
-      ctaNote: "Opzione Premium disponibile direttamente nell'app Granulo",
+    demo: {
+      sectionBadge: "Dimostrazione",
+      title: "Scopri Granulo in azione",
+      subtitle: "Una breve video dimostrazione per capire come l'app semplifica la gestione del tuo riscaldamento.",
     },
     donation: {
       title: "Sostieni Granulo 💚",
@@ -649,6 +683,7 @@ export const translations: Record<Language, TranslationSchema> = {
       tier1: "Aiuta a pagare l'infrastruttura server e la casella email pro",
       tier2: "Il costo simbolico di un sacco di pellet per incoraggiare lo sviluppo",
       tier3: "Contribuisce al dominio web e all'implementazione di nuove funzioni",
+      paypalBtn: "Dona con PayPal",
       gratitude: "Grazie di cuore a tutti voi. Ogni supporto permette a Granulo di rimanere gratuito, indipendente e senza pubblicità invasiva!",
     },
     cta: {
@@ -696,6 +731,11 @@ export const translations: Record<Language, TranslationSchema> = {
       privacyWebsite: "Informativa sulla privacy (Sito)",
       legalNotice: "Note legali",
       rightsReserved: "Tutti i diritti riservati.",
+      userPortal: "Portale Utente & Note Legali",
+      homeAssistant: "Guida Home Assistant",
+      community: "Community",
+      facebookGroup: "Gruppo Facebook",
+      poweredBy: "Offerto da",
     },
   },
 
@@ -727,6 +767,9 @@ export const translations: Record<Language, TranslationSchema> = {
       chipAi: "Granulo KI: Individuelle Tipps",
       chipMap: "Pellet-Karte: Geteilte Preise vor Ort",
       toastyBubble: "Bereit für den Winter? Ich passe auf deinen Ofen auf! 🔥",
+      trustRating: "in den Stores",
+      trustSecurity: "100% Sichere Daten",
+      trustUpdate: "Aktualisiert für 2026",
     },
     features: {
       sectionBadge: "Wichtigste Funktionen",
@@ -811,25 +854,26 @@ export const translations: Record<Language, TranslationSchema> = {
       bulletAi1: "Monatlicher Rückblick visualisiert in interaktiven Stories",
       bulletAi2: "Konkrete Praxistipps abgestimmt auf Ofentyp und Klima",
       bulletAi3: "Sofortige Hilfestellung bei Wartungsfragen und Brennerfehlern",
+      aiQuestion: "„Wie lagere ich meine Säcke im Sommer richtig?“",
+      aiAnswer: "„Ein trockener, gut belüfteter Ort ist entscheidend. Lagere die Säcke auf Paletten statt auf kaltem Boden und prüfe, ob die Säcke unbeschädigt sind.“",
+      aiOnline: "Granulo KI-Coach online",
       badgeMap: "Community-Power",
       titleMap: "Die besten Angebote in deiner Nähe",
       descMap: "Pelletofen-Besitzer tragen live die Preise für 15kg-Säcke und Paletten ein – egal ob Baumarkt, Tankstelle oder Lieferdienst.",
       bulletMap1: "GPS-Übersicht aller Verkaufsstellen in deinem Umkreis",
       bulletMap2: "Filter für 24/7-Abholung, Lieferanten und Favoriten",
       bulletMap3: "Unkomplizierte 1-Klick-Preismeldung für alle",
+      mapCardTitle: "Pellet-Karte",
+      mapCardSubtitle: "Direkter Suchradius",
+      mapVerifiedBadge: "Geprüfte Preise",
+      mapItem1Distance: "4.2 km entfernt • Auf Lager",
+      mapItem2Distance: "1.8 km entfernt • 24/7 Automat",
+      mapPricePerBag: "/ Sack",
     },
-    granuloPlus: {
-      badge: "Premium-Modus",
-      title: "Hol das Maximum heraus mit Granulo+",
-      subtitle: "Die Basisversion von Granulo ist 100% kostenlos und komplett. Für alle mit mehreren Öfen oder höchsten Ansprüchen schaltet Granulo+ die volle Power frei!",
-      feature1Title: "Mehrere Öfen & Vorräte",
-      feature1Desc: "Verwalte mehrere Pelletöfen unabhängig voneinander (Hauptwohnsitz, Ferienhaus, Werkstatt) mit getrennten Vorratsständen.",
-      feature2Title: "Unbegrenzte Chronik & Export",
-      feature2Desc: "Behalte deine gesamten Heizdaten über alle Winter hinweg ohne Limit und exportiere sie jederzeit mit einem Klick.",
-      feature3Title: "Echtzeit-Cloud-Synchronisierung",
-      feature3Desc: "Nahtloser Datenabgleich zwischen all deinen Geräten mit automatischer Sicherung und voller Datensicherheit.",
-      bubble: "Bereit für echte Spitzenlasten? Granulo+ regelt das!",
-      ctaNote: "Premium-Option direkt in der Granulo-App verfügbar",
+    demo: {
+      sectionBadge: "Demonstration",
+      title: "Erlebe Granulo in Aktion",
+      subtitle: "Eine kurze Video-Demo zeigt dir, wie Granulo das Heizen mit Pellets spürbar erleichtert.",
     },
     donation: {
       title: "Granulo unterstützen 💚",
@@ -837,6 +881,7 @@ export const translations: Record<Language, TranslationSchema> = {
       tier1: "Hilft bei den Basiskosten für Server und professionelle E-Mail",
       tier2: "Der symbolische Preis für einen Sack Pellets als Motivation",
       tier3: "Finanziert Domain-Verlängerungen und künftige Funktionen",
+      paypalBtn: "Mit PayPal spenden",
       gratitude: "Herzlichen Dank an jeden Einzelnen. Jede Hilfe stellt sicher, dass Granulo unabhängig, werbefrei und bezahlbar bleibt!",
     },
     cta: {
@@ -884,6 +929,11 @@ export const translations: Record<Language, TranslationSchema> = {
       privacyWebsite: "Datenschutzerklärung (Website)",
       legalNotice: "Impressum",
       rightsReserved: "Alle Rechte vorbehalten.",
+      userPortal: "Nutzerportal & Rechtliches",
+      homeAssistant: "Home Assistant Anleitung",
+      community: "Community",
+      facebookGroup: "Facebook-Gruppe",
+      poweredBy: "Unterstützt von",
     },
   },
 };

@@ -139,7 +139,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-2xl bg-blue-600 text-white font-bold px-6 py-3.5 shadow-md hover:bg-blue-500 hover:scale-105 transition-all text-sm"
             >
-              <span>Faire un don PayPal</span>
+              <span>{t.donation.paypalBtn}</span>
             </a>
           </div>
 
