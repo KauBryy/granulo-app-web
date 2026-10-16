@@ -91,18 +91,38 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right side: Language Switcher & Download CTA */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5">
           <LanguageSelector variant="header" />
 
+          {/* Mobile Download Button (OneLink -> automatically opens App Store on iOS or Google Play on Android) */}
+          <Button
+            size="sm"
+            className="inline-flex sm:hidden rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-3 py-1.5 text-xs shadow-soft transition-all hover:scale-105"
+            asChild
+          >
+            <a
+              href="https://onelink.to/626wcq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1"
+            >
+              <span>{t.nav.download}</span>
+              <ArrowUpRight className="h-3 w-3" />
+            </a>
+          </Button>
+
+          {/* Desktop Download Button: smooth scrolls down to #download section with both stores */}
           <Button
             size="sm"
             className="hidden sm:inline-flex rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-4 text-xs shadow-soft transition-all hover:scale-105"
             asChild
           >
             <a
-              href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#download"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector("#download")?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="flex items-center gap-1.5"
             >
               <span>{t.nav.download}</span>
@@ -145,7 +165,7 @@ export const Navbar: React.FC = () => {
                 asChild
               >
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.kaubry.granulo.granulo"
+                  href="https://onelink.to/626wcq"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2"

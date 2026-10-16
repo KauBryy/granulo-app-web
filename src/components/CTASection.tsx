@@ -8,7 +8,7 @@ export const CTASection: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 md:py-28 bg-card relative overflow-hidden">
+    <section id="download" className="py-20 md:py-28 bg-card relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-primary/10 via-orange-500/10 to-transparent blur-3xl" />
       </div>
