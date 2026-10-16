@@ -4,7 +4,7 @@ import { ArrowLeft, Moon, Sun } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import Footer from "@/components/Footer";
 import DonationSection from "@/components/DonationSection";
-import kaubryLogo from "@/assets/kaubry-logo.png";
+import granuloLogo from "@/assets/granulo-logo.jpg";
 import { useState } from "react";
 
 const DonationSectionPage = () => {
@@ -43,9 +43,9 @@ const DonationSectionPage = () => {
                     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                         <Link to="/" className="flex items-center space-x-3">
                             <img
-                                src="https://storage.googleapis.com/gpt-engineer-file-uploads/IXPC0sNyeKdOu4cvzCJBGoAmVJr2/uploads/1762786411988-sourire2-flamme.png"
+                                src={granuloLogo}
                                 alt="Logo Granulo"
-                                className="w-10 h-10 object-contain rounded-xl"
+                                className="w-10 h-10 object-cover rounded-full"
                             />
                             <span className="text-xl font-extrabold tracking-tight uppercase">Granulo</span>
                         </Link>
@@ -70,32 +70,7 @@ const DonationSectionPage = () => {
                     <DonationSection showImmediately={true} className="py-12" />
                 </main>
 
-                <footer className="bg-white dark:bg-[#1A1A1A] py-16 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
-                    <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                            <div className="flex items-center space-x-2">
-                                <img
-                                    src="https://storage.googleapis.com/gpt-engineer-file-uploads/IXPC0sNyeKdOu4cvzCJBGoAmVJr2/uploads/1762786411988-sourire2-flamme.png"
-                                    alt="Logo Granulo"
-                                    className="w-8 h-8 object-contain rounded-xl"
-                                />
-                                <span className="text-xl font-bold uppercase tracking-tighter">Granulo</span>
-                            </div>
-                            <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-right">
-                                <p className="text-gray-400 text-sm">
-                                    &copy; {new Date().getFullYear()} Granulo. Développé en France.
-                                </p>
-                                <div className="flex items-center gap-2 mt-1">
-                                    <span className="text-xs text-gray-500">Propulsé par</span>
-                                    <a href="https://kaubry.fr" target="_blank" rel="noopener noreferrer" className="bg-white/50 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 p-1.5 rounded-lg transition-all duration-300 group flex items-center gap-2 border border-transparent hover:border-brand/20">
-                                        <img src={kaubryLogo} alt="KauBry App's" className="h-6 w-auto object-contain" />
-                                        <span className="font-bold text-sm bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">KauBry App's</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <Footer />
             </div>
         </>
     );

@@ -23,9 +23,8 @@ interface DonationSectionProps {
 export const DonationSection: React.FC<DonationSectionProps> = ({
   className = "py-20 md:py-28",
 }) => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const paypalContainerRef = useRef<HTMLDivElement>(null);
-  const initializedRef = useRef(false);
 
   const donationOptions = [
     { amount: 1, description: t.donation.tier1 },
@@ -34,8 +33,12 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
   ];
 
   useEffect(() => {
-    if (initializedRef.current) return;
-    initializedRef.current = true;
+    const paypalImages: Record<string, string> = {
+      fr: "https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif",
+      en: "https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif",
+      it: "https://www.paypalobjects.com/it_IT/i/btn/btn_donate_LG.gif",
+      de: "https://www.paypalobjects.com/de_DE/i/btn/btn_donate_LG.gif",
+    };
 
     const renderButton = () => {
       if (window.PayPal?.Donation && paypalContainerRef.current) {
@@ -44,7 +47,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
           env: "production",
           hosted_button_id: "32YRTVCLJPNVJ",
           image: {
-            src: "https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif",
+            src: paypalImages[language] || paypalImages.en,
             alt: "PayPal Donate",
             title: "PayPal - The safer, easier way to pay online!",
           },
@@ -78,7 +81,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
       };
       document.body.appendChild(script);
     }
-  }, []);
+  }, [language]);
 
   return (
     <>
