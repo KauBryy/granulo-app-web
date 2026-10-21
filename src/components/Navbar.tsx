@@ -92,16 +92,14 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <LanguageSelector variant="header" />
 
-          {/* Mobile Download Button (OneLink -> automatically opens App Store on iOS or Google Play on Android) */}
+          {/* Mobile Download Button (redirects via /download -> OneLink -> App Store/Google Play) */}
           <Button
             size="sm"
             className="inline-flex sm:hidden rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-3 py-1.5 text-xs shadow-soft transition-all hover:scale-105 shrink-0"
             asChild
           >
             <a
-              href="https://onelink.to/626wcq"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/download"
               className="flex items-center gap-1"
             >
               <span>{t.nav.download}</span>
