@@ -283,7 +283,7 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     donation: {
       title: "Soutenez Granulo 💚",
-      description: "Granulo est une application indépendante développée avec passion. Vos dons financent les serveurs Firebase, la météo, le domaine et encouragent l'arrivée sur iOS.",
+      description: "Granulo est une application indépendante développée avec passion. Vos dons financent les serveurs Firebase, la météo, la licence Apple Developer et les futures évolutions.",
       tier1: "Aide à couvrir les frais d'infrastructure et d'e-mail pro",
       tier2: "Le prix symbolique d'un sac de granulés pour nous motiver",
       tier3: "Participe activement au nom de domaine et aux futurs développements",
@@ -481,7 +481,7 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     donation: {
       title: "Support Granulo 💚",
-      description: "Granulo is an independent, passion-driven project. Donations fund Firebase cloud hosting, weather APIs, domain renewals, and accelerate the upcoming iOS release.",
+      description: "Granulo is an independent, passion-driven project. Donations fund Firebase cloud hosting, weather APIs, the Apple Developer license, and future updates.",
       tier1: "Helps cover essential cloud infrastructure and professional email",
       tier2: "The symbolic price of a bag of pellets to keep our motivation fired up",
       tier3: "Directly funds domain names and future app capabilities",
@@ -679,7 +679,7 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     donation: {
       title: "Sostieni Granulo 💚",
-      description: "Granulo è un progetto autonomo portato avanti con cura. Le donazioni coprono i costi dei server Firebase, meteo, dominio e sostengono l'uscita su iOS.",
+      description: "Granulo è un progetto autonomo portato avanti con cura. Le donazioni coprono i costi dei server Firebase, meteo, licenza Apple Developer e nuove funzioni.",
       tier1: "Aiuta a pagare l'infrastruttura server e la casella email pro",
       tier2: "Il costo simbolico di un sacco di pellet per incoraggiare lo sviluppo",
       tier3: "Contribuisce al dominio web e all'implementazione di nuove funzioni",
@@ -877,7 +877,7 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     donation: {
       title: "Granulo unterstützen 💚",
-      description: "Granulo ist ein unabhängiges Herzensprojekt. Spenden decken Firebase-Serverkosten, Wetter-Schnittstellen, Domainkosten und beschleunigen die iOS-Entwicklung.",
+      description: "Granulo ist ein unabhängiges Herzensprojekt. Spenden decken Firebase-Serverkosten, Wetter-Schnittstellen, die Apple-Developer-Lizenz und neue Funktionen.",
       tier1: "Hilft bei den Basiskosten für Server und professionelle E-Mail",
       tier2: "Der symbolische Preis für einen Sack Pellets als Motivation",
       tier3: "Finanziert Domain-Verlängerungen und künftige Funktionen",

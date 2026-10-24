@@ -1,13 +1,23 @@
 import React, { useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Heart, Coffee } from "lucide-react";
+import { Coffee } from "lucide-react";
 import toastyScarf from "@/assets/toasty-scarf.png";
+
+interface PayPalDonationButtonConfig {
+  env: string;
+  hosted_button_id: string;
+  image: {
+    src: string;
+    alt: string;
+    title: string;
+  };
+}
 
 declare global {
   interface Window {
     PayPal?: {
       Donation: {
-        Button: (config: any) => {
+        Button: (config: PayPalDonationButtonConfig) => {
           render: (selector: string) => void;
         };
       };
@@ -77,7 +87,9 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
       script.charset = "UTF-8";
       script.async = true;
       script.onload = () => {
-        renderButton() || ensureRender();
+        if (!renderButton()) {
+          ensureRender();
+        }
       };
       document.body.appendChild(script);
     }
@@ -146,13 +158,10 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
             </a>
           </div>
 
-          <div className="rounded-3xl border border-border bg-card/60 backdrop-blur-sm p-6 mb-8 text-center">
-            <p className="text-xs sm:text-sm text-muted-foreground">
+          <div className="rounded-3xl border border-border bg-card/60 backdrop-blur-sm p-6 text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground mb-4">
               {t.donation.gratitude}
             </p>
-          </div>
-
-          <div className="text-center">
             <div
               ref={paypalContainerRef}
               id="paypal-donate-button"

@@ -26,12 +26,19 @@ const Index: React.FC = () => {
         <meta property="og:description" content={t.meta.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://granulo.app" />
+        <meta property="og:image" content="https://granulo.app/logo-granulo.jpg" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t.meta.title} />
         <meta name="twitter:description" content={t.meta.description} />
+        <meta name="twitter:image" content="https://granulo.app/logo-granulo.jpg" />
 
         <link rel="canonical" href="https://granulo.app" />
+        <link rel="alternate" hrefLang="fr" href="https://granulo.app/?lang=fr" />
+        <link rel="alternate" hrefLang="en" href="https://granulo.app/?lang=en" />
+        <link rel="alternate" hrefLang="it" href="https://granulo.app/?lang=it" />
+        <link rel="alternate" hrefLang="de" href="https://granulo.app/?lang=de" />
+        <link rel="alternate" hrefLang="x-default" href="https://granulo.app/" />
       </Helmet>
 
       <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-orange-500 selection:text-white">

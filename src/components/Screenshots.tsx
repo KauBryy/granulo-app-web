@@ -147,9 +147,7 @@ export const Screenshots: React.FC = () => {
   };
 
   return (
-    <section
-      id="screenshots"
-      className="py-20 md:py-28 bg-background relative overflow-hidden outline-none"
+    <section id="screenshots" className="py-20 md:py-28 bg-background relative overflow-hidden outline-none scroll-mt-20"
       onKeyDown={handleKeyDown}
       tabIndex={0}
       aria-label={t.screenshots.title}

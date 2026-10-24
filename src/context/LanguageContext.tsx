@@ -11,9 +11,27 @@ export interface LanguageContextType {
 
 const defaultLanguage: Language = "fr";
 
+const isSearchBot = (): boolean => {
+  if (typeof navigator === "undefined") return false;
+  return /bot|googlebot|crawler|spider|robot|crawling|bingbot|facebookexternalhit|twitterbot/i.test(
+    navigator.userAgent || ""
+  );
+};
+
 const getInitialLanguage = (): Language => {
   if (typeof window === "undefined") return defaultLanguage;
   try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get("lang") as Language | null;
+    if (langParam && ["fr", "en", "it", "de"].includes(langParam)) {
+      return langParam;
+    }
+
+    // Keep French metadata for search engine crawlers on the root URL
+    if (isSearchBot()) {
+      return "fr";
+    }
+
     const saved = localStorage.getItem("granulo_lang") as Language | null;
     if (saved && ["fr", "en", "it", "de"].includes(saved)) {
       return saved;
@@ -23,7 +41,7 @@ const getInitialLanguage = (): Language => {
     if (browserLang === "en") return "en";
     if (browserLang === "it") return "it";
     if (browserLang === "de") return "de";
-  } catch (e) {
+  } catch {
     // ignore localstorage errors
   }
   return defaultLanguage;
@@ -42,7 +60,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setLanguageState(lang);
     try {
       localStorage.setItem("granulo_lang", lang);
-    } catch (e) {
+    } catch {
       // ignore
     }
   };

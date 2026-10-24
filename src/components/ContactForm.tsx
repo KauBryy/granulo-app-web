@@ -57,7 +57,7 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-muted/30">
+    <section id="contact" className="py-20 md:py-28 bg-muted/30 scroll-mt-20">
       <div className="container mx-auto px-4 max-w-2xl">
         <div className="rounded-[36px] bg-card p-8 md:p-12 shadow-medium border border-border">
           <div className="text-center mb-10">
