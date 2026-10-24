@@ -18,8 +18,6 @@ import {
   CalendarDays,
   BarChart3,
   Wrench,
-  Play,
-  Pause,
 } from "lucide-react";
 
 // Import all 24 localized presentation slides
@@ -78,8 +76,6 @@ export const Screenshots: React.FC = () => {
   const { language, t } = useLanguage();
   const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
 
   const currentSlides = slidesByLang[language] || slidesByLang.fr;
@@ -107,15 +103,6 @@ export const Screenshots: React.FC = () => {
     };
   }, [emblaApi, onSelect]);
 
-  // Autoplay with pause on hover
-  useEffect(() => {
-    if (!emblaApi || !isPlaying || isHovered) return;
-    const interval = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [emblaApi, isPlaying, isHovered]);
-
   // Center active tab pill in mobile horizontal scroll
   useEffect(() => {
     if (!tabsContainerRef.current) return;
@@ -129,7 +116,6 @@ export const Screenshots: React.FC = () => {
     }
   }, [selectedIndex]);
 
-  // Keyboard navigation when focusing the carousel
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") {
       emblaApi?.scrollPrev();
@@ -155,45 +141,42 @@ export const Screenshots: React.FC = () => {
   };
 
   const activeSlideInfo = t.screenshots.slides[selectedIndex] || {
-    title: `Partie ${selectedIndex + 1}`,
+    title: `Slide ${selectedIndex + 1}`,
     caption: "",
     details: "",
   };
 
-  const ActiveIcon = slideIcons[selectedIndex] || Sparkles;
-
   return (
     <section
       id="screenshots"
-      className="py-20 md:py-32 bg-background relative overflow-hidden"
+      className="py-20 md:py-28 bg-background relative overflow-hidden outline-none"
       onKeyDown={handleKeyDown}
       tabIndex={0}
       aria-label={t.screenshots.title}
     >
-      {/* Subtle atmospheric glow effects */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-primary/5 dark:bg-primary/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-orange-500/5 dark:bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Subtle ambient background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-primary/5 dark:bg-primary/10 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-xs font-semibold text-orange-600 dark:text-orange-400 mb-4 shadow-sm">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-1.5 text-xs font-semibold text-orange-600 dark:text-orange-400 mb-4">
             <Sparkles className="h-3.5 w-3.5" />
             <span>{t.screenshots.sectionBadge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-tight mb-4">
             {t.screenshots.title}
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground">
             {t.screenshots.subtitle}
           </p>
         </div>
 
-        {/* 6 Parts Tab / Pill Selector */}
-        <div className="max-w-4xl mx-auto mb-10">
+        {/* 6 Parts Pill Selector */}
+        <div className="max-w-3xl mx-auto mb-8">
           <div
             ref={tabsContainerRef}
-            className="flex items-center gap-2 overflow-x-auto pb-2 px-1 scroll-smooth justify-start md:justify-center [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="flex items-center gap-2 overflow-x-auto py-1.5 px-1 scroll-smooth justify-start sm:justify-center [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {currentSlides.map((_, index) => {
               const TabIcon = slideIcons[index] || Sparkles;
@@ -202,19 +185,16 @@ export const Screenshots: React.FC = () => {
                 <button
                   key={`tab-${index}`}
                   type="button"
-                  onClick={() => {
-                    emblaApi?.scrollTo(index);
-                  }}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 shrink-0 border ${
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 shrink-0 border ${
                     isSelected
-                      ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25 scale-[1.03]"
-                      : "bg-card/70 hover:bg-muted text-muted-foreground hover:text-foreground border-border/80 backdrop-blur-sm"
+                      ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
+                      : "bg-card/80 hover:bg-muted text-muted-foreground hover:text-foreground border-border/80"
                   }`}
                   aria-selected={isSelected}
                   role="tab"
                 >
-                  <TabIcon className={`h-4 w-4 ${isSelected ? "text-primary-foreground" : "text-primary"}`} />
-                  <span className="opacity-75 font-mono text-[11px]">0{index + 1}</span>
+                  <TabIcon className="h-4 w-4 shrink-0" />
                   <span>{currentTabs[index]}</span>
                 </button>
               );
@@ -222,36 +202,32 @@ export const Screenshots: React.FC = () => {
           </div>
         </div>
 
-        {/* Embla Carousel Stage */}
-        <div
-          className="relative max-w-6xl mx-auto"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* Navigation arrow Left */}
+        {/* Clean Carousel Stage */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Prev Button */}
           <Button
             variant="outline"
             size="icon"
             onClick={() => emblaApi?.scrollPrev()}
-            className="hidden md:flex absolute -left-5 lg:-left-7 top-[42%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/85 hover:bg-background border-border/80 backdrop-blur-xl shadow-xl hover:scale-105 active:scale-95 transition-all text-foreground"
+            className="hidden sm:flex absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full bg-background/90 hover:bg-background border-border shadow-lg backdrop-blur-md hover:scale-105 transition-all"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronLeft className="h-5 w-5" />
           </Button>
 
-          {/* Navigation arrow Right */}
+          {/* Next Button */}
           <Button
             variant="outline"
             size="icon"
             onClick={() => emblaApi?.scrollNext()}
-            className="hidden md:flex absolute -right-5 lg:-right-7 top-[42%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/85 hover:bg-background border-border/80 backdrop-blur-xl shadow-xl hover:scale-105 active:scale-95 transition-all text-foreground"
+            className="hidden sm:flex absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full bg-background/90 hover:bg-background border-border shadow-lg backdrop-blur-md hover:scale-105 transition-all"
             aria-label="Next slide"
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronRight className="h-5 w-5" />
           </Button>
 
-          {/* Carousel Viewport */}
-          <div ref={emblaRef} className="overflow-hidden py-4 px-2">
+          {/* Embla Viewport */}
+          <div ref={emblaRef} className="overflow-hidden py-4">
             <div className="flex -ml-4 md:-ml-6 items-center">
               {currentSlides.map((imgSrc, index) => {
                 const isSelected = selectedIndex === index;
@@ -260,12 +236,11 @@ export const Screenshots: React.FC = () => {
                   caption: "",
                   details: "",
                 };
-                const IconComponent = slideIcons[index] || Sparkles;
 
                 return (
                   <div
                     key={`carousel-slide-${index}`}
-                    className="min-w-0 shrink-0 grow-0 basis-[85%] sm:basis-[62%] md:basis-[48%] lg:basis-[36%] xl:basis-[33%] pl-4 md:pl-6"
+                    className="min-w-0 shrink-0 grow-0 basis-[76%] sm:basis-[50%] md:basis-[40%] lg:basis-[34%] pl-4 md:pl-6"
                   >
                     <div
                       onClick={() => {
@@ -275,193 +250,64 @@ export const Screenshots: React.FC = () => {
                           emblaApi?.scrollTo(index);
                         }
                       }}
-                      className={`group relative flex flex-col rounded-[32px] overflow-hidden bg-card transition-all duration-500 cursor-pointer select-none ${
+                      className={`group relative rounded-[28px] overflow-hidden bg-neutral-950 transition-all duration-500 cursor-pointer select-none aspect-[9/19.5] ${
                         isSelected
-                          ? "scale-100 opacity-100 border-2 border-primary/60 shadow-2xl shadow-primary/15 ring-4 ring-primary/10 z-10"
-                          : "scale-[0.92] opacity-55 hover:opacity-85 border border-border/70 hover:scale-[0.95]"
+                          ? "scale-100 opacity-100 ring-2 ring-primary/60 shadow-2xl shadow-black/30 z-10"
+                          : "scale-[0.90] opacity-45 hover:opacity-75"
                       }`}
                     >
-                      {/* Top Poster Image Container */}
-                      <div className="relative aspect-[9/19.5] w-full overflow-hidden bg-neutral-950">
-                        <img
-                          src={imgSrc}
-                          alt={slideInfo.title}
-                          className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                          loading={index <= 2 ? "eager" : "lazy"}
-                          draggable={false}
-                        />
+                      <img
+                        src={imgSrc}
+                        alt={slideInfo.title}
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                        loading={index <= 2 ? "eager" : "lazy"}
+                        draggable={false}
+                      />
 
-                        {/* Top floating pill badge */}
-                        <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-black/70 text-white backdrop-blur-md px-3 py-1 text-xs font-bold border border-white/10 shadow-md">
-                            <IconComponent className="h-3.5 w-3.5 text-primary" />
-                            <span>0{index + 1} / 06</span>
-                          </span>
-
-                          {isSelected && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-primary/90 text-primary-foreground backdrop-blur-md px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide shadow-md animate-pulse">
-                              Actif
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Gradient bottom overlay on poster */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                          <span className="inline-flex items-center gap-2 rounded-full bg-white text-neutral-950 font-bold px-4 py-2 text-xs shadow-xl backdrop-blur-md hover:scale-105 transition-transform">
+                      {/* Subtle hover zoom button on active slide */}
+                      {isSelected && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                          <span className="inline-flex items-center gap-2 rounded-full bg-white/95 text-neutral-950 font-bold px-4 py-2 text-xs shadow-lg backdrop-blur-md">
                             <Maximize2 className="h-3.5 w-3.5" />
                             <span>{t.screenshots.zoomHint}</span>
                           </span>
                         </div>
-                      </div>
-
-                      {/* Card Caption Info */}
-                      <div className="p-5 sm:p-6 flex flex-col gap-2 bg-card/95 border-t border-border/60">
-                        <div className="flex items-center justify-between gap-2">
-                          <h3 className="font-black text-base sm:text-lg text-foreground tracking-tight truncate group-hover:text-primary transition-colors">
-                            {slideInfo.title}
-                          </h3>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setActiveSlideIndex(index);
-                            }}
-                            className="p-1.5 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors shrink-0"
-                            title={t.screenshots.zoomHint}
-                            aria-label={t.screenshots.zoomHint}
-                          >
-                            <Maximize2 className="h-4 w-4" />
-                          </button>
-                        </div>
-                        <p className="text-xs font-semibold text-primary truncate">
-                          {slideInfo.caption}
-                        </p>
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                          {slideInfo.details}
-                        </p>
-                      </div>
+                      )}
                     </div>
                   </div>
                 );
               })}
             </div>
           </div>
+        </div>
 
-          {/* Carousel Footer Controls */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto px-4">
-            {/* Active Part indicator counter */}
-            <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
-              <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 text-primary font-mono font-bold text-xs">
-                {selectedIndex + 1}
-              </span>
-              <span>sur 06</span>
-              <span className="text-muted-foreground/40">•</span>
-              <span className="text-foreground font-bold truncate max-w-[200px] sm:max-w-none">
-                {activeSlideInfo.title}
-              </span>
-            </div>
+        {/* Clean Single Caption & Dots Below */}
+        <div className="max-w-xl mx-auto mt-4 text-center px-4">
+          <h3 className="text-xl sm:text-2xl font-black text-foreground tracking-tight">
+            {activeSlideInfo.title}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mt-1.5 min-h-[2.5rem]">
+            {activeSlideInfo.details}
+          </p>
 
-            {/* Dot indicators */}
-            <div className="flex items-center gap-1.5">
-              {currentSlides.map((_, index) => {
-                const isSelected = selectedIndex === index;
-                return (
-                  <button
-                    key={`dot-${index}`}
-                    type="button"
-                    onClick={() => emblaApi?.scrollTo(index)}
-                    className={`h-2.5 transition-all duration-300 rounded-full ${
-                      isSelected
-                        ? "w-8 bg-primary shadow-md shadow-primary/30"
-                        : "w-2.5 bg-muted-foreground/25 hover:bg-muted-foreground/60"
-                    }`}
-                    aria-label={`Aller à la partie ${index + 1}`}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Autoplay & Arrow Controls */}
-            <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="h-8 px-2.5 rounded-full text-xs text-muted-foreground hover:text-foreground flex items-center gap-1.5"
-                title={isPlaying ? "Mettre en pause le défilement automatique" : "Reprendre le défilement automatique"}
-              >
-                {isPlaying ? (
-                  <>
-                    <Pause className="h-3.5 w-3.5 text-primary" />
-                    <span className="text-[11px] font-medium hidden sm:inline">Auto</span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="h-3.5 w-3.5" />
-                    <span className="text-[11px] font-medium hidden sm:inline">Pause</span>
-                  </>
-                )}
-              </Button>
-
-              <div className="flex items-center gap-1 md:hidden">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => emblaApi?.scrollPrev()}
-                  className="h-8 w-8 rounded-full"
-                  aria-label="Précédent"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => emblaApi?.scrollNext()}
-                  className="h-8 w-8 rounded-full"
-                  aria-label="Suivant"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* Active Highlight Summary Card */}
-          <div className="mt-8 max-w-3xl mx-auto bg-card/60 backdrop-blur-xl border border-border/80 rounded-3xl p-6 sm:p-8 shadow-soft">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-border/60">
-              <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0 shadow-sm">
-                  <ActiveIcon className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-md">
-                      0{selectedIndex + 1}
-                    </span>
-                    <h4 className="text-lg sm:text-xl font-black text-foreground tracking-tight">
-                      {activeSlideInfo.title}
-                    </h4>
-                  </div>
-                  <p className="text-xs sm:text-sm font-semibold text-primary mt-0.5">
-                    {activeSlideInfo.caption}
-                  </p>
-                </div>
-              </div>
-
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setActiveSlideIndex(selectedIndex)}
-                className="rounded-full text-xs font-bold gap-2 hover:bg-primary hover:text-primary-foreground transition-all shrink-0"
-              >
-                <Maximize2 className="h-3.5 w-3.5" />
-                <span>{t.screenshots.zoomHint}</span>
-              </Button>
-            </div>
-
-            <p className="text-sm text-muted-foreground leading-relaxed pt-4">
-              {activeSlideInfo.details}
-            </p>
+          {/* Minimalist Dots */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {currentSlides.map((_, index) => {
+              const isSelected = selectedIndex === index;
+              return (
+                <button
+                  key={`dot-${index}`}
+                  type="button"
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`h-2 transition-all duration-300 rounded-full ${
+                    isSelected
+                      ? "w-7 bg-primary"
+                      : "w-2 bg-muted-foreground/25 hover:bg-muted-foreground/50"
+                  }`}
+                  aria-label={`Slide ${index + 1}`}
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -483,7 +329,6 @@ export const Screenshots: React.FC = () => {
                 </DialogHeader>
 
                 <div className="relative flex items-center justify-center w-full my-auto overflow-hidden rounded-2xl">
-                  {/* Prev button */}
                   <Button
                     variant="outline"
                     size="icon"
@@ -494,14 +339,12 @@ export const Screenshots: React.FC = () => {
                     <ChevronLeft className="h-5 w-5" />
                   </Button>
 
-                  {/* Image */}
                   <img
                     src={currentSlides[activeSlideIndex]}
                     alt={t.screenshots.slides[activeSlideIndex]?.title}
                     className="max-h-[68vh] w-auto rounded-2xl object-contain shadow-2xl select-none"
                   />
 
-                  {/* Next button */}
                   <Button
                     variant="outline"
                     size="icon"
